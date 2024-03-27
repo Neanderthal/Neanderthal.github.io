@@ -10,7 +10,7 @@
   - Participated in the development of Network Attack Discovery (NAD) service for network attack detection using Django, Celery, Postgres and ElasticSearch.
   - Implemented logging and metrics transfer using Carbon/Graphite/Grafana.
   - Refactored and improved OAuth-based authentication and authorization system.
-  - 
+    
 #### Quantum Soft Ltd. 
 - **Duration:** July 2021 - September 2022 (1 year 3 months)
 - **Sector:** IT, Systems Integration, Internet
@@ -57,22 +57,23 @@
 #### GdeProfi.ru
 - **Duration:** August 2011 - February 2012 (7 months)
 - **Senior Web Developer**
-- As a Senior Web Developer at GdeProfi.ru, I led the team in developing our online platform using the Microsoft .NET framework. Using C# and ASP.NET MVC, we also used Entity Framework for efficient data management.
-  we implemented robust backend functionality and dynamic frontend features using AngularJS. Using agile methodologies, we iteratively refined our product to provide an optimal user experience.
-  We also used MSSQL Server for database management and relied on Visual Studio for development and debugging.
+  - As a Senior Web Developer at GdeProfi.ru, I led the team in developing our online platform using the Microsoft .NET framework. Using C# and ASP.NET MVC,
+    we also used Entity Framework for efficient data management. We implemented robust backend functionality and dynamic frontend features using AngularJS.
+  - Using agile methodologies, we iteratively refined our product to provide an optimal user experience.
+  - We also used MSSQL Server for database management and relied on Visual Studio for development and debugging.
   
 #### One Development
 - **Duration:** October 2010 - September 2011 (1 year)
 - **Asp.Net C# Developer**
-- At One Development, my role as an Asp.Net C# Developer was to build the backend of a supply chain management application using Microsoft technologies.
-  Using ASP.NET MVC, I developed modular and maintainable c code using Design Patterns, providing flexibility for future enhancements. Utilized the capabilities of the C# language, Entity Framework, and
-  MSSQL Server for database management. We also used Jira for project management and Git for code version control.
-Developed tests using the NUnit framework
-
+  - At One Development, my role as an Asp.Net C# Developer was to build the backend of a supply chain management application using Microsoft technologies.
+    Using ASP.NET MVC, I developed modular and maintainable c code using Design Patterns, providing flexibility for future enhancements.
+  - Utilized the capabilities of the C# language, Entity Framework, and
+    MSSQL Server for database management. We also used Jira for project management and Git for code version control.
+  - Developed unittests using the NUnit framework
 
 #### Speech Technology Center
 - **Duration:** 2004 - 2005 (1 year)
 - **Sector:** Forensic Analysis Tools
 - **Junior .Net Developer**
-- Participated in speech recognition software development, focusing on authorization and authentication.
-- Utilized C# and the .NET framework, as well as MSSQL Server for database management.
+  - Participated in speech recognition software development, focusing on authorization and authentication.
+  - Utilized C# and the .NET framework, as well as MSSQL Server for database management.
