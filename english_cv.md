@@ -1,12 +1,12 @@
 # Sergey Istomin
 Senior Python Developer/Tech Lead  
 Male, 42 years  
-Born: June 13, 1981  
 Location: Saint Petersburg, Russia  
 
 **Contact:**  
 - Phone: +7 (911) 9125372  
-- Email: sergey.istomin@gmail.com *(Preferred)*  
+- Email: sergey.istomin@gmail.com *(Preferred)*
+- Telegram: [istomin_sergey](https://t.me/sergey_istomin)
 
 **Availability:**  
 - Not ready to relocate  
@@ -15,8 +15,18 @@ Location: Saint Petersburg, Russia
 - Desired Salary: > $80.000 
 
 ## Summary
-
 Experienced Senior Python Developer and Tech Lead with over 10 years of expertise in software development, system integration, and IT consulting. Proficient in Python, Django, and various cloud technologies including AWS and Azure. Proven track record in managing teams, implementing Agile practices, and delivering high-quality solutions.
+
+## Skills
+- Python; PostgreSQL; Git; Linux; Docker; Redis; RabbitMQ; Django; HTML; Flask; Unit Testing; GitLab; Jira; MongoDB; REST; Kafka; Elasticsearch, AWS Services, Azure services.
+- Languages: English (Upper Intermediate), Russian (Native)
+   
+## Education
+- St. Petersburg State University of Aerospace Instrumentation, St. Petersburg, Russia
+Degree: Master's degree in Computer Science and Management in Technical Systems, 2016
+
+- Peter the Great St. Petersburg Polytechnic University (Spbspu)
+Degree: Bachelor's degree in Computer Science and Management in Technical Systems (not finished), 2002
 
 ## Work Experience
 ### Professional Experience
@@ -64,19 +74,6 @@ Experienced Senior Python Developer and Tech Lead with over 10 years of expertis
 - **Key Responsibilities:**
   - Led projects focusing on cloud accounting and personnel accounting for budgetary organizations, ensuring seamless implementation across multiple regions.
   - Managed a distributed team spanning St. Petersburg, Novosibirsk, and Khabarovsk, fostering adherence to Agile practices and overseeing the development process.
-
-## Education
-
-- St. Petersburg State University of Aerospace Instrumentation, St. Petersburg, Russia  
-  Degree: 210100 - Informatics and Management in Technical Systems, 2016  
-
-- Peter the Great St.Petersburg Polytechnic University (SPbPU)  
-  Degree: 210100 - Informatics and Management in Technical Systems, 2002  
-
-## Skills
-
-- Languages: English (Upper Intermediate), Russian (Native)  
-- Python; PostgreSQL; Git; Linux; Docker; Redis; RabbitMQ; Django; HTML; Flask; Unit Testing; GitLab; Jira; MongoDB; REST; Kafka; Elasticsearch  
 
 ## Additional Information
 
