@@ -3,7 +3,7 @@
 Welcome to Sergey Istomin's Curriculum Vitae! Below you will find a summary of Sergey's professional experience, skills, and other unique experiences.
 
 ## Short CV in English
-[![Short CV](https://img.shields.io/badge/View-Short%20CV-blue)](https://github.com/Neanderthal/sergey_istomin_cv/blob/main/short_cv_in_english.md)
+[![Short CV in English](https://img.shields.io/badge/View-Short%20CV-blue)](https://github.com/Neanderthal/sergey_istomin_cv/blob/main/short_cv_in_english.md)
 
 Get a brief overview of Sergey's background, skills, and key accomplishments.
 
