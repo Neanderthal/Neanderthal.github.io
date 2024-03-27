@@ -34,7 +34,7 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
 ### Professional Experience
 
 #### Positive Technologies Inc.  
-- **Location:** Saint Petersburg, [www.ptsecurity.ru](http://www.ptsecurity.ru)
+- **Web site:** [www.ptsecurity.ru](http://www.ptsecurity.ru)
 - **Industry:** IT, System Integration, Internet
   - Software Development
   - System Integration, Technological and Business Processes Automation, IT Consulting
@@ -47,6 +47,7 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
   - Participated in adapting and refining attack detection plugins for enhanced functionality.
 
 #### Quantum Soft LLC 
+- **Web site:** [www.quantumsoft.pro](https://www.quantumsoft.pro)
 - **Industry:** IT, System Integration, Internet
 - **Position:** Senior Python Developer
 - **Duration:** July 2021 – September 2022 (1 year 3 months)
@@ -55,7 +56,7 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
   - Developed services to access ML on the MS Azure platform, utilizing technologies such as Azure VM, Azure Functions, Service Bus, Eventgrid, Terraform, Python-asyncio, fastapi, and pydantic.
 
 #### EPAM Systems Inc. 
-- **Location:** [www.epam-group.ru](http://www.epam-group.ru)
+- **Web site:** [www.epam-group.ru](http://www.epam-group.ru)
 - **Industry:** IT, System Integration, Internet
   - System Integration, Technological and Business Processes Automation, IT Consulting
 - **Position:** Senior Python Developer
@@ -67,12 +68,12 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
     - Participated in the creation of a scenario-based load testing environment for a European content provider, utilizing Docker stack, Python + asyncio, Nomad by HashiCorp, and RabbitMQ.
 
 #### Bars Group Inc.
-- **Duration:** January 2016 – March 2019 (3 years 3 months)
-- **Location:** [bars.group](http://bars.group)
+- **Web site:** [bars.group](http://bars.group)
 - **Industry:** IT, System Integration, Internet
   - Software Development
   - System Integration, Technological and Business Processes Automation, IT Consulting
 - **Position:** Senior Python Developer/Team Lead
+- **Duration:** January 2016 – March 2019 (3 years 3 months)
 - **Key Responsibilities:**
   - Led projects focusing on cloud accounting and personnel accounting for budgetary organizations, ensuring seamless implementation across multiple regions.
   - Managed a distributed team spanning St. Petersburg, Novosibirsk, and Khabarovsk, fostering adherence to Agile practices and overseeing the development process.
