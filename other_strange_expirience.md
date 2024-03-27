@@ -1,4 +1,4 @@
-This part of my experience has been rewritten in some way using ChatGPT3.5. To tell the truth, I don't have such literary talents.
+This part of my experience has been rewritten in some way using ChatGPT3.5. To tell the truth, I don't have such literary talents. But it's all true.
 
 ### Salesman - 1999
 Back in the summer of '99, I embarked on a gig as a traveling seed salesman aboard trains. It was quite the eye-opener, diving headfirst into the world of direct sales and real-life experiences.
