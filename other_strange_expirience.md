@@ -13,7 +13,7 @@ In 2006, I took the plunge and opened up a small cleaning outfit called Clean Wi
 For a good chunk of time, I found myself knee-deep in organizing corporate shindigs and team-building escapades at the Team Building Club. It was a blast crafting weekend getaways and outdoor adventures for our corporate clients. Leading a team, hosting events, scouting locations, dreaming up scenarios, and tackling challenges head-on were all part of the gig. We tinkered and toiled to make each event a memorable one, and boy, did I gain some serious chops in public speaking.
 
 ### Weekend Aircraft Technician - 2011-2012
-In 2011, I caught the aviation bug and decided to get hands-on experience by signing up as a weekend technician at a local airfield. Servicing Yak-52 aircraft and a Mi-2 helicopter was like diving into a whole new world of excitement and learning.
+In 2011, I caught the aviation bug and decided to get hands-on experience by signing up as a weekend technician at a local airfield. Servicing Yak-52 aircraft and a Mi-2 helicopter was like diving into a whole new world of excitement and learning. Since then, one of my goals is to get a PPL one day.
 
 ### Co-owner, Creator, Engineer - OWLQUEST - March 2014 - February 2016
 Ever heard of OwlQuest? It was a real-life quest experience that I helped bring to life with a group of pals. As a co-owner and creator, I tapped into my electronics know-how to craft some nifty gadgets and dream up immersive scenarios. From designing printed circuit boards to tinkering with Atmega controllers, it was a whirlwind of creativity. But alas, the quest for success required more than just ingenuity, and we eventually sold off the business at break-even.
