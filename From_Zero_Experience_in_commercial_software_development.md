@@ -72,6 +72,13 @@
   - Developed unittests using the NUnit framework
 ### Teaching Experience
 
+#### Speech Technology Center
+- **Duration:** 2004 - 2005 (1 year)
+- **Sector:** Forensic Analysis Tools
+- **Junior .Net Developer**
+  - Participated in speech recognition software development, focusing on authorization and authentication.
+  - Utilized C# and the .NET framework, as well as MSSQL Server for database management.
+
 #### Saint Petersburg State University of Industrial Technologies and Design
 - **Location:** Saint Petersburg
 - **Duration:** 2006, 2007, 2008
@@ -82,9 +89,3 @@
     - Supervising students' assignments and providing constructive feedback.
     - Assessing laboratory work to evaluate students' understanding and proficiency in the subject matter.
 
-#### Speech Technology Center
-- **Duration:** 2004 - 2005 (1 year)
-- **Sector:** Forensic Analysis Tools
-- **Junior .Net Developer**
-  - Participated in speech recognition software development, focusing on authorization and authentication.
-  - Utilized C# and the .NET framework, as well as MSSQL Server for database management.
