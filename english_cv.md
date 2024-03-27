@@ -19,43 +19,51 @@ Location: Saint Petersburg, Russia
 Experienced Senior Python Developer and Tech Lead with over 10 years of expertise in software development, system integration, and IT consulting. Proficient in Python, Django, and various cloud technologies including AWS and Azure. Proven track record in managing teams, implementing Agile practices, and delivering high-quality solutions.
 
 ## Work Experience
+### Professional Experience
 
-### Positive Technologies Inc.
-*February 2023 – Present*  
-**Senior Python Developer**  
-- Developed Network Attack Discovery (NAD) service for detecting network attacks using Django, Celery, Postgres, and ElasticSearch.  
-- Implemented logging and metric transfer using Carbon/Graphite/Grafana.  
-- Enhanced Authentication and Authorization system based on OAuth.  
+#### Positive Technologies Inc.  
+- **Location:** Saint Petersburg, [www.ptsecurity.ru](http://www.ptsecurity.ru)
+- **Industry:** IT, System Integration, Internet
+  - Software Development
+  - System Integration, Technological and Business Processes Automation, IT Consulting
+- **Position:** Senior Python Developer
+- **Duration:** February 2023 – Present (1 year 2 months)
+- **Key Achievements:**
+  - Participated in the development of the Network Attack Discovery (NAD) service, leveraging technologies such as Django, Celery, Postgres, and ElasticSearch.
+  - Implemented efficient logging and metrics transfer mechanisms using Carbon/Graphite/Grafana.
+  - Refactored the Authentication and Authorization system based on OAuth, contributing to improved security protocols.
+  - Participated in adapting and refining attack detection plugins for enhanced functionality.
 
-### LLC "Quantum Soft"  
-*July 2021 – September 2022*  
-**Senior Python Developer (ML Ops)**  
-- Contributed to ML-based recommendation system for a Korn Ferry.  
-- Developed services on MS Azure platform using Python-asyncio and fastapi.  
-- Designed architecture and conducted code reviews.  
+#### Quantum Soft LLC 
+- **Industry:** IT, System Integration, Internet
+- **Position:** Senior Python Developer
+- **Duration:** July 2021 – September 2022 (1 year 3 months)
+- **Key Responsibilities and Achievements:**
+  - Contributed significantly to a project for Korn Ferry, focusing on developing an ML-based recommendation system.
+  - Developed services to access ML on the MS Azure platform, utilizing technologies such as Azure VM, Azure Functions, Service Bus, Eventgrid, Terraform, Python-asyncio, fastapi, and pydantic.
 
-### EPAM Systems Inc. (Россия)  
-*April 2019 – July 2021*  
-**Senior Python Developer**  
-- Engaged in multiple projects including an AWS-based project for Audigent Inc. and a project for a Merk inc.  
-- Implemented asynchronous infrastructure and parsing modules using Python libraries like scrapy and asyncio.  
+#### EPAM Systems Inc. 
+- **Location:** [www.epam-group.ru](http://www.epam-group.ru)
+- **Industry:** IT, System Integration, Internet
+  - System Integration, Technological and Business Processes Automation, IT Consulting
+- **Position:** Senior Python Developer
+- **Duration:** April 2019 – July 2021 (2 years 4 months)
+- **Key Contributions:**
+  - Participated in multiple projects focusing on leveraging cutting-edge technologies:
+    - Participated an AWS-based project for Audigent Inc., involving ML models and scrapy for page topic calculation.
+    - Developed data collection project utilizing AWS Lambda, Python, and Go, optimizing scripts for data conversion and preparation for ML for Merk inc., employing Python and Docker.
+    - Participated in the creation of a scenario-based load testing environment for a European content provider, utilizing Docker stack, Python + asyncio, Nomad by HashiCorp, and RabbitMQ.
 
-### Bars Group Inc.  
-*January 2016 – March 2019*  
-**Senior Python Developer/Team Lead**  
-- Led projects of cloud accounting and personnel accounting for budgetary organizations.  
-- Managed distributed teams across different regions, ensuring the adoption of Agile practices and continuous improvement.  
-
-### LLC Paladine Engeneering  
-*January 2012 – January 2014*  
-**Team Lead**  
-- Managed technical aspects of web studio business, overseeing website and mobile application development.  
-- Analyzed requirements and developed projects using Python, Django, Flask, ObjectiveC, and Java.  
-
-### LLC GdeProfi.ru  
-*August 2011 – September 2012*  
-**Senior .NET Developer**  
-- Architectured and developed backend for the project using C#, ASP.Net MVC, and MSSQL.
+#### Bars Group Inc.
+- **Duration:** January 2016 – March 2019 (3 years 3 months)
+- **Location:** [bars.group](http://bars.group)
+- **Industry:** IT, System Integration, Internet
+  - Software Development
+  - System Integration, Technological and Business Processes Automation, IT Consulting
+- **Position:** Senior Python Developer/Team Lead
+- **Key Responsibilities:**
+  - Led projects focusing on cloud accounting and personnel accounting for budgetary organizations, ensuring seamless implementation across multiple regions.
+  - Managed a distributed team spanning St. Petersburg, Novosibirsk, and Khabarovsk, fostering adherence to Agile practices and overseeing the development process.
 
 ## Education
 
