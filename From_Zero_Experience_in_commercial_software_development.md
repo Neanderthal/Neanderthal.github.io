@@ -86,7 +86,7 @@
 - **Position:** Lecturer
 - As a lecturer at Saint Petersburg State University of Industrial Technologies and Design, I developed and delivered a comprehensive course on CSS/HTML/JavaScript layout for 5th-year students. My responsibilities included:
   - Designing the curriculum and course materials to ensure comprehensive coverage of the subject matter.
-    - Conducting lectures and practical sessions to impart theoretical knowledge and practical skills.
-    - Supervising students' assignments and providing constructive feedback.
-    - Assessing laboratory work to evaluate students' understanding and proficiency in the subject matter.
+  - Conducting lectures and practical sessions to impart theoretical knowledge and practical skills.
+  - Supervising students' assignments and providing constructive feedback.
+  - Assessing laboratory work to evaluate students' understanding and proficiency in the subject matter.
 
