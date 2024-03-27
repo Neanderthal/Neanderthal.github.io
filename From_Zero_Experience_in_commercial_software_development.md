@@ -70,7 +70,6 @@
   - Utilized the capabilities of the C# language, Entity Framework, and
     MSSQL Server for database management. We also used Jira for project management and Git for code version control.
   - Developed unittests using the NUnit framework
-### Teaching Experience
 
 #### Speech Technology Center
 - **Duration:** 2004 - 2005 (1 year)
@@ -78,6 +77,8 @@
 - **Junior .Net Developer**
   - Participated in speech recognition software development, focusing on authorization and authentication.
   - Utilized C# and the .NET framework, as well as MSSQL Server for database management.
+
+### Teaching Experience
 
 #### Saint Petersburg State University of Industrial Technologies and Design
 - **Location:** Saint Petersburg
