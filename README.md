@@ -24,6 +24,6 @@ Feel free to explore each section to gain a comprehensive understanding of Serge
 
 ## Contact Information
 - **Email:** sergey.istomin@gmail.com
-- **LinkedIn:** [Sergey Istomin](https://www.linkedin.com/in/sergey-istomin/)
+- **LinkedIn:** [Sergey Istomin](https://www.linkedin.com/in/sergeyistomin/)
 - **GitHub:** [Neanderthal](https://github.com/Neanderthal)
 
