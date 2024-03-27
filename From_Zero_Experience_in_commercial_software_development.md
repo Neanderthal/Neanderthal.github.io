@@ -70,6 +70,17 @@
   - Utilized the capabilities of the C# language, Entity Framework, and
     MSSQL Server for database management. We also used Jira for project management and Git for code version control.
   - Developed unittests using the NUnit framework
+### Teaching Experience
+
+#### Saint Petersburg State University of Industrial Technologies and Design
+- **Location:** Saint Petersburg
+- **Duration:** 2006, 2007, 2008
+- **Position:** Lecturer
+- As a lecturer at Saint Petersburg State University of Industrial Technologies and Design, I developed and delivered a comprehensive course on CSS/HTML/JavaScript layout for 5th-year students. My responsibilities included:
+  - Designing the curriculum and course materials to ensure comprehensive coverage of the subject matter.
+    - Conducting lectures and practical sessions to impart theoretical knowledge and practical skills.
+    - Supervising students' assignments and providing constructive feedback.
+    - Assessing laboratory work to evaluate students' understanding and proficiency in the subject matter.
 
 #### Speech Technology Center
 - **Duration:** 2004 - 2005 (1 year)
