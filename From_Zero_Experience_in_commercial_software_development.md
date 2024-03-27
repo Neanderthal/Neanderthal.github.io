@@ -25,22 +25,22 @@
 - **Sector:** IT, Systems Integration, Internet
   - System integration, automation of technological and business processes, IT consulting
 - **Senior Python Developer**.
-  - Participated in several projects including:
-    - AWS-based project for Audigent Inc. banner ad network using ML models to calculate page topics based on keywords. 
-      - Developed parsing modules using scrapy and implemented asynchronous infrastructure.
-      - Used AWS S3, AWS Lambdas, AWS EC2, AWS EKS, Terraform, Python libraries such as scrapy, celery, boto3 and flask.
+  Participated in several projects including:
+  - AWS-based project for Audigent Inc. banner ad network using ML models to calculate page topics based on keywords. 
+    - Developed parsing modules using scrapy and implemented asynchronous infrastructure.
+    - Used AWS S3, AWS Lambdas, AWS EC2, AWS EKS, Terraform, Python libraries such as scrapy, celery, boto3 and flask.
   
   - Project for a commercial organization to collect sales reports from data in DataLake in S3.
-      - Wrote AWS lambda functions in Python and Go.
-      - Fixed terraform scripts.
-      - Used AWS S3, Athena, Cloudwatch, Lambda, and Terraform.
+    - Wrote AWS lambda functions in Python and Go.
+    - Fixed terraform scripts.
+    - Used AWS S3, Athena, Cloudwatch, Lambda, and Terraform.
 
-    - Project for Merk Inc, focused on converting disease and drug data from various formats and preparing for ML.
-      - Technologies used: Python, Docker.
+  - Project for Merk Inc, focused on converting disease and drug data from various formats and preparing for ML.
+    - Technologies used: Python, Docker.
 
-    - A project for a large European content provider involving the creation of a scripted load testing environment using microservices.
-      - Responsible for the creation of individual microservices.
-      - Technologies used: Docker stack, Python + asyncio, Nomad from HashiCorp, RabbitMQ.
+  - A project for a large European content provider involving the creation of a scripted load testing environment using microservices.
+    - Responsible for the creation of individual microservices.
+    - Technologies used: Docker stack, Python + asyncio, Nomad from HashiCorp, RabbitMQ.
 
 #### Bars Group Inc.
 - **Duration:** January 2016 - March 2019 (3 years 3 months)
