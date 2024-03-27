@@ -4,6 +4,7 @@ Welcome to my Curriculum Vitae! Below you will find a summary of my professional
 
 ## Short CV
 [![Short CV in English](https://img.shields.io/badge/View-Short%20CV%20in%20English-blue)](https://github.com/Neanderthal/sergey_istomin_cv/blob/main/short_cv_in_english.md)
+[![Same in PDF](https://img.shields.io/badge/Short%20CV%20in%20pdf-red)]([https://github.com/Neanderthal/sergey_istomin_cv/blob/main/short_cv_in_english.md](https://github.com/Neanderthal/sergey_istomin_cv/blob/main/Sergey%20Istomin.pdf))
 
 Get a brief overview of my background, skills, and key accomplishments.
 
