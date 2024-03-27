@@ -1,4 +1,4 @@
-# Sergey Istomin's Curriculum Vitae
+# My Curriculum Vitae
 
 Welcome to Sergey Istomin's Curriculum Vitae! Below you will find a summary of Sergey's professional experience, skills, and other unique experiences.
 
