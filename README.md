@@ -10,7 +10,7 @@ Get a brief overview of my background, skills, and key accomplishments.
 ## Full Experience in Commercial Software Development
 [![Full Experience](https://img.shields.io/badge/View-Full%20Experience-green)](https://github.com/Neanderthal/sergey_istomin_cv/blob/main/full_experience_in_commercial_software_dev.md)
 
-Dive deeper into my extensive experience in commercial software development. Explore his roles, projects, and technical expertise.
+Dive deeper into my extensive experience in commercial software development. Explore my roles, projects, and technical expertise.
 
 ## Other Strange Experiences
 [![Strange Experiences](https://img.shields.io/badge/View-Strange%20Experiences-purple)](https://github.com/Neanderthal/sergey_istomin_cv/blob/main/other_strange_expirience.md)
