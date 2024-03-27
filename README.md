@@ -20,3 +20,10 @@ Discover Sergey's unique and unconventional experiences beyond the realm of trad
 ---
 
 Feel free to explore each section to gain a comprehensive understanding of Sergey's skills, experiences, and achievements!
+
+
+## Contact Information
+- **Email:** sergey.istomin@gmail.com
+- **LinkedIn:** [Sergey Istomin](https://www.linkedin.com/in/sergey-istomin/)
+- **GitHub:** [Neanderthal](https://github.com/Neanderthal)
+
