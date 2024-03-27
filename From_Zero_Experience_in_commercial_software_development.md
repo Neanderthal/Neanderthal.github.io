@@ -1,4 +1,4 @@
-### Development Experience from zero
+### My experience in commercial software development from scratch to the present days
 
 #### Positive Technologies Inc.
 - **Duration:** February 2023 - present (1 year 2 months)
