@@ -18,5 +18,5 @@ In 2011, I caught the aviation bug and decided to get hands-on experience by sig
 ### Co-owner, Creator, Engineer - OWLQUEST - March 2014 - February 2016
 Ever heard of OwlQuest? It was a real-life quest experience that I helped bring to life with a group of pals. As a co-owner and creator, I tapped into my electronics know-how to craft some nifty gadgets and dream up immersive scenarios. From designing printed circuit boards to tinkering with Atmega controllers, it was a whirlwind of creativity. But alas, the quest for success required more than just ingenuity, and we eventually sold off the business at break-even.
 
-### An Electronics Engineer. - 2016
+### An Electronics Engineer - 2016
 Fast forward to 2016, where I found myself knee-deep in a project to develop a charging station for power banks. From conceptualization to design in AutoCAD, selecting components, and crafting electrical circuits, it was a journey fueled by curiosity and excitement. Though the project never made it past the prototype stage, the experience was nothing short of electrifying.
