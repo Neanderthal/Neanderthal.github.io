@@ -16,6 +16,7 @@ Location: Saint Petersburg, Russia
 
 ## Summary
 Experienced Senior Python Developer and Tech Lead with over 10 years of expertise in software development, system integration, and IT consulting. Proficient in Python, Django, and various cloud technologies including AWS and Azure. Proven track record in managing teams, implementing Agile practices, and delivering high-quality solutions.
+You can find the full resume here - [Full CV](https://github.com/Neanderthal/sergey_istomin_cv/tree/main)
 
 ## Skills
 - Python; PostgreSQL; Git; Linux; Docker; Redis; RabbitMQ; Django; HTML; Flask; Unit Testing; GitLab; Jira; MongoDB; REST; Kafka; Elasticsearch, AWS Services, Azure services.
