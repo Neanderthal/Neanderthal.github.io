@@ -1,6 +1,6 @@
 # Sergey Istomin's Page Here
 ## Short about
-HHello, I'm Sergey Istomin from Saint Petersburg, Russia, a Senior Python Developer and Tech Lead with a decade-long journey in software development, system integration, and IT consulting. My expertise spans Python, agile methodologies, and cloud technologies like AWS and Azure.
+Hello, I'm Sergey Istomin from Saint Petersburg, Russia, a Senior Python Developer and Tech Lead with a decade-long journey in software development, system integration, and IT consulting. My expertise spans Python, agile methodologies, and cloud technologies like AWS and Azure.
 
 My family—my wife, two sons, and daughter—is my world. We bond over sports, especially swimming and skiing, and I cherish playful moments with my little princess. Together, we value education, tradition, and the pursuit of knowledge, principles that guide our journey.
 
