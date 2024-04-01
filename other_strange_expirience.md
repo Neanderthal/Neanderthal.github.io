@@ -9,8 +9,17 @@ During my university days, I juggled studies with a part-time gig as a night rec
 ### Owner - Clean Windows - March 2006 - October 2006
 In 2006, I took the plunge and opened up a small cleaning outfit called Clean Windows. Armed with nothing but a handful of business cards and sheer determination, I drummed up our initial clientele through good old-fashioned direct sales. With lunch money saved up, I invested in equipment and hired a couple of folks to tackle the grime. It was a simple yet effective business model that helped me rake in some green. But as time went on, the squeegee lost its luster, and I passed the torch to my crew before bowing out of the cleaning game.
 
-### Project Manager, Event Presenter - Team Building Club - July 2006 - Sept. 2008
+### Co-founder, Volunteer, and Technical Contributor - Sept. 2006 - Present
+Since 2006, I've been deeply involved with NGO Living City and VOOPIK, focusing on preserving our city's architectural and cultural heritage and advocating for civil rights and social activism. Our efforts have spanned exhibitions, meetings, and even strikes to highlight the importance of cultural preservation.
+
+In addition to my role as a co-founder and volunteer, I've leveraged my technical skills to support these causes. I developed several websites and worked with maps and geo OSINT utilities to enhance our advocacy efforts. Notably, I assisted a local deputy in analyzing real estate geo-data, employing tools such as MapInfo, GoogleEarth, and ArcGIS to provide detailed insights and support decision-making processes.
+
+[http://save-spb.ru](http://save-spb.ru)
+
+### Project Manager, Event Presenter - Team Building Club - July 2005 - Sept. 2008
 For a good chunk of time, I found myself knee-deep in organizing corporate shindigs and team-building escapades at the Team Building Club. It was a blast crafting weekend getaways and outdoor adventures for our corporate clients. Leading a team, hosting events, scouting locations, dreaming up scenarios, and tackling challenges head-on were all part of the gig. We tinkered and toiled to make each event a memorable one, and boy, did I gain some serious chops in public speaking.
+
+[https://tbclub.ru/en/](https://tbclub.ru/en/)
 
 ### Weekend Aircraft Technician - 2011-2012
 In 2011, I caught the aviation bug and decided to get hands-on experience by signing up as a weekend technician at a local airfield. Servicing Yak-52 aircraft and a Mi-2 helicopter was like diving into a whole new world of excitement and learning. Since then, one of my goals is to get a PPL one day.
@@ -20,3 +29,5 @@ Ever heard of OwlQuest? It was a real-life quest experience that I helped bring 
 
 ### An Electronics Engineer - 2016
 Fast forward to 2016, where I found myself knee-deep in a project to develop a charging station for power banks. From conceptualization to design in AutoCAD, selecting components, and crafting electrical circuits, it was a journey fueled by curiosity and excitement. Though the project never made it past the prototype stage, the experience was nothing short of electrifying.
+
+
