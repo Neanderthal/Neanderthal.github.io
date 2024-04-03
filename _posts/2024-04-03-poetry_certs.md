@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Poetry issues with Certificates"
+date: 2024-04-03 14:25:06 -0000
+categories: python poetry venv
+---
+
 # Poetry Issues with Certificates
 ![Bug search](./full_experience_in_commercial_software_dev.md)
 
