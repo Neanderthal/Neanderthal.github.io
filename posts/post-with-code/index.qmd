@@ -2,8 +2,26 @@
 title: "How to run jupyter through ssh"
 author: "Sergei Istomin"
 date: "2024-04-21"
-categories: [code, jupyter]
-image: "image.jpg"
+categories: [code, jupyter, ssh]
+image: "image.webp"
 ---
 
-This is a post with executable code.
+To run your Jupyter notebook remotely without opening it in a browser, enter the following command:
+
+```bash
+jupyter notebook --no-browser --port=8080
+```
+
+Next, establish an SSH tunnel from your local machine using this command:
+
+```bash
+ssh -L 8080:localhost:8080 <REMOTE_USER>@<REMOTE_HOST>
+```
+
+Replace `<REMOTE_USER>` with your remote username and `<REMOTE_HOST>` with the host name or IP address of your remote server.
+
+After setting up the tunnel, access the Jupyter notebook by navigating to the following URL in your local browser:
+
+```bash
+http://localhost:8080
+```

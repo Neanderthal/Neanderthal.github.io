@@ -19,5 +19,14 @@
   },
   "cv/short_cv_in_english.md": {
     "short_cv_in_english.html": "541c520e"
+  },
+  "cv/short_cv_in_english.qmd": {
+    "short_cv_in_english.html": "de8cec83"
+  },
+  "cv/other_strange_expirience.qmd": {
+    "other_strange_expirience.html": "d5a426ef"
+  },
+  "cv/full_experience_in_commercial_software_dev.qmd": {
+    "full_experience_in_commercial_software_dev.html": "f8f410ae"
   }
 }

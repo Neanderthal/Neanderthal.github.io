@@ -1,15 +1,18 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "Sergei Istomin's place"
   navbar:
     right:
       - about.qmd
-      - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+      - icon: telegram
+        href: https://t.me/sergey_istomin
+      - icon: linkedin
+        href: https://www.linkedin.com/in/sergeyistomin/
+      - icon: envelope-fill
+        href: mailto:sergey.istomin@gmail.com
 format:
   html:
     theme: superhero
