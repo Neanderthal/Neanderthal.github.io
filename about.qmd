@@ -1,6 +1,22 @@
-# Sergey Istomin's Page Here
-## Short about
-Hello, I'm Sergey Istomin from Saint Petersburg, Russia, a Senior Python Developer and Tech Lead with a decade-long journey in software development, system integration, and IT consulting. My expertise spans Python, agile methodologies, and cloud technologies like AWS and Azure.
+---
+title: "About"
+image: family.jpg
+about:
+  template: marquee
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com
+    - icon: github
+      text: Github
+      href: https://github.com
+
+---
+
+Hello, I'm **Sergei Istomin** from Saint Petersburg, Russia, a Senior Python Developer and Tech Lead with a decade-long journey in software development, system integration, and IT consulting. My expertise spans Python, agile methodologies, and cloud technologies like AWS and Azure.
 
 My family—my wife, two sons, and daughter—is my world. We bond over sports, especially swimming and skiing, and I cherish playful moments with my little princess. Together, we value education, tradition, and the pursuit of knowledge, principles that guide our journey.
 
@@ -11,12 +27,12 @@ Welcome to my Curriculum Vitae! Below you will find a summary of my professional
 
 ### Short CV
 [![Short CV in English](https://img.shields.io/badge/View-Short%20CV%20in%20English-blue)](https://github.com/Neanderthal/sergey_istomin_cv/blob/main/short_cv_in_english.md)
-[![Same in PDF](https://img.shields.io/badge/Download-Short%20CV%20in%20pdf-red)]([https://github.com/Neanderthal/sergey_istomin_cv/blob/main/short_cv_in_english.md](https://github.com/Neanderthal/sergey_istomin_cv/blob/main/Sergey%20Istomin.pdf))
+[![Same in PDF](https://img.shields.io/badge/Download-Short%20CV%20in%20pdf-red)](https://github.com/Neanderthal/sergey_istomin_cv/blob/main/Sergey%20Istomin.pdf)
 
 Get a brief overview of my background, skills, and key accomplishments.
 
 ### Full Experience in Commercial Software Development
-[![Full Experience](https://img.shields.io/badge/View-Full%20Experience-green)](https://github.com/Neanderthal/sergey_istomin_cv/blob/main/full_experience_in_commercial_software_dev.md)
+[![Full](https://img.shields.io/badge/View-Full%20Experience-green)](https://github.com/Neanderthal/sergey_istomin_cv/blob/main/full_experience_in_commercial_software_dev.md)
 
 Dive deeper into my extensive experience in commercial software development. Explore my roles, projects, and technical expertise.
 

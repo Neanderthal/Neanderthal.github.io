@@ -1,0 +1,9 @@
+---
+title: "How to run jupyter through ssh"
+author: "Sergei Istomin"
+date: "2024-04-21"
+categories: [code, jupyter]
+image: "image.jpg"
+---
+
+This is a post with executable code.

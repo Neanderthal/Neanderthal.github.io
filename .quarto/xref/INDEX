@@ -1,0 +1,23 @@
+{
+  "index.qmd": {
+    "index.html": "8d8c8bcb"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "0a852bba"
+  },
+  "posts/post-with-code/index.qmd": {
+    "index.html": "dc2dc9da"
+  },
+  "about.qmd": {
+    "about.html": "2bd86b2b"
+  },
+  "cv/full_experience_in_commercial_software_dev.md": {
+    "full_experience_in_commercial_software_dev.html": "b601598f"
+  },
+  "cv/other_strange_expirience.md": {
+    "other_strange_expirience.html": "223938f4"
+  },
+  "cv/short_cv_in_english.md": {
+    "short_cv_in_english.html": "541c520e"
+  }
+}
