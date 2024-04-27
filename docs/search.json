@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Sergei Istomin’s place",
     "section": "",
-    "text": "How to run jupyter through ssh\n\n\n\n\n\n\ncode\n\n\njupyter\n\n\nssh\n\n\n\n\n\n\n\n\n\nApr 21, 2024\n\n\nSergei Istomin\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nApr 18, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Transferring Docker Images Between Servers\n\n\n\n\n\n\ncode\n\n\ndocker\n\n\nssh\n\n\n\n\n\n\n\n\n\nApr 28, 2024\n\n\nSergei Istomin\n\n\n\n\n\n\n\n\n\n\n\n\nHow to run jupyter through ssh\n\n\n\n\n\n\ncode\n\n\njupyter\n\n\nssh\n\n\n\n\n\n\n\n\n\nApr 21, 2024\n\n\nSergei Istomin\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nApr 18, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "cv/full_experience_in_commercial_software_dev.html",
@@ -89,5 +89,12 @@
     "title": "About",
     "section": "CV Section",
     "text": "CV Section\nWelcome to my Curriculum Vitae! Below you will find a summary of my professional experience, skills, and other unique experiences.\n\nShort CV\n \nGet a brief overview of my background, skills, and key accomplishments.\n\n\nFull Experience in Commercial Software Development\n\nDive deeper into my extensive experience in commercial software development. Explore my roles, projects, and technical expertise.\n\n\nOther Strange Experiences\n\nDiscover my unique and unconventional experiences beyond the realm of traditional work. From lecturing at universities to freelance projects, explore the diverse aspects of my live journey.\n\nFeel free to explore each section to gain a comprehensive understanding of my skills, experiences, and achievements!\n\n\nContact Information\n\nEmail: sergey.istomin@gmail.com\nLinkedIn: Sergey Istomin\nTelegram: istomin_sergey"
+  },
+  {
+    "objectID": "posts/docker_copy_image/index.html",
+    "href": "posts/docker_copy_image/index.html",
+    "title": "Transferring Docker Images Between Servers",
+    "section": "",
+    "text": "Transferring Docker Images Between Servers\nTransferring Docker images between servers is straightforward using Docker’s save and load functionality, combined with secure file transfer. Here’s how to do it step-by-step.\n\nStep 1: Save the Docker Image\nFirst, save the Docker image to a tar file:\ndocker save ghcr.io/huggingface/text-generation-inference:2.0 -o tgi.tar\nThis command converts the Docker image into a tar archive, tgi.tar.\n\n\nStep 2: Transfer the Image\nNext, use scp to transfer the tar file to the target server:\nscp tgi.tar istomin@stage-tesla-node2-dcvcs.bank24.int:/data/projects/inference_test\nEnsure you replace istomin with your username and modify the server address and directory as necessary.\n\n\nStep 3: Load the Image on the Destination Server\nAfter transferring, log into the destination server and load the image from the tar file:\ndocker load -i tgi.tar\n\n\nStep 4: Verify the Image\nConfirm the image is loaded correctly:\ndocker images\nCheck for the text-generation-inference image in the output list.\n\n\nConclusion\nThis method provides an efficient way to move Docker images across servers without needing a Docker registry, perfect for environments with restricted internet access.\n\nThis condensed version focuses on the essential steps, ensuring clarity and brevity for quick reference."
   }
 ]
