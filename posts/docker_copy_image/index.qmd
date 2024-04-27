@@ -20,7 +20,7 @@ This command converts the Docker image into a tar archive, `tgi.tar`.
 #### Step 2: Transfer the Image
 Next, use `scp` to transfer the tar file to the target server:
 ```bash
-scp tgi.tar istomin@stage-tesla-node2-dcvcs.bank24.int:/data/projects/inference_test
+scp tgi.tar <username>@<server>:/data/projects/inference_test
 ```
 Ensure you replace `istomin` with your username and modify the server address and directory as necessary.
 
