@@ -1,0 +1,45 @@
+---
+title: "Transferring Docker Images Between Servers"
+author: "Sergei Istomin"
+date: "2024-04-28"
+categories: [code, docker, ssh,]
+image: "image.webp"
+---
+
+### Transferring Docker Images Between Servers
+
+Transferring Docker images between servers is straightforward using Docker's save and load functionality, combined with secure file transfer. Here’s how to do it step-by-step.
+
+#### Step 1: Save the Docker Image
+First, save the Docker image to a tar file:
+```bash
+docker save ghcr.io/huggingface/text-generation-inference:2.0 -o tgi.tar
+```
+This command converts the Docker image into a tar archive, `tgi.tar`.
+
+#### Step 2: Transfer the Image
+Next, use `scp` to transfer the tar file to the target server:
+```bash
+scp tgi.tar istomin@stage-tesla-node2-dcvcs.bank24.int:/data/projects/inference_test
+```
+Ensure you replace `istomin` with your username and modify the server address and directory as necessary.
+
+#### Step 3: Load the Image on the Destination Server
+After transferring, log into the destination server and load the image from the tar file:
+```bash
+docker load -i tgi.tar
+```
+
+#### Step 4: Verify the Image
+Confirm the image is loaded correctly:
+```bash
+docker images
+```
+Check for the `text-generation-inference` image in the output list.
+
+#### Conclusion
+This method provides an efficient way to move Docker images across servers without needing a Docker registry, perfect for environments with restricted internet access.
+
+---
+
+This condensed version focuses on the essential steps, ensuring clarity and brevity for quick reference.
