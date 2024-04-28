@@ -31,5 +31,11 @@
   },
   "posts/docker_copy_image/index.qmd": {
     "index.html": "ff6d4105"
+  },
+  "posts/serve-tgi-llm-localy/index.qmd": {
+    "index.html": "4b70682f"
+  },
+  "work_dairy/2024-04-29.md": {
+    "2024-04-29.html": "4b256137"
   }
 }

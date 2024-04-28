@@ -207,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-2-transfer-the-image" class="level4">
 <h4 class="anchored" data-anchor-id="step-2-transfer-the-image">Step 2: Transfer the Image</h4>
 <p>Next, use <code>scp</code> to transfer the tar file to the target server:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> tgi.tar istomin@stage-tesla-node2-dcvcs.bank24.int:/data/projects/inference_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> tgi.tar <span class="op">&lt;</span>username<span class="op">&gt;</span>@<span class="op">&lt;</span>server<span class="op">&gt;</span>:/data/projects/inference_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ensure you replace <code>istomin</code> with your username and modify the server address and directory as necessary.</p>
 </section>
 <section id="step-3-load-the-image-on-the-destination-server" class="level4">
