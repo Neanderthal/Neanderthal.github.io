@@ -1,0 +1,44 @@
+---
+title: "How to Launch Local LLM Models with TGI Docker Containers"
+author: "Sergei Istomin"
+date: "2024-04-29"
+categories: [docker, tgi, llm, localy]
+image: "image.webp"
+---
+### How to Launch Local LLM Models with TGI Docker Containers
+
+Launching local language models (LLMs) for testing or development can seem complex, especially when navigating the different configurations and environments. However, using a TGI (Text Generation Inference) Docker container simplifies the process considerably. Here, we'll walk through a straightforward method to get your local LLM model up and running quickly, using the latest Docker image without any modifications.
+
+#### Step-by-Step Guide to Running Local Models
+
+1. **Prepare the Environment**:
+   Ensure that you have a suitable environment for running Docker containers, with Docker installed and configured correctly on your system. Additionally, if you plan to use machine learning models, make sure your machine has the necessary GPU support and that Docker can access these resources.
+
+2. **Clone the Model with Git LFS**:
+   Before you can run the model, you need to have it on your local machine. Use Git Large File Storage (LFS) to handle large files typically associated with models. Here's how you can clone an example model, such as `flan-t5-xl` from Hugging Face:
+
+   ```bash
+   cd /data
+   git clone https://huggingface.co/google/flan-t5-xl
+   ```
+
+   Ensure that you have `git lfs` installed before you clone the repository, as this will allow you to pull large model files correctly.
+
+3. **Run the Docker Container**:
+   With the model downloaded, you can now run the Docker container. The following command demonstrates how to set up the Docker container to use the GPU, map the ports, and link the local model directory:
+
+   ```bash
+   docker run --rm --gpus all -p 8080:80 -v /data:/data --pull always ghcr.io/huggingface/text-generation-inference:latest --model-id /data/flan-t5-xl
+   ```
+
+   - `--rm`: Cleans up the container after you stop it.
+   - `--gpus all`: Ensures that Docker can use all available GPUs.
+   - `-p 8080:80`: Maps port 80 in the container to port 8080 on your host, allowing you to access the service via `localhost:8080`.
+   - `-v /data:/data`: Mounts the local `/data` directory to `/data` in the container, providing access to the model data.
+   - `--pull always`: Ensures that Docker pulls the latest version of the image.
+   - `--model-id /data/flan-t5-xl`: Points to the model you downloaded, instructing the container to load this specific model.
+
+#### Conclusion
+
+Running local models doesn't have to be a headache. By following the steps above, you can quickly get your LLM model running locally using the TGI Docker container. This approach is streamlined, efficient, and ensures that you are always running your model with the latest and most secure container settings. Whether you're developing new applications or just experimenting with different models, this method provides a reliable and straightforward solution.
+
