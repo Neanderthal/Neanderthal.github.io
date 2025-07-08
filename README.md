@@ -1,6 +1,14 @@
-# Site Management Guide
+# Sergei Istomin's Personal Website
 
-This document outlines how to update, deploy and check statistics for our site.
+This is the professional website of Sergei Istomin, showcasing his experience as a Senior Python Developer and Tech Lead. The site provides:
+- Personal and professional background
+- Multiple versions of CVs (short and detailed)
+- Unique professional experiences
+- Contact information
+
+## Site Management Guide
+
+This document outlines how to update, deploy and check statistics for the site.
 
 ## Website Content Structure
 The website consists of these main components:
