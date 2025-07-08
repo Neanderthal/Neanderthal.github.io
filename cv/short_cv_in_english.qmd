@@ -17,7 +17,6 @@ about:
 
 # Sergey Istomin
 Senior Python Developer/Tech Lead  
-Male, 42 years  
 Location: Saint Petersburg, Russia  
 
 **Contact:**  
@@ -50,13 +49,26 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
 ## Work Experience
 ### Professional Experience
 
+#### Tochka  
+ - **Website:** [www.tochka.com](www.tochka.com)  
+- **Industry:** Software Development, Banking  
+- **Position:** Senior Python Developer / ML Engineer  
+- **Duration:** March 2024 – Present (1 year 3 months)  
+- **Key Achievements:**  
+	- Developed a chatbot based on an LLM model using a Retrieval-Augmented Generation (RAG) architecture.  
+		- *Technologies:* Python, LangChain, LlamaIndex, Transformers, PgVector  
+	 - Built a CI/CD pipeline to automate deployment and integration processes for the chatbot.  
+		- *Technologies:* GitLab CI/CD, Docker, Kubernetes  
+	- Created backend services to support chatbot functionality and performance.  
+		  - *Technologies:* FastAPI, PostgreSQL, Redis  
+
 #### Positive Technologies Inc.  
 - **Web site:** [www.ptsecurity.ru](http://www.ptsecurity.ru)
 - **Industry:** IT, System Integration, Internet
   - Software Development
   - System Integration, Technological and Business Processes Automation, IT Consulting
 - **Position:** Senior Python Developer
-- **Duration:** February 2023 – Present (1 year 2 months)
+- **Duration:** February 2023 – March 2024 
 - **Key Achievements:**
   - Participated in the development of the Network Attack Discovery (NAD) service, leveraging technologies such as Django, Celery, Postgres, and ElasticSearch.
   - Implemented efficient logging and metrics transfer mechanisms using Carbon/Graphite/Grafana.

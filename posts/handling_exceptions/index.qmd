@@ -1,0 +1,70 @@
+---
+title: "How to handle exceptions in python"
+author: "Sergei Istomin"
+date: "2024-04-21"
+categories: [code, jupyter, ssh]
+image: "image.png"
+---
+based on: https://blog.miguelgrinberg.com/post/the-ultimate-guide-to-error-handling-in-python
+
+
+### **General Principles:**
+1. **Prefer EAFP over LBYL**:  
+   - Use `try/except` (EAFP) instead of pre-checking conditions (LBYL) when errors are expected.  
+   - EAFP is more robust because it avoids race conditions and handles errors directly.  
+
+2. **Avoid Catching All Exceptions**:  
+   - Catching `Exception` or bare `except:` hides bugs. Only catch specific exceptions you can handle.  
+   - The **only exception** is at the **top level** (e.g., CLI/GUI/web apps), where you log the error and exit gracefully.  
+
+3. **Let Errors Bubble Up When Appropriate**:  
+   - If your function can’t recover from an error, **don’t catch it**. Let higher-level code handle it.  
+   - This keeps code clean and separates concerns (e.g., database errors should be handled by the framework, not individual routes).  
+
+---
+
+### **Error Handling Strategies:**
+#### **1. New Recoverable Errors**  
+   - Fix the issue internally and continue.  
+   - Example: Defaulting a missing `song.year` to `'Unknown'` instead of raising an error.  
+
+#### **2. Bubbled-Up Recoverable Errors**  
+   - Catch the exception, recover, and continue.  
+   - Example: Retry a failed database query or create a missing record.  
+
+#### **3. New Non-Recoverable Errors**  
+   - Raise an exception to let the caller handle it.  
+   - Example: Reject a `song` with a missing `name` by raising `ValueError`.  
+
+#### **4. Bubbled-Up Non-Recoverable Errors**  
+   - **Do nothing**. Let the exception bubble up to a higher layer that can handle it.  
+   - Example: A database error in a Flask route should propagate to Flask’s built-in error handler.  
+
+---
+
+### **Best Practices:**
+4. **Use Specific Exception Classes**:  
+   - Catch only the exceptions you expect (e.g., `OSError` for file ops, `SQLAlchemyError` for DB issues).  
+
+5. **Logging Over Silencing**:  
+   - If you catch an error, log it with `logger.exception()` to include the stack trace.  
+
+6. **Separate Error Handling Logic**:  
+   - Move error recovery to higher layers (e.g., framework-level handlers) to avoid repetitive code.  
+
+7. **Development vs. Production**:  
+   - In **development**, let crashes show stack traces for debugging.  
+   - In **production**, catch all exceptions at the top level and log them (e.g., return a 500 error in web apps).  
+
+8. **Avoid Redundant Checks**:  
+   - Don’t pre-check conditions (LBYL) if the operation itself raises clear exceptions (EAFP).  
+
+---
+
+### **Examples of Anti-Patterns to Avoid:**
+- Catching `Exception` in mid-level functions.  
+- Logging an error but not re-raising it when recovery isn’t possible.  
+- Repeating error-handling logic across multiple functions (e.g., rolling back DB sessions in every route).  
+
+By following these tips, you’ll write cleaner, more maintainable code that handles errors effectively while avoiding common pitfalls.
+
