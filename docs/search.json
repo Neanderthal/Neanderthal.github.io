@@ -1,10 +1,17 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Sergei Istomin’s place",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "How to Launch Local LLM Models with TGI Docker Containers\n\n\n\ndocker\n\ntgi\n\nllm\n\nlocaly\n\n\n\n\n\n\n\n\n\nApr 29, 2024\n\n\nSergei Istomin\n\n\n\n\n\n\n\n\n\n\n\n\nTransferring Docker Images Between Servers\n\n\n\ncode\n\ndocker\n\nssh\n\n\n\n\n\n\n\n\n\nApr 28, 2024\n\n\nSergei Istomin\n\n\n\n\n\n\n\n\n\n\n\n\nHow to handle exceptions in python\n\n\n\ncode\n\njupyter\n\nssh\n\n\n\n\n\n\n\n\n\nApr 21, 2024\n\n\nSergei Istomin\n\n\n\n\n\n\n\n\n\n\n\n\nHow to run jupyter through ssh\n\n\n\ncode\n\njupyter\n\nssh\n\n\n\n\n\n\n\n\n\nApr 21, 2024\n\n\nSergei Istomin\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nApr 18, 2024\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
+    "text": "Hello, I’m Sergei Istomin from Saint Petersburg, Russia, a Senior Python Developer and Tech Lead with a decade-long journey in software development, system integration, and IT consulting. My expertise spans Python, agile methodologies, and cloud technologies like AWS and Azure.\nMy family—my wife, two sons, and daughter—is my world. We bond over sports, especially swimming and skiing, and I cherish playful moments with my little princess. Together, we value education, tradition, and the pursuit of knowledge, principles that guide our journey.\nTheir support fuels my professional drive and personal growth, inspiring me to balance ambition with meaningful family time. Holding a Master’s degree in Computer Science and Management in Technical Systems, I’m also navigating the path toward earning a Private Pilot License (PPL). My life intertwines tech innovation with advocacy for cultural heritage and a commitment to family, shaping my narrative into one of continuous learning and exploration."
+  },
+  {
+    "objectID": "about.html#cv-section",
+    "href": "about.html#cv-section",
+    "title": "About",
+    "section": "CV Section",
+    "text": "CV Section\nWelcome to my Curriculum Vitae! Below you will find a summary of my professional experience, skills, and other unique experiences.\n\nShort CV\n \nGet a brief overview of my background, skills, and key accomplishments.\n\n\nFull Experience in Commercial Software Development\n\nDive deeper into my extensive experience in commercial software development. Explore my roles, projects, and technical expertise.\n\n\nOther Strange Experiences\n\nDiscover my unique and unconventional experiences beyond the realm of traditional work. From lecturing at universities to freelance projects, explore the diverse aspects of my live journey.\n\nFeel free to explore each section to gain a comprehensive understanding of my skills, experiences, and achievements!\n\n\nContact Information\n\nEmail: sergey.istomin@gmail.com\nLinkedIn: Sergey Istomin\nTelegram: istomin_sergey"
   },
   {
     "objectID": "work_dairy/2024-04-29.html",
@@ -196,17 +203,10 @@
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sergei Istomin’s place",
     "section": "",
-    "text": "Hello, I’m Sergei Istomin from Saint Petersburg, Russia, a Senior Python Developer and Tech Lead with a decade-long journey in software development, system integration, and IT consulting. My expertise spans Python, agile methodologies, and cloud technologies like AWS and Azure.\nMy family—my wife, two sons, and daughter—is my world. We bond over sports, especially swimming and skiing, and I cherish playful moments with my little princess. Together, we value education, tradition, and the pursuit of knowledge, principles that guide our journey.\nTheir support fuels my professional drive and personal growth, inspiring me to balance ambition with meaningful family time. Holding a Master’s degree in Computer Science and Management in Technical Systems, I’m also navigating the path toward earning a Private Pilot License (PPL). My life intertwines tech innovation with advocacy for cultural heritage and a commitment to family, shaping my narrative into one of continuous learning and exploration."
-  },
-  {
-    "objectID": "about.html#cv-section",
-    "href": "about.html#cv-section",
-    "title": "About",
-    "section": "CV Section",
-    "text": "CV Section\nWelcome to my Curriculum Vitae! Below you will find a summary of my professional experience, skills, and other unique experiences.\n\nShort CV\n \nGet a brief overview of my background, skills, and key accomplishments.\n\n\nFull Experience in Commercial Software Development\n\nDive deeper into my extensive experience in commercial software development. Explore my roles, projects, and technical expertise.\n\n\nOther Strange Experiences\n\nDiscover my unique and unconventional experiences beyond the realm of traditional work. From lecturing at universities to freelance projects, explore the diverse aspects of my live journey.\n\nFeel free to explore each section to gain a comprehensive understanding of my skills, experiences, and achievements!\n\n\nContact Information\n\nEmail: sergey.istomin@gmail.com\nLinkedIn: Sergey Istomin\nTelegram: istomin_sergey"
+    "text": "How to Launch Local LLM Models with TGI Docker Containers\n\n\n\ndocker\n\ntgi\n\nllm\n\nlocaly\n\n\n\n\n\n\n\n\n\nApr 29, 2024\n\n\nSergei Istomin\n\n\n\n\n\n\n\n\n\n\n\n\nTransferring Docker Images Between Servers\n\n\n\ncode\n\ndocker\n\nssh\n\n\n\n\n\n\n\n\n\nApr 28, 2024\n\n\nSergei Istomin\n\n\n\n\n\n\n\n\n\n\n\n\nHow to handle exceptions in python\n\n\n\ncode\n\njupyter\n\nssh\n\n\n\n\n\n\n\n\n\nApr 21, 2024\n\n\nSergei Istomin\n\n\n\n\n\n\n\n\n\n\n\n\nHow to run jupyter through ssh\n\n\n\ncode\n\njupyter\n\nssh\n\n\n\n\n\n\n\n\n\nApr 21, 2024\n\n\nSergei Istomin\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nApr 18, 2024\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
   }
 ]
