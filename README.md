@@ -42,7 +42,7 @@ about:
 1. Modify site files directly in the project root
 2. Run the site generator:
 ```bash
-quarto render content/
+quarto render 
 ```
 
 ## Deployment
@@ -65,4 +65,3 @@ quarto install
 ```
 - Build errors? Check logs in `.quarto/`
 
-For any other issues, contact the site maintainer.
