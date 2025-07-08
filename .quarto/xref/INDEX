@@ -37,5 +37,14 @@
   },
   "work_dairy/2024-04-29.md": {
     "2024-04-29.html": "4b256137"
+  },
+  "cv/short_cv_in_russian.qmd": {
+    "short_cv_in_russian.html": "e8f27e67"
+  },
+  "drafts/subdomain_serach.qmd": {
+    "subdomain_serach.html": "5e54b70a"
+  },
+  "posts/handling_exceptions/index.qmd": {
+    "index.html": "6ade3681"
   }
 }
