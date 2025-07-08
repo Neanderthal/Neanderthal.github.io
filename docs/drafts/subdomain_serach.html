@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sergei Istomin">
-<meta name="dcterms.date" content="2024-04-29">
 
-<title>How to Launch Local LLM Models with TGI Docker Containers – Sergei Istomin’s place</title>
+<title>subdomain_serach – Sergei Istomin's place</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,61 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-4d514db10ed25d0c072a00fe091e4dd7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-4d514db10ed25d0c072a00fe091e4dd7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -106,17 +69,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sergei Istomin’s place</span>
     </a>
   </div>
@@ -127,7 +90,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -153,77 +116,122 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">How to Launch Local LLM Models with TGI Docker Containers</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">docker</div>
-                <div class="quarto-category">tgi</div>
-                <div class="quarto-category">llm</div>
-                <div class="quarto-category">localy</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Sergei Istomin </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">April 29, 2024</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
-
-<section id="how-to-launch-local-llm-models-with-tgi-docker-containers" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-launch-local-llm-models-with-tgi-docker-containers">How to Launch Local LLM Models with TGI Docker Containers</h3>
-<p>Launching local language models (LLMs) for testing or development can seem complex, especially when navigating the different configurations and environments. However, using a TGI (Text Generation Inference) Docker container simplifies the process considerably. Here, we’ll walk through a straightforward method to get your local LLM model up and running quickly, using the latest Docker image without any modifications.</p>
-<section id="step-by-step-guide-to-running-local-models" class="level4">
-<h4 class="anchored" data-anchor-id="step-by-step-guide-to-running-local-models">Step-by-Step Guide to Running Local Models</h4>
-<ol type="1">
-<li><p><strong>Prepare the Environment</strong>: Ensure that you have a suitable environment for running Docker containers, with Docker installed and configured correctly on your system. Additionally, if you plan to use machine learning models, make sure your machine has the necessary GPU support and that Docker can access these resources.</p></li>
-<li><p><strong>Clone the Model with Git LFS</strong>: Before you can run the model, you need to have it on your local machine. Use Git Large File Storage (LFS) to handle large files typically associated with models. Here’s how you can clone an example model, such as <code>flan-t5-xl</code> from Hugging Face:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /data</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://huggingface.co/google/flan-t5-xl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Ensure that you have <code>git lfs</code> installed before you clone the repository, as this will allow you to pull large model files correctly.</p></li>
-<li><p><strong>Run the Docker Container</strong>: With the model downloaded, you can now run the Docker container. The following command demonstrates how to set up the Docker container to use the GPU, map the ports, and link the local model directory:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">--gpus</span> all <span class="at">-p</span> 8080:80 <span class="at">-v</span> /data:/data <span class="at">--pull</span> always ghcr.io/huggingface/text-generation-inference:latest <span class="at">--model-id</span> /data/flan-t5-xl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><code>--rm</code>: Cleans up the container after you stop it.</li>
-<li><code>--gpus all</code>: Ensures that Docker can use all available GPUs.</li>
-<li><code>-p 8080:80</code>: Maps port 80 in the container to port 8080 on your host, allowing you to access the service via <code>localhost:8080</code>.</li>
-<li><code>-v /data:/data</code>: Mounts the local <code>/data</code> directory to <code>/data</code> in the container, providing access to the model data.</li>
-<li><code>--pull always</code>: Ensures that Docker pulls the latest version of the image.</li>
-<li><code>--model-id /data/flan-t5-xl</code>: Points to the model you downloaded, instructing the container to load this specific model.</li>
-</ul></li>
-</ol>
+<section id="subdoamin-search" class="level1">
+<h1>Subdoamin search</h1>
+<p>There are plenty of tools for subdomain search exists nowadays.</p>
+<p>Many of them are just an umbrella-like collections of other tools.</p>
+<p>First tool I have started to learn was:</p>
+<p><a href="https://github.com/six2dez/reconftw?tab=readme-ov-file">reconFTW</a></p>
+<p>Which is: - automates the entire process of reconnaissance for you. It outperforms the work of subdomain enumeration along with various vulnerability checks and obtaining maximum information about your target.</p>
 </section>
-<section id="conclusion" class="level4">
-<h4 class="anchored" data-anchor-id="conclusion">Conclusion</h4>
-<p>Running local models doesn’t have to be a headache. By following the steps above, you can quickly get your LLM model running locally using the TGI Docker container. This approach is streamlined, efficient, and ensures that you are always running your model with the latest and most secure container settings. Whether you’re developing new applications or just experimenting with different models, this method provides a reliable and straightforward solution.</p>
+<section id="fire-features-fire" class="level1">
+<h1>:fire: Features :fire:</h1>
+<section id="osint" class="level2">
+<h2 class="anchored" data-anchor-id="osint">Osint</h2>
+<ul>
+<li>Domain information (<a href="https://github.com/rfc1036/whois">whois</a> and <a href="https://github.com/OWASP/Amass">amass</a>)</li>
+<li>Emails addresses and passwords leaks (<a href="https://github.com/Josue87/EmailFinder">emailfinder</a> and <a href="https://github.com/JoelGMSec/LeakSearch">LeakSearch</a>)</li>
+<li>Metadata finder (<a href="https://github.com/Josue87/MetaFinder">MetaFinder</a>)</li>
+<li>API leaks search (<a href="https://github.com/MandConsultingGroup/porch-pirate">porch-pirate</a> and <a href="https://github.com/UndeadSec/SwaggerSpy">SwaggerSpy</a>)</li>
+<li>Google Dorks (<a href="https://github.com/six2dez/dorks_hunter">dorks_hunter</a>)</li>
+<li>Github Dorks (<a href="https://github.com/damit5/gitdorks_go">gitdorks_go</a>)</li>
+<li>GitHub org analysis (<a href="https://github.com/trickest/enumerepo">enumerepo</a>, <a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> and <a href="https://github.com/gitleaks/gitleaks">gitleaks</a>)</li>
+</ul>
+</section>
+<section id="subdomains" class="level2">
+<h2 class="anchored" data-anchor-id="subdomains">Subdomains</h2>
+<ul>
+<li>Passive (<a href="https://github.com/OWASP/Amass">amass</a>, <a href="https://github.com/projectdiscovery/subfinder">subfinder</a> and <a href="https://github.com/gwen001/github-subdomains">github-subdomains</a>)</li>
+<li>Certificate transparency (<a href="https://github.com/cemulus/crt">crt</a>)</li>
+<li>NOERROR subdomain discovery (<a href="https://github.com/projectdiscovery/dnsx">dnsx</a>, more info <a href="https://www.securesystems.de/blog/enhancing-subdomain-enumeration-ents-and-noerror/">here</a>)</li>
+<li>Bruteforce (<a href="https://github.com/d3mondev/puredns">puredns</a>)</li>
+<li>Permutations (<a href="https://github.com/Josue87/gotator">Gotator</a>, <a href="https://github.com/resyncgg/ripgen">ripgen</a> and <a href="https://github.com/cramppet/regulator">regulator</a>)</li>
+<li>JS files &amp; Source Code Scraping (<a href="https://github.com/projectdiscovery/katana">katana</a>)</li>
+<li>DNS Records (<a href="https://github.com/projectdiscovery/dnsx">dnsx</a>)</li>
+<li>Google Analytics ID (<a href="https://github.com/Josue87/AnalyticsRelationships">AnalyticsRelationships</a>)</li>
+<li>TLS handshake (<a href="https://github.com/projectdiscovery/tlsx">tlsx</a>)</li>
+<li>Recursive search (<a href="https://github.com/trickest/dsieve">dsieve</a>).</li>
+<li>Subdomains takeover (<a href="https://github.com/projectdiscovery/nuclei">nuclei</a>)</li>
+<li>DNS takeover (<a href="https://github.com/pwnesia/dnstake">dnstake</a>)</li>
+<li>DNS Zone Transfer (<a href="https://linux.die.net/man/1/dig">dig</a>)</li>
+<li>Cloud checkers (<a href="https://github.com/sa7mon/S3Scanner">S3Scanner</a> and <a href="https://github.com/initstring/cloud_enum">cloud_enum</a>)</li>
+</ul>
+</section>
+<section id="hosts" class="level2">
+<h2 class="anchored" data-anchor-id="hosts">Hosts</h2>
+<ul>
+<li>IP info (<a href="https://www.whoisxmlapi.com/">whoisxmlapi API</a>)</li>
+<li>CDN checker (<a href="https://github.com/six2dez/ipcdn">ipcdn</a>)</li>
+<li>WAF checker (<a href="https://github.com/EnableSecurity/wafw00f">wafw00f</a>)</li>
+<li>Port Scanner (Active with <a href="https://github.com/nmap/nmap">nmap</a> and passive with <a href="https://github.com/s0md3v/Smap">smap</a>)</li>
+<li>Port services vulnerability checks (<a href="https://github.com/vulnersCom/nmap-vulners">vulners</a>)</li>
+<li>Password spraying (<a href="https://github.com/x90skysn3k/brutespray">brutespray</a>)</li>
+</ul>
+</section>
+<section id="webs" class="level2">
+<h2 class="anchored" data-anchor-id="webs">Webs</h2>
+<ul>
+<li>Web Prober (<a href="https://github.com/projectdiscovery/httpx">httpx</a>)</li>
+<li>Web screenshoting (<a href="https://github.com/projectdiscovery/nuclei">nuclei</a>)</li>
+<li>Web templates scanner (<a href="https://github.com/projectdiscovery/nuclei">nuclei</a> and <a href="https://github.com/geeknik/the-nuclei-templates.git">nuclei geeknik</a>)</li>
+<li>CMS Scanner (<a href="https://github.com/Tuhinshubhra/CMSeeK">CMSeeK</a>)</li>
+<li>Url extraction (<a href="https://github.com/lc/gau">gau</a>,<a href="https://github.com/xnl-h4ck3r/waymore">waymore</a>, <a href="https://github.com/projectdiscovery/katana">katana</a>, <a href="https://gist.github.com/six2dez/d1d516b606557526e9a78d7dd49cacd3">github-endpoints</a> and <a href="https://github.com/w9w/JSA">JSA</a>)</li>
+<li>URL patterns Search and filtering (<a href="https://github.com/xnl-h4ck3r/urless">urless</a>, <a href="https://github.com/tomnomnom/gf">gf</a> and <a href="https://github.com/1ndianl33t/Gf-Patterns">gf-patterns</a>)</li>
+<li>Favicon Real IP (<a href="https://github.com/pielco11/fav-up">fav-up</a>)</li>
+<li>Javascript analysis (<a href="https://github.com/lc/subjs">subjs</a>, <a href="https://github.com/w9w/JSA">JSA</a>, <a href="https://github.com/xnl-h4ck3r/xnLinkFinder">xnLinkFinder</a>, <a href="https://github.com/m4ll0k/BBTz">getjswords</a>, <a href="https://github.com/MrEmpy/mantra">mantra</a>)</li>
+<li>Fuzzing (<a href="https://github.com/ffuf/ffuf">ffuf</a>)</li>
+<li>URL sorting by extension</li>
+<li>Wordlist generation</li>
+<li>Passwords dictionary creation (<a href="https://github.com/LandGrey/pydictor">pydictor</a>)</li>
+</ul>
+</section>
+<section id="vulnerability-checks" class="level2">
+<h2 class="anchored" data-anchor-id="vulnerability-checks">Vulnerability checks</h2>
+<ul>
+<li>XSS (<a href="https://github.com/hahwul/dalfox">dalfox</a>)</li>
+<li>Open redirect (<a href="https://github.com/r0075h3ll/Oralyzer">Oralyzer</a>)</li>
+<li>SSRF (headers <a href="https://github.com/projectdiscovery/interactsh">interactsh</a> and param values with <a href="https://github.com/ffuf/ffuf">ffuf</a>)</li>
+<li>CRLF (<a href="https://github.com/dwisiswant0/crlfuzz">crlfuzz</a>)</li>
+<li>Cors (<a href="https://github.com/s0md3v/Corsy">Corsy</a>)</li>
+<li>LFI Checks (<a href="https://github.com/ffuf/ffuf">ffuf</a>)</li>
+<li>SQLi Check (<a href="https://github.com/sqlmapproject/sqlmap">SQLMap</a> and <a href="https://github.com/r0oth3x49/ghauri">ghauri</a>)</li>
+<li>SSTI (<a href="https://github.com/ffuf/ffuf">ffuf</a>)</li>
+<li>SSL tests (<a href="https://github.com/drwetter/testssl.sh">testssl</a>)</li>
+<li>Broken Links Checker (<a href="https://github.com/projectdiscovery/katana">katana</a>)</li>
+<li>Prototype Pollution (<a href="https://github.com/kleiton0x00/ppmap">ppmap</a>)</li>
+<li>Web Cache Vulnerabilities (<a href="https://github.com/Hackmanit/Web-Cache-Vulnerability-Scanner">Web-Cache-Vulnerability-Scanner</a>)</li>
+<li>4XX Bypasser (<a href="https://github.com/devploit/nomore403">nomore403</a>)</li>
+</ul>
+</section>
+<section id="extras" class="level2">
+<h2 class="anchored" data-anchor-id="extras">Extras</h2>
+<ul>
+<li>Multithreading (<a href="https://github.com/codingo/Interlace">Interlace</a>)</li>
+<li>Custom resolvers generated list (<a href="https://github.com/vortexau/dnsvalidator">dnsvalidator</a>)</li>
+<li>Docker container included and <a href="https://hub.docker.com/r/six2dez/reconftw">DockerHub</a> integration</li>
+<li>Ansible + Terraform deployment over AWS</li>
+<li>Allows IP/CIDR as target</li>
+<li>Resume the scan from last performed step</li>
+<li>Custom output folder option</li>
+<li>All in one installer/updater script compatible with most distros</li>
+<li>Diff support for continuous running (cron mode)</li>
+<li>Support for targets with multiple domains</li>
+<li>Raspberry Pi/ARM support</li>
+<li>6 modes (recon, passive, subdomains, web, osint and all)</li>
+<li>Out of Scope Support + optional <a href="https://github.com/tomnomnom/hacks/tree/master/inscope">inscope</a> support</li>
+<li>Notification system with Slack, Discord and Telegram (<a href="https://github.com/projectdiscovery/notify">notify</a>) and sending zipped results support</li>
+</ul>
+<p>As you can see it supports many techniques to make subdomain search for you.</p>
 
 
 </section>
