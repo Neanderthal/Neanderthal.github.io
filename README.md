@@ -3,7 +3,7 @@
 This document outlines how to update, deploy and check statistics for our site.
 
 ## Updating Site Content
-1. Modify content files in the `content/` directory
+1. Modify site files directly in the project root
 2. Run the site generator:
 ```bash
 quarto render content/
@@ -19,11 +19,8 @@ git push
 2. The site will automatically deploy through our CI/CD pipeline
 
 ## Checking Statistics
-1. Access Google Analytics dashboard at [analytics.google.com](https://analytics.google.com)
-2. View traffic reports under:
-   - Audience Overview
-   - Acquisition Reports
-   - Behavior Flow
+1. Access GoatCounter analytics at [neanderthal.goatcounter.com](https://neanderthal.goatcounter.com)
+2. View real-time visitor statistics and referrers
 
 ## Common Issues
 - Missing dependencies? Run:
