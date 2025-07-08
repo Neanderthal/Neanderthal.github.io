@@ -26,7 +26,7 @@ Welcome to my Curriculum Vitae! Below you will find a summary of my professional
 
 ### Short CV
 [![Short CV in English](https://img.shields.io/badge/View-Short%20CV%20in%20English-blue)](cv/short_cv_in_english.qmd)
-[![Short CV in Russian](https://img.shields.io/badge/View-Short%20CV%20in%20English-blue)](cv/short_cv_in_russian.qmd)
+[![Short CV in Russian](https://img.shields.io/badge/View-Short%20CV%20in%20Russian-blue)](cv/short_cv_in_russian.qmd)
 
 
 Get a brief overview of my background, skills, and key accomplishments.

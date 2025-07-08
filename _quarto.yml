@@ -17,3 +17,5 @@ format:
   html:
     theme: superhero
     css: styles.css
+    includes:
+      after-body: includes/analytics.html
