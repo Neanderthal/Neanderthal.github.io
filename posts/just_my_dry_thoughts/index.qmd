@@ -1,7 +1,7 @@
 ---
 title: "How to run jupyter through ssh"
 author: "Sergei Istomin"
-date: "2024-04-21"
+date: "2025-07-15"
 categories: [thoughts]
 image: "image.png"
 
