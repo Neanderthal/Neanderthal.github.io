@@ -46,5 +46,14 @@
   },
   "posts/handling_exceptions/index.qmd": {
     "index.html": "6ade3681"
+  },
+  "posts/just_my_dry_thoughts/index.md": {
+    "index.html": "f636e5f0"
+  },
+  "posts/just_my_dry_thoughts/index.qmd": {
+    "index.html": "ee11e92d"
+  },
+  "LLM_Promts/Search job.md": {
+    "Search job.html": "2ed71ad7"
   }
 }

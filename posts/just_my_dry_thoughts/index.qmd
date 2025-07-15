@@ -1,0 +1,13 @@
+---
+title: "How to run jupyter through ssh"
+author: "Sergei Istomin"
+date: "2024-04-21"
+categories: [thoughts]
+image: "image.png"
+
+---
+
+
+I develop software every day and everywhere—development is second nature to me. If I have a problem in any part of my life, I sit down and start developing something. It’s like I have a hammer, and now every problem looks like a software bug. Even if my head were cut off, I’d still be developing for at least two more hours.
+
+I create at least a small script to automate every aspect of my life. I never copy and paste anything—I write code that copies and pastes it for me. That’s how I keep myself DRY enough.

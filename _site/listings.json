@@ -1,0 +1,13 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/serve-tgi-llm-localy/index.html",
+      "/posts/docker_copy_image/index.html",
+      "/posts/handling_exceptions/index.html",
+      "/posts/post-with-code/index.html",
+      "/posts/just_my_dry_thoughts/index.html",
+      "/posts/welcome/index.html"
+    ]
+  }
+]

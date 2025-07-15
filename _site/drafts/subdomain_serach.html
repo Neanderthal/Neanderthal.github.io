@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>subdomain_serach – Sergei Istomin's place</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-4d514db10ed25d0c072a00fe091e4dd7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Sergei Istomin’s place</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://t.me/sergey_istomin"> <i class="bi bi-telegram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/sergeyistomin/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:sergey.istomin@gmail.com"> <i class="bi bi-envelope-fill" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="subdoamin-search" class="level1">
+<h1>Subdoamin search</h1>
+<p>There are plenty of tools for subdomain search exists nowadays.</p>
+<p>Many of them are just an umbrella-like collections of other tools.</p>
+<p>First tool I have started to learn was:</p>
+<p><a href="https://github.com/six2dez/reconftw?tab=readme-ov-file">reconFTW</a></p>
+<p>Which is: - automates the entire process of reconnaissance for you. It outperforms the work of subdomain enumeration along with various vulnerability checks and obtaining maximum information about your target.</p>
+</section>
+<section id="fire-features-fire" class="level1">
+<h1>:fire: Features :fire:</h1>
+<section id="osint" class="level2">
+<h2 class="anchored" data-anchor-id="osint">Osint</h2>
+<ul>
+<li>Domain information (<a href="https://github.com/rfc1036/whois">whois</a> and <a href="https://github.com/OWASP/Amass">amass</a>)</li>
+<li>Emails addresses and passwords leaks (<a href="https://github.com/Josue87/EmailFinder">emailfinder</a> and <a href="https://github.com/JoelGMSec/LeakSearch">LeakSearch</a>)</li>
+<li>Metadata finder (<a href="https://github.com/Josue87/MetaFinder">MetaFinder</a>)</li>
+<li>API leaks search (<a href="https://github.com/MandConsultingGroup/porch-pirate">porch-pirate</a> and <a href="https://github.com/UndeadSec/SwaggerSpy">SwaggerSpy</a>)</li>
+<li>Google Dorks (<a href="https://github.com/six2dez/dorks_hunter">dorks_hunter</a>)</li>
+<li>Github Dorks (<a href="https://github.com/damit5/gitdorks_go">gitdorks_go</a>)</li>
+<li>GitHub org analysis (<a href="https://github.com/trickest/enumerepo">enumerepo</a>, <a href="https://github.com/trufflesecurity/trufflehog">trufflehog</a> and <a href="https://github.com/gitleaks/gitleaks">gitleaks</a>)</li>
+</ul>
+</section>
+<section id="subdomains" class="level2">
+<h2 class="anchored" data-anchor-id="subdomains">Subdomains</h2>
+<ul>
+<li>Passive (<a href="https://github.com/OWASP/Amass">amass</a>, <a href="https://github.com/projectdiscovery/subfinder">subfinder</a> and <a href="https://github.com/gwen001/github-subdomains">github-subdomains</a>)</li>
+<li>Certificate transparency (<a href="https://github.com/cemulus/crt">crt</a>)</li>
+<li>NOERROR subdomain discovery (<a href="https://github.com/projectdiscovery/dnsx">dnsx</a>, more info <a href="https://www.securesystems.de/blog/enhancing-subdomain-enumeration-ents-and-noerror/">here</a>)</li>
+<li>Bruteforce (<a href="https://github.com/d3mondev/puredns">puredns</a>)</li>
+<li>Permutations (<a href="https://github.com/Josue87/gotator">Gotator</a>, <a href="https://github.com/resyncgg/ripgen">ripgen</a> and <a href="https://github.com/cramppet/regulator">regulator</a>)</li>
+<li>JS files &amp; Source Code Scraping (<a href="https://github.com/projectdiscovery/katana">katana</a>)</li>
+<li>DNS Records (<a href="https://github.com/projectdiscovery/dnsx">dnsx</a>)</li>
+<li>Google Analytics ID (<a href="https://github.com/Josue87/AnalyticsRelationships">AnalyticsRelationships</a>)</li>
+<li>TLS handshake (<a href="https://github.com/projectdiscovery/tlsx">tlsx</a>)</li>
+<li>Recursive search (<a href="https://github.com/trickest/dsieve">dsieve</a>).</li>
+<li>Subdomains takeover (<a href="https://github.com/projectdiscovery/nuclei">nuclei</a>)</li>
+<li>DNS takeover (<a href="https://github.com/pwnesia/dnstake">dnstake</a>)</li>
+<li>DNS Zone Transfer (<a href="https://linux.die.net/man/1/dig">dig</a>)</li>
+<li>Cloud checkers (<a href="https://github.com/sa7mon/S3Scanner">S3Scanner</a> and <a href="https://github.com/initstring/cloud_enum">cloud_enum</a>)</li>
+</ul>
+</section>
+<section id="hosts" class="level2">
+<h2 class="anchored" data-anchor-id="hosts">Hosts</h2>
+<ul>
+<li>IP info (<a href="https://www.whoisxmlapi.com/">whoisxmlapi API</a>)</li>
+<li>CDN checker (<a href="https://github.com/six2dez/ipcdn">ipcdn</a>)</li>
+<li>WAF checker (<a href="https://github.com/EnableSecurity/wafw00f">wafw00f</a>)</li>
+<li>Port Scanner (Active with <a href="https://github.com/nmap/nmap">nmap</a> and passive with <a href="https://github.com/s0md3v/Smap">smap</a>)</li>
+<li>Port services vulnerability checks (<a href="https://github.com/vulnersCom/nmap-vulners">vulners</a>)</li>
+<li>Password spraying (<a href="https://github.com/x90skysn3k/brutespray">brutespray</a>)</li>
+</ul>
+</section>
+<section id="webs" class="level2">
+<h2 class="anchored" data-anchor-id="webs">Webs</h2>
+<ul>
+<li>Web Prober (<a href="https://github.com/projectdiscovery/httpx">httpx</a>)</li>
+<li>Web screenshoting (<a href="https://github.com/projectdiscovery/nuclei">nuclei</a>)</li>
+<li>Web templates scanner (<a href="https://github.com/projectdiscovery/nuclei">nuclei</a> and <a href="https://github.com/geeknik/the-nuclei-templates.git">nuclei geeknik</a>)</li>
+<li>CMS Scanner (<a href="https://github.com/Tuhinshubhra/CMSeeK">CMSeeK</a>)</li>
+<li>Url extraction (<a href="https://github.com/lc/gau">gau</a>,<a href="https://github.com/xnl-h4ck3r/waymore">waymore</a>, <a href="https://github.com/projectdiscovery/katana">katana</a>, <a href="https://gist.github.com/six2dez/d1d516b606557526e9a78d7dd49cacd3">github-endpoints</a> and <a href="https://github.com/w9w/JSA">JSA</a>)</li>
+<li>URL patterns Search and filtering (<a href="https://github.com/xnl-h4ck3r/urless">urless</a>, <a href="https://github.com/tomnomnom/gf">gf</a> and <a href="https://github.com/1ndianl33t/Gf-Patterns">gf-patterns</a>)</li>
+<li>Favicon Real IP (<a href="https://github.com/pielco11/fav-up">fav-up</a>)</li>
+<li>Javascript analysis (<a href="https://github.com/lc/subjs">subjs</a>, <a href="https://github.com/w9w/JSA">JSA</a>, <a href="https://github.com/xnl-h4ck3r/xnLinkFinder">xnLinkFinder</a>, <a href="https://github.com/m4ll0k/BBTz">getjswords</a>, <a href="https://github.com/MrEmpy/mantra">mantra</a>)</li>
+<li>Fuzzing (<a href="https://github.com/ffuf/ffuf">ffuf</a>)</li>
+<li>URL sorting by extension</li>
+<li>Wordlist generation</li>
+<li>Passwords dictionary creation (<a href="https://github.com/LandGrey/pydictor">pydictor</a>)</li>
+</ul>
+</section>
+<section id="vulnerability-checks" class="level2">
+<h2 class="anchored" data-anchor-id="vulnerability-checks">Vulnerability checks</h2>
+<ul>
+<li>XSS (<a href="https://github.com/hahwul/dalfox">dalfox</a>)</li>
+<li>Open redirect (<a href="https://github.com/r0075h3ll/Oralyzer">Oralyzer</a>)</li>
+<li>SSRF (headers <a href="https://github.com/projectdiscovery/interactsh">interactsh</a> and param values with <a href="https://github.com/ffuf/ffuf">ffuf</a>)</li>
+<li>CRLF (<a href="https://github.com/dwisiswant0/crlfuzz">crlfuzz</a>)</li>
+<li>Cors (<a href="https://github.com/s0md3v/Corsy">Corsy</a>)</li>
+<li>LFI Checks (<a href="https://github.com/ffuf/ffuf">ffuf</a>)</li>
+<li>SQLi Check (<a href="https://github.com/sqlmapproject/sqlmap">SQLMap</a> and <a href="https://github.com/r0oth3x49/ghauri">ghauri</a>)</li>
+<li>SSTI (<a href="https://github.com/ffuf/ffuf">ffuf</a>)</li>
+<li>SSL tests (<a href="https://github.com/drwetter/testssl.sh">testssl</a>)</li>
+<li>Broken Links Checker (<a href="https://github.com/projectdiscovery/katana">katana</a>)</li>
+<li>Prototype Pollution (<a href="https://github.com/kleiton0x00/ppmap">ppmap</a>)</li>
+<li>Web Cache Vulnerabilities (<a href="https://github.com/Hackmanit/Web-Cache-Vulnerability-Scanner">Web-Cache-Vulnerability-Scanner</a>)</li>
+<li>4XX Bypasser (<a href="https://github.com/devploit/nomore403">nomore403</a>)</li>
+</ul>
+</section>
+<section id="extras" class="level2">
+<h2 class="anchored" data-anchor-id="extras">Extras</h2>
+<ul>
+<li>Multithreading (<a href="https://github.com/codingo/Interlace">Interlace</a>)</li>
+<li>Custom resolvers generated list (<a href="https://github.com/vortexau/dnsvalidator">dnsvalidator</a>)</li>
+<li>Docker container included and <a href="https://hub.docker.com/r/six2dez/reconftw">DockerHub</a> integration</li>
+<li>Ansible + Terraform deployment over AWS</li>
+<li>Allows IP/CIDR as target</li>
+<li>Resume the scan from last performed step</li>
+<li>Custom output folder option</li>
+<li>All in one installer/updater script compatible with most distros</li>
+<li>Diff support for continuous running (cron mode)</li>
+<li>Support for targets with multiple domains</li>
+<li>Raspberry Pi/ARM support</li>
+<li>6 modes (recon, passive, subdomains, web, osint and all)</li>
+<li>Out of Scope Support + optional <a href="https://github.com/tomnomnom/hacks/tree/master/inscope">inscope</a> support</li>
+<li>Notification system with Slack, Discord and Telegram (<a href="https://github.com/projectdiscovery/notify">notify</a>) and sending zipped results support</li>
+</ul>
+<p>As you can see it supports many techniques to make subdomain search for you.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script data-goatcounter="https://neanderthal.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+
+
+</body></html>
