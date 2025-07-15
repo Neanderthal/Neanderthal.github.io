@@ -1,5 +1,5 @@
 ---
-title: "How to run jupyter through ssh"
+title: "Software development as a mental illness"
 author: "Sergei Istomin"
 date: "2025-07-15"
 categories: [thoughts]
