@@ -17,7 +17,6 @@ about:
 
 # Sergey Istomin
 Senior Python Developer/Tech Lead  
-Location: Saint Petersburg, Russia  
 
 **Contact:**  
 - Phone: +7 (911) 9125372  
@@ -28,7 +27,6 @@ Location: Saint Petersburg, Russia
 - Not ready to relocate  
 - Ready for rare business trips  
 - Desired Position: Senior Python Developer/Tech Lead  
-- Desired Salary: > $80.000 
 
 ## Summary
 Experienced Senior Python Developer and Tech Lead with over 10 years of expertise in software development, system integration, and IT consulting. Proficient in Python, Django, and various cloud technologies including AWS and Azure. Proven track record in managing teams, implementing Agile practices, and delivering high-quality solutions.
