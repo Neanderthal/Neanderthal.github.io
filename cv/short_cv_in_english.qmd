@@ -33,7 +33,6 @@ Location: Saint Petersburg, Russia
 ## Summary
 Experienced Senior Python Developer and Tech Lead with over 10 years of expertise in software development, system integration, and IT consulting. Proficient in Python, Django, and various cloud technologies including AWS and Azure. Proven track record in managing teams, implementing Agile practices, and delivering high-quality solutions.
 
-You can find the full resume here - [Full CV](full_experience_in_commercial_software_dev.qmd)
 
 ## Skills
 - Python; PostgreSQL; Git; Linux; Docker; Redis; RabbitMQ; Django; HTML; Flask; Unit Testing; GitLab; Jira; MongoDB; REST; Kafka; Elasticsearch, AWS Services, Azure services.
@@ -55,6 +54,7 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
 - **Position:** Senior Python Developer / ML Engineer  
 - **Duration:** March 2024 – Present (1 year 3 months)  
 - **Key Achievements:**  
+	- Development of an internal portal. Django, PostgreSQL, Celery, Kubernetes
 	- Developed a chatbot based on an LLM model using a Retrieval-Augmented Generation (RAG) architecture.  
 		- *Technologies:* Python, LangChain, LlamaIndex, Transformers, PgVector  
 	 - Built a CI/CD pipeline to automate deployment and integration processes for the chatbot.  
