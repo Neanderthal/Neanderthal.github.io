@@ -29,7 +29,7 @@ about:
 	  - *Technologies:* FastAPI, PostgreSQL, Redis  
 
 #### Positive Technologies Inc.
-- **Duration:** February 2023 - present (1 year 2 months)
+- **Duration:** February 2023 – April 2024
 - **Location:** St. Petersburg, [www.ptsecurity.ru](http://www.ptsecurity.ru)
 - **Sector:** IT, System Integration, Internet
   - Software development

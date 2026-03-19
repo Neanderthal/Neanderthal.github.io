@@ -66,7 +66,7 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
   - Software Development
   - System Integration, Technological and Business Processes Automation, IT Consulting
 - **Position:** Senior Python Developer
-- **Duration:** February 2023 – March 2024 
+- **Duration:** February 2023 – April 2024 
 - **Key Achievements:**
   - Participated in the development of the Network Attack Discovery (NAD) service, leveraging technologies such as Django, Celery, Postgres, and ElasticSearch.
   - Implemented efficient logging and metrics transfer mechanisms using Carbon/Graphite/Grafana.
