@@ -72,6 +72,8 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
   - Implemented efficient logging and metrics transfer mechanisms using Carbon/Graphite/Grafana.
   - Refactored the Authentication and Authorization system based on OAuth, contributing to improved security protocols.
   - Participated in adapting and refining attack detection plugins for enhanced functionality.
+  - Contributed to the development of a security scanning platform. Refactored legacy synchronous modules to asyncio, significantly improving throughput and performance. Implemented interoperability patterns between synchronous and asynchronous code using message queues, and integrated standalone process-based scanning tools into the pipeline for isolated, parallel execution.
+    - *Technologies:* Python, asyncio, multiprocessing, message queues
 
 #### Quantum Soft LLC 
 - **Web site:** [www.quantumsoft.pro](https://www.quantumsoft.pro)

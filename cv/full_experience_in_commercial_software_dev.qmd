@@ -38,6 +38,8 @@ about:
   - Participated in the development of Network Attack Discovery (NAD) service for network attack detection using Django, Celery, Postgres and ElasticSearch.
   - Implemented logging and metrics transfer using Carbon/Graphite/Grafana.
   - Refactored and improved OAuth-based authentication and authorization system.
+  - Contributed to the development of a security scanning platform. Refactored legacy synchronous modules to asyncio, significantly improving throughput and performance. Implemented interoperability patterns between synchronous and asynchronous code using message queues, and integrated standalone process-based scanning tools into the pipeline for isolated, parallel execution.
+    - *Technologies:* Python, asyncio, multiprocessing, message queues
     
 #### Quantum Soft Ltd. 
 - **Duration:** July 2021 - September 2022 (1 year 3 months)
