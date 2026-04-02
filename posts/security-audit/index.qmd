@@ -1,0 +1,56 @@
+---
+title: "Security Audit: A Local Security Scanner for Developer Workstations"
+date: "2026-04-02"
+categories: [security, linux, python, devops, tools]
+author: "Sergey Istomin"
+image: "image.jpg"
+description: "An overview of `security-audit` — a comprehensive security scanner I built to catch CVEs, bad permissions, and risky configurations on local developer workstations."
+---
+
+When managing diverse development environments and working across Python, Node.js, and Rust, ensuring that the local workstation isn't leaking data or relying on critically vulnerable packages is essential. That's why I created **[security-audit](https://github.com/Neanderthal/security-audit)** — a comprehensive bash and Python-based security scanner tailored for developer workstations.
+
+## Goals
+
+The main objectives behind `security-audit` are:
+- **Comprehensive Coverage:** Go beyond basic OS-level package audits by checking Python (pip), Rust (cargo), and Node (npm) environments.
+- **Local Isolation:** Run locally without relying on heavy cloud scanners that exfiltrate data.
+- **Easy Integration:** Use standard Linux tools (bash, Python) so it can be dropped into any Unix-like dev machine (like Ubuntu or Manjaro) without huge dependency chains.
+- **Actionable Output:** Clearly distinguish between critical CVEs (CVSS >= 7.0) and minor warnings, allowing the developer to quickly patch what matters.
+
+## The Process
+
+The tool executes a modular checklist, hitting several critical security vectors:
+
+1. **OS Vulnerabilities:** Uses local package managers and external sources (like OSV.dev) to check for outdated and vulnerable system packages.
+2. **Environment Scanning:** Deep dives into your language-specific ecosystems. It checks `pip` packages via `pip-audit`, Rust crates via `cargo-audit`, and Node.js packages via `npm audit`.
+3. **Permissions & Secrets:** Scans for world-writable sensitive files, unprotected private keys (`~/.ssh/`), and accidentally committed secrets.
+4. **Firewall & Network:** Validates that `ufw` or `iptables` rules are active, checks for unnecessarily open ports, and flags insecure SSH daemon configurations.
+5. **Report Generation:** Aggregates findings into an actionable summary, highlighting Critical and High issues.
+
+## Pros & Cons
+
+### Pros
+- **Fast & Lightweight:** Written primarily in Bash and Python.
+- **Unified Overview:** Combines multiple different dependency scanners into one cohesive report.
+- **Privacy First:** It queries upstream vulnerability databases (like OSV.dev) without uploading your source code or full environment dumps to a third party.
+- **Customizable:** Because it’s an open-source script, you can easily add specific company compliance checks.
+
+### Cons
+- **Linux Focused:** Currently optimized for Linux distributions. macOS and Windows WSL support might require manual tweaks.
+- **False Positives:** Some development packages inherently flag minor vulnerabilities that are non-exploitable in local, non-production contexts.
+- **Dependency Overhead:** Requires `pip-audit`, `cargo-audit`, and `npm` to be installed for full functionality.
+
+## Comparison
+
+How does `security-audit` stack up against other tools?
+
+- **vs. Trivy:** Trivy is fantastic, but it's heavily optimized for container images and CI pipelines. `security-audit` is designed specifically for the *host workstation*, bridging the gap between OS config and local dev dependencies.
+- **vs. Lynis:** Lynis is the gold standard for POSIX host auditing. However, it focuses heavily on system compliance (file permissions, kernel hardening). `security-audit` incorporates developer-specific checks (like scanning local virtual environments and cargo registries) which Lynis doesn't do out of the box.
+- **vs. Snyk/Dependabot:** These are great for source code repositories and CI/CD integrations. `security-audit` looks at what is *actually installed and running* on your local machine, not just what's in a `requirements.txt` file.
+
+## Give it a try
+
+You can check out the source code, contribute, or grab the latest release on GitHub:  
+**[GitHub - Neanderthal/security-audit](https://github.com/Neanderthal/security-audit)**
+
+If you are a developer looking to lock down your local Linux environment against supply-chain attacks and basic misconfigurations, this tool might save you a significant headache.
