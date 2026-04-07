@@ -3,7 +3,7 @@ title: "Security Audit: A Local Security Scanner for Developer Workstations"
 date: "2026-04-02"
 categories: [security, linux, python, devops, tools]
 author: "Sergey Istomin"
-image: "image.jpg"
+image: "image.webp"
 description: "An overview of `security-audit` — a comprehensive security scanner I built to catch CVEs, bad permissions, and risky configurations on local developer workstations."
 ---
 
