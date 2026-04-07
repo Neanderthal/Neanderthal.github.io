@@ -1,0 +1,56 @@
+---
+title: "QR Geoposition Tracker: Measuring Offline Engagement with GPS Precision"
+date: "2026-04-07"
+categories: [python, geospatial, marketing, devops, tools]
+author: "Sergey Istomin"
+image: "image.webp"
+description: "How to capture GPS coordinates from print media readers into local Excel files using QR codes and a lightweight FastAPI backend."
+---
+
+Print media often feels like a \"black box\" when it comes to analytics. You know how many flyers you printed, but you don't know exactly *where* people are scanning them. To bridge this gap, I built **[users_geoposition](https://github.com/Neanderthal/users_geoposition)** — a simple, self-hosted tracker that captures reader coordinates before they reach your site.
+
+## The Problem
+
+Traditional UTM links in QR codes tell you *which* campaign was scanned, but not *where*. While some commercial services offer geolocation tracking, they often involve monthly fees, data exfiltration, or clunky UIs. I wanted something I could host on a $5 VPS that saves data directly to a format my clients already understand: Excel.
+
+## How it Works
+
+The flow is designed to be as frictionless as possible:
+
+1.  **QR Scan:** The reader scans a custom QR code from a newspaper or flyer.
+2.  **The \"Lobby\" Page:** They hit a lightweight FastAPI endpoint. A simple \"Redirecting...\" page with a spinner appears.
+3.  **Permission:** The browser asks the reader: *\"geo.yourdomain.com wants to use your current location.\"*
+4.  **Capture:** 
+    *   If **Allowed**: GPS coordinates are sent via POST to the backend and appended to an `.xlsx` file.
+    *   If **Denied** (or timeout): The script proceeds regardless.
+5.  **Redirect:** The reader is instantly redirected to the final promotion or website.
+
+## Under the Hood
+
+The project is built for reliability and ease of deployment:
+
+-   **FastAPI Backend:** Handles incoming telemetry and serves the JS-driven redirection page.
+-   **Excel Storage:** Uses `openpyxl` with thread-safe locks to write data. No database (PostgreSQL/Redis) is required, keeping the footprint tiny.
+-   **Ansible Deployment:** I've included a playbook that handles the entire server setup — from installing Docker and Nginx to configuring Let's Encrypt for HTTPS (crucial, as browsers block geolocation over non-secure connections).
+-   **QR Generator:** A built-in Python script that takes a `campaigns.yaml` file and generates high-resolution, print-ready QR codes for each campaign.
+
+## Why Excel?
+
+While a database would be \"cleaner\" for developers, this tool is meant to be used. Marketing teams and clients don't want to query a SQL database; they want to open a file. By saving each campaign to its own `.xlsx` file, I can just provide an API endpoint to download the raw data directly.
+
+## Deployment in One Command
+
+If you have a Linux server and a domain, you can get this running in minutes:
+
+```bash
+# Set your variables in vars.yml
+cd ansible
+ansible-playbook -i inventory.ini deploy.yml
+```
+
+## Give it a try
+
+The source code is open and available on GitHub:  
+**[GitHub - Neanderthal/users_geoposition](https://github.com/Neanderthal/users_geoposition)**
+
+If you're running print ads and want to see a heatmap of where your audience actually is, this tool is for you.
