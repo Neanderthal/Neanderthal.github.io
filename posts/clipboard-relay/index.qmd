@@ -1,0 +1,66 @@
+---
+title: "Clipboard-Relay: Encrypted Multi-Machine Clipboard via Git and GPG"
+date: "2026-04-07"
+categories: [python, security, git, tools, gpg]
+author: "Sergey Istomin"
+image: "image.webp"
+description: "How to securely sync your clipboard across multiple machines using any Git host as an encrypted storage backend."
+---
+
+Copy on your laptop, paste on your server—without letting a third-party service see your plaintext. I built **[clipboard-relay](https://github.com/Neanderthal/clipboard-relay)** to bridge the gap between machines using two tools every developer already has: Git and GPG.
+
+## The Problem
+
+Most cross-device clipboard tools are either proprietary, rely on unencrypted cloud storage, or require complex local network setups. I wanted a solution that:
+1.  **Works everywhere** (over the internet, not just LAN).
+2.  **Is end-to-end encrypted** (E2EE) so the storage provider sees only ciphertext.
+3.  **Uses existing infrastructure** (GitHub, GitLab, self-hosted Git).
+
+## How It Works
+
+The tool, invoked as `cb`, treats a private Git repository as an encrypted "dead drop" for your clipboard content.
+
+1.  **Copy:** When you run `cb "secret"`, the tool:
+    *   Encrypts the text using GPG for all your configured public keys.
+    *   Writes a timestamped `.gpg` file to a local clone of your private data repo.
+    *   Performs a `git commit` and `git push`.
+2.  **Paste:** When you run `cb` (with no arguments), it:
+    *   Performs a `git pull` on the data repo.
+    *   Finds the latest `.gpg` file.
+    *   Decrypts it using your local private key (prompting for your passphrase via `pinentry` if needed).
+    *   Outputs the result to your terminal or stdout.
+
+## Key Features
+
+-   **Multi-Recipient Encryption:** Clips are encrypted for multiple GPG keys. You can have a different key on every machine; as long as the public keys are exchanged, any of your machines can decrypt the clip.
+-   **Storage Agnostic:** It works with any Git remote. You can use a private repo on GitHub or a self-hosted Gitea instance.
+-   **Smart Routing:** `cb` is designed to feel like a native tool. If you pipe input to it (`echo "foo" | cb`), it copies. If you run it without args in an interactive terminal, it pastes.
+-   **Auto-Expiry:** Clips are meant to be ephemeral. I’ve included CI/CD configurations (GitHub Actions and GitLab CI) that automatically clean up clips older than 24 hours.
+
+## Under the Hood
+
+The architecture is split into two parts:
+*   **The Tool (`clipboard-relay`):** The Python CLI that handles the logic.
+*   **The Data Repo (`clipboard-data`):** A separate, private repository where the encrypted `.gpg` files actually live.
+
+This separation ensures that even if you share the tool's source code, your private clipboard data remains in your own controlled repository.
+
+## Installation & Setup
+
+```bash
+# 1. Install the tool
+pip install clipboard-relay
+
+# 2. Configure with your private data repo and GPG keys
+cb config --repo git@github.com:you/private-clips.git \
+          --gpg-key YOUR_KEY_A --gpg-key YOUR_KEY_B
+```
+
+For a smoother experience, you can alias `cbc` and `cbv` in your shell to integrate with `xclip`, `wl-copy`, or `pbcopy`, allowing you to sync your system clipboard to the relay with a single command.
+
+## Give it a try
+
+The source code and detailed setup instructions are on GitHub:  
+**[GitHub - Neanderthal/clipboard-relay](https://github.com/Neanderthal/clipboard-relay)**
+
+If you find yourself constantly SSHing into servers and needing to move small snippets of text or keys securely, `clipboard-relay` might be the missing piece of your workflow.
