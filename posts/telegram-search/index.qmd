@@ -1,0 +1,47 @@
+---
+title: "Telegram-Search: Bringing Your Chat History to AI Agents"
+date: "2026-04-07"
+categories: [python, mcp, telegram, ai, tools]
+author: "Sergey Istomin"
+image: "image.webp"
+description: "A read-only MCP server that allows Claude Code and other AI agents to search and retrieve context from your Telegram history."
+---
+
+We spend a huge part of our professional lives in Telegram. It’s where decisions are made, snippets are shared, and logs are dumped. However, most AI agents are blind to this context. I built **[telegram-search](https://github.com/Neanderthal/telegram-search)** — a read-only Model Context Protocol (MCP) server — to give my AI tools a way to "remember" what we discussed in chat.
+
+## The Goal
+
+The objective was simple: allow an LLM (like Claude) to answer questions like *"What was that database migration snippet Sergey sent last Tuesday?"* or *"Summarize the recent discussion in the project-alpha group."*
+
+## How it Works
+
+The project implements the [Model Context Protocol](https://modelcontextprotocol.io/), acting as a bridge between the Telegram API and an AI client.
+
+1.  **Authentication:** It uses a one-time session creation script (`create_session.py`) to generate a secure Telethon session.
+2.  **MCP Tools:** It exposes several tools to the AI:
+    *   `search_messages`: Keyword search within a specific chat.
+    *   `search_global`: Search across all your dialogs.
+    *   `get_message_context`: Retrieve the "surrounding" messages of a specific post to give the AI context.
+    *   `get_chat_history`: Fetch recent messages with pagination.
+3.  **Read-Only Safety:** By design, this server does not include sending capabilities. It's meant for context retrieval, ensuring your agent won't accidentally post on your behalf while "thinking."
+
+## Key Features
+
+-   **Deep Context:** Unlike basic keyword search, the `get_message_context` tool allows the AI to see what happened before and after a hit, making summaries much more accurate.
+-   **Media Filtering:** Support for global searches filtered by type (photos, documents, links, etc.).
+-   **Lazy Loading:** The Telegram client connects only when a tool is first invoked, making the MCP initialization instant.
+
+## Why MCP?
+
+The Model Context Protocol is becoming the standard for connecting local data to LLMs. By packaging this as an MCP server, it works out-of-the-box with **Claude Desktop**, **Claude Code**, and any other compatible IDE or CLI tool.
+
+## Under the Hood
+
+The stack is Python 3.12, using `FastMCP` for the server logic and `Telethon` for the Telegram MTProto interaction. It’s lightweight enough to run in the background of your workstation.
+
+## Give it a try
+
+The source code and setup guide are available on GitHub:  
+**[GitHub - Neanderthal/telegram-search](https://github.com/Neanderthal/telegram-search)**
+
+If you want your AI assistant to actually know what’s going on in your primary communication channel, this is the bridge you need.
