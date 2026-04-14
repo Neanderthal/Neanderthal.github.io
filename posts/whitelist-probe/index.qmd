@@ -1,100 +1,100 @@
 ---
-title: "Whitelist Probe: Реконструкция whitelist без доступа к конфигурации"
+title: "Whitelist Probe: Reconstructing Internet Whitelists Without Access to Filter Config"
 date: 2026-04-14
-description: "Мобильный оператор включил фильтрацию, но список не публикует? Разбираемся, что реально доступно, через black-box probing."
+description: "Mobile carrier enabled filtering but didn't publish the list? Figure out what's actually reachable through black-box probing."
 image: "whitelist-probe/image.webp"
 tags: ["networking", "security", "reverse-engineering", "isp"]
 ---
 
-Представь ситуацию: раздаёшь интернет с телефона, и вдруг половина сайтов не открывается. Мобильный оператор включил whitelist, но список не публикует. Что делать?
+Imagine this: you're tethering from your phone, and suddenly half the internet stops loading. Your mobile carrier enabled a whitelist, but didn't publish the list. What do you do?
 
-Можно угадывать, можно жаловаться. А можно — реконструировать whitelist с клиентской стороны, ничего не зная о конфигурации фильтра. Для этого есть **Whitelist Probe**.
+You could guess. You could complain. Or you could **reconstruct the whitelist from the client side** without any knowledge of the filter configuration. That's what **Whitelist Probe** does.
 
-## В чём проблема
+## The Problem
 
-Сканировать IPv4 пространство — тупик. 2^32 адресов, и если фильтр работает на уровне SNI, то IP-реконструкция выдаёт мусор. Если это DNS-манипуляция — TCP-пробы вообще ни о чём не скажут.
+Scanning the IPv4 space is a dead end. 2^32 addresses, and if the filter operates at SNI level, IP reconstruction produces garbage. If it's DNS manipulation, TCP probes tell you nothing.
 
-Нужно сначала понять, **какой фильтр** перед нами, и только потом запускать реконструкцию.
+You need to figure out **what kind of filter** you're dealing with first, then start reconstruction.
 
-## Как это работает
+## How It Works
 
-Whitelist Probe делает это в две фазы.
+Whitelist Probe does this in two phases.
 
-### Фаза 0 — определяем фильтр
+### Phase 0 — Characterize the Filter
 
-Прежде чем тратить трафик на сканирование, Phase 0 тратит 5 минут и ~5 МБ на диагностику:
+Before burning traffic on scanning, Phase 0 spends 5 minutes and ~5 MB on diagnostics:
 
-- Пробуем якобы разрешённые IP (1.1.1.1, 8.8.8.8, 9.9.9.9) — должны работать
-- Пробуем явно блокируемые домены через публичные DNS, потом прокручиваем эти IP
-- Проверяем SNI variation — 5 TLS ClientHello на один IP с разными SNI
-- Сравниваем ответы DNS оператора и публичных резолверов
-- MTR до разрешённых и блокируемых целей — находим, где именно дропаются пакеты
-- Проверяем IPv6 — вдруг через него всё работает?
+- Probe supposedly allowed IPs (1.1.1.1, 8.8.8.8, 9.9.9.9) — should work
+- Probe explicitly blocked domains via public resolvers, then probe those IPs
+- SNI variation test — 5 TLS ClientHello to one IP with different SNI values
+- Compare carrier DNS responses against public resolvers
+- MTR to allowed and blocked targets — find where packets drop
+- Check IPv6 — maybe everything works through it?
 
-Результат: `{filter_model, filter_location, carrier, confidence}`.
+Result: `{filter_model, filter_location, carrier, confidence}`.
 
-### Фаза 1 — реконструкция по найденной модели
+### Phase 1 — Reconstruct by Found Model
 
-Phase 0 говорит, как дальше сканировать.
+Phase 0 tells you how to scan next.
 
-#### L3 фильтры (IP-based)
+#### L3 Filters (IP-based)
 
-Здесь магия Bayesian reconstruction:
+Bayesian reconstruction magic:
 
-- Берём топ-100k доменов Cisco Umbrella → 300k-800k уникальных IP
-- Знаем приоры по ASN-категориям: `P(whitelisted | AWS) = 0.85`, `P(whitelisted | residential) = 0.20`
-- Пробуем префиксы, обновляем Beta posterior
-- Неопределённые префиксы бисектим и рекурсируем
-- В конце собираем соседние accepted префиксы в минимальный CIDR set
+- Take Cisco Umbrella top-100k domains → 300k-800k unique IPs
+- Apply ASN-category priors: `P(whitelisted | AWS) = 0.85`, `P(whitelisted | residential) = 0.20`
+- Probe prefixes, update Beta posterior
+- Bisect uncertain prefixes and recurse
+- Bottom-up coalescing produces minimal CIDR set
 
-Выход: список CIDR с уверенностью по каждой записи.
+Output: CIDR list with confidence per entry.
 
-#### SNI фильтры
+#### SNI Filters
 
-Берём top-N доменов (по умолчанию 50k) и крутим через известные reachable anchor IP с разными SNI в TLS ClientHello. Если хотя бы один anchor принял SNI — домен в whitelist.
+Take top-N hostnames (default 50k) and rotate through known reachable anchor IPs with different SNI in TLS ClientHello. If any anchor accepts SNI — domain is whitelisted.
 
-Выход: список разрешённых SNI, сгруппированный по доменам.
+Output: allowed SNI list grouped by domain.
 
-#### DNS фильтры
+#### DNS Filters
 
-Резолвим топ-N доменов через DNS оператора и публичные резолверы. Сравниваем:
-- `consistent` — ответы совпадают
-- `nxdomain_hijack` — публичный резолвит, оператор говорит NXDOMAIN
-- `poisoned` — оператор возвращает совсем другой IP
+Resolve top-N domains via carrier and public resolvers. Compare:
+- `consistent` — answers match
+- `nxdomain_hijack` — public resolves, carrier says NXDOMAIN
+- `poisoned` — carrier returns completely different IP
 
-Выход: карта манипуляций по доменам.
+Output: manipulation map per domain.
 
-## Почему это круто
+## Why This Is Cool
 
-### Сначала диагностика, потом сканирование
+### Diagnostics Before Scanning
 
-Другие инструменты сразу начинают сканировать и прожигают бюджет впустую. Whitelist Probe тратит 5 минут на понимание, **что именно** сканировать. Если фильтр на SNI, IP-реконструкция даже не запускается.
+Other tools start scanning immediately and waste budget. Whitelist Probe spends 5 minutes understanding **what exactly** to scan. If the filter is SNI-based, IP reconstruction never runs.
 
-### Bayesian trie вместо uniform scanning
+### Bayesian Trie Instead of Uniform Scanning
 
-Равномерный sweep IPv4 — это нереально и незаконно. Здесь:
+Uniform IPv4 sweep is infeasible and illegal. Here:
 
-- Приоры по ASN-категориям экономят пробы
-- Адаптивная бисекция находит границы за `O(log prefix_size)` вместо линейного прохода
-- Sequential probability ratio test защищает от false negatives
-- AWS и Cloudflare проверяем один раз и принимаем как whitelist
+- ASN-category priors save probes
+- Adaptive bisection finds boundaries in `O(log prefix_size)` instead of linear pass
+- Sequential probability ratio test protects against false negatives
+- AWS and Cloudflare probed once and accepted as whitelist
 
-### Безопасно для мобильного трафика по умолчанию
+### Safe for Mobile Uplinks by Default
 
-- 30 qps / 50 concurrent — ниже насыщения conntrack
-- Короткие таймауты (3s TCP, 5s TLS) не забивают NAT-таблицу телефона
-- Byte budget (по умолчанию 1 ГБ) останавливает сканирование, когда трафик кончился
-- SIGINT safety: чекпоинты каждые 1000 проб, partial report при отмене
-- Рандомный порядок назначения, jitter, ephemeral ports
+- 30 qps / 50 concurrent — below conntrack saturation
+- Short timeouts (3s TCP, 5s TLS) don't hoard phone NAT table
+- Byte budget (default 1 GB) stops scanning when traffic runs out
+- SIGINT safety: checkpoints every 1000 probes, partial report on cancel
+- Random destination order, jitter, ephemeral ports
 
-## Когда это может пригодиться
+## Use Cases
 
-- **Аудит ограничений оператора** — документируешь, что реально блокирует мобильный оператор
-- **Планирование VPN** — понимаешь, какие сервисы работают без VPN, пока не платишь за него
-- **Исследования сети** — карта реализации фильтра (какой слой, какой хоп)
-- **Тестирование обхода** — проверяешь, работают ли IPv6 или альтернативные DNS
+- **Audit ISP restrictions** — document what your mobile carrier actually blocks
+- **VPN planning** — understand which services work without VPN before paying
+- **Network research** — map filter implementation (which layer, which hop)
+- **Circumvention testing** — verify if IPv6 or alternate DNS routes around blocks
 
-## Установка
+## Installation
 
 ```bash
 git clone git@github.com:Neanderthal/whitelist-probe.git
@@ -102,49 +102,49 @@ cd whitelist-probe
 uv sync
 ```
 
-Опционально: установи `mtr` для триангуляции местоположения фильтра, скачай pyasn DB для ASN-атрибуции.
+Optional: install `mtr` for filter location triangulation, download pyasn DB for ASN attribution.
 
-## Быстрый старт
+## Quickstart
 
-### Всё в одну команду
+### All-in-one command
 
 ```bash
 wlp auto
 cat reports/latest/whitelist-report.md
 ```
 
-### Быстрый тестовый прогон (50 МБ, ~15 мин)
+### Fast test run (50 MB, ~15 min)
 
 ```bash
 wlp --quick auto
 ```
 
-### Стелс-режим (малозаметный, но медленный)
+### Stealth mode (low-visibility, slow but safer)
 
 ```bash
 wlp --stealth auto
 ```
 
-## Что в отчёте
+## What's in the Report
 
-`whitelist-report.md` разделён на четыре части:
+`whitelist-report.md` has four sections:
 
-1. **Insights** — Openness score (0-1), человеческое резюме, reachability по тирам/категориям, примеры работающих/неработающих доменов
-2. **Phase 0 evidence** — Модель фильтра, местоположение, уверенность, сырые счётчики проб
-3. **Reconstructed whitelist** — CIDRs, SNIs или DNS-карта (форма зависит от модели фильтра)
-4. **Per-provider breakdown** — чьи облачные форточки покрыты
+1. **Insights** — Openness score (0-1), plain-English summary, reachability by tiers/categories, working/broken domain examples
+2. **Phase 0 evidence** — Filter model, location, confidence, raw probe counts
+3. **Reconstructed whitelist** — CIDRs, SNIs, or DNS map (shape depends on filter model)
+4. **Per-provider breakdown** — which cloud footprints are covered
 
-## Безопасность и законность
+## Safety & Legality
 
-- **Не сканируй сети, которыми не владеешь или не имеешь права использовать.**
-- **Не публикуй реконструированные whitelists с идентификацией третьих лиц.**
-- Мобильные операторы банят SIM за агрессивное сканирование быстро. Дефолтные расценки консервативные.
-- Остановись немедленно, если кто-то попросит.
+- **Do not scan networks you don't own or aren't authorized to use.**
+- **Do not publish reconstructed whitelists identifying third parties.**
+- Mobile carriers flag SIMs for aggressive scanning quickly. Default rates are conservative.
+- Stop immediately if anyone asks.
 
-## Репозиторий
+## Repository
 
 [Neanderthal/whitelist-probe](https://github.com/Neanderthal/whitelist-probe)
 
 ---
 
-*Видишь сквозь фильтр — black-box.*
+*See through the filter — black-box.*
