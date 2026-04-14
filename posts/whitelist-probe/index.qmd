@@ -1,61 +1,148 @@
 ---
-title: "Whitelist Probe: Black-box Reconstruction of Internet Whitelist"
+title: "Whitelist Probe: Black-box Whitelist Reconstruction over Filtered Uplinks"
 date: 2026-04-14
-description: "Probe and reconstruct an upstream internet whitelist from a filtered mobile uplink. Discover what's allowed behind ISP restrictions."
+description: "Reconstruct an upstream internet whitelist by probing from a filtered mobile uplink. Distinguish L3, SNI, and DNS filters with Bayesian reconstruction."
 image: "whitelist-probe/image.webp"
-tags: ["networking", "security", "reverse-engineering", "isp"]
+tags: ["networking", "security", "reverse-engineering", "isp", "bayesian"]
 ---
 
-Whitelist Probe is a black-box tool for reconstructing an upstream internet whitelist by systematically probing from a filtered mobile uplink. It helps discover which domains and services are actually reachable behind ISP-imposed restrictions.
+When a mobile carrier, corporate proxy, or school firewall applies an internet whitelist without publishing it, you're left guessing what's actually reachable. **Whitelist Probe** reconstructs that whitelist from the client side — black-box, no prior knowledge, no privileged access.
 
-## Problem
+## The Problem
 
-Many mobile operators implement transparent HTTP proxies and DNS filtering that block certain content. However, the whitelist is rarely documented — you only know what's blocked, not what's explicitly allowed.
+You're tethered through a phone, and suddenly half the internet is unreachable. The carrier published no list. You need to know:
 
-## Solution
+- **What kind of filter is it?** Layer 3 (IP), Layer 7 (SNI), or DNS manipulation?
+- **What exactly is allowed?** Not just a few domains — the shape of the reachable set.
+- **Is there a workaround?** Maybe IPv6 works. Maybe a different DNS resolver bypasses it.
 
-Whitelist Probe takes a curated list of known-good domains (news, CDNs, popular services) and tests reachability from the filtered network. If a domain responds, it's part of the allowed whitelist.
+Scanning blindly won't help: if the filter is SNI-based, IP reconstruction produces noise. If it's DNS-based, TCP probes tell you nothing.
 
-### How it works
+## The Solution
 
-1. **Domain list**: Input a set of candidate domains to test.
-2. **Probing**: Attempts HTTP/HTTPS connections from the filtered network.
-3. **Classification**: Categorizes domains by reachability (allowed, blocked, timeout).
-4. **Output**: Generates a reconstructed whitelist with success rates.
+Whitelist Probe runs in two phases:
+
+### Phase 0 — Characterize the Filter
+
+Before committing probe budget, Phase 0 identifies the filter model:
+
+1. **Allowed controls** — probe anchor IPs known to be reachable (1.1.1.1, 8.8.8.8, 9.9.9.9)
+2. **Blocked controls** — resolve likely-blocked domains via public resolvers, probe those IPs
+3. **SNI variation test** — five TLS ClientHellos to the same anchor, different SNI values
+4. **DNS resolver diff** — resolve ~30 domains against carrier + public resolvers
+5. **MTR triangulation** — traceroute to 3 allowed + 3 blocked targets to locate the drop point
+6. **IPv6 bypass check** — probe blocked domains over IPv6
+
+**Result:** `{filter_model, filter_location, carrier, confidence}` — 5 minutes, ~5 MB data.
+
+### Phase 1 — Reconstruct the Whitelist
+
+Phase 0's verdict determines the reconstruction strategy:
+
+#### L3 Filters (IP-based)
+
+Patricia trie + Bayesian reconstruction:
+
+- Start with Cisco Umbrella top-100k domains → 300k-800k unique IPs
+- Apply ASN-category priors: `P(whitelisted | AWS) = 0.85`, `P(whitelisted | residential) = 0.20`
+- Probe each prefix, update Beta(α, β) posterior
+- Uncertain prefixes (posterior ∈ [0.25, 0.75]) bisect and recurse
+- Bottom-up coalescing produces minimal CIDR representation
+
+Output: coalesced CIDR set with per-entry confidence.
+
+#### SNI Filters
+
+- Top-N hostnames (default 50k) against known-reachable anchor IPs
+- TLS ClientHello per anchor per SNI
+- Accepted by any anchor → whitelisted
+- Group by eTLD+1 for human-readable categories
+
+Output: whitelisted SNI list grouped by domain.
+
+#### DNS Filters
+
+- Resolve top-N domains against carrier + public resolvers
+- Classify: `consistent`, `nxdomain_hijack`, `nodata_hijack`, `poisoned`
+
+Output: manipulation map per domain.
+
+## What Makes This Different
+
+### Filter-Model Detection First
+
+Other tools start scanning and waste budget. Whitelist Probe spends 5 minutes figuring out *what* to scan. If the filter is SNI-based, IP reconstruction never runs.
+
+### Bayesian Reconstruction, Not Uniform Scanning
+
+A uniform IP sweep scans 2^32 addresses — infeasible and illegal. Instead:
+
+- Informed priors per ASN category
+- Adaptive bisection finds boundaries in `O(log prefix_size)` probes
+- Sequential probability ratio test guards against false negatives
+- Well-known blocks (AWS, Cloudflare) probed once and accepted
+
+### Safe on Mobile Uplinks by Default
+
+- 30 qps / 50 concurrent — below conntrack saturation
+- Short timeouts (3s TCP, 5s TLS) don't hoard NAT entries
+- Byte budget (default 1 GB) bounds cost in the unit that matters
+- SIGINT safety: checkpoints every 1000 probes, partial report on cancel
+- Random destination order, jittered gaps, ephemeral ports
 
 ## Use Cases
 
-- **Audit ISP restrictions**: Understand exactly what your mobile carrier blocks.
-- **VPN planning**: Know which services might still work without VPN.
-- **Network research**: Document filtering policies across different providers.
-- **Bypass testing**: Verify if alternative routing (DNS, HTTP) works for blocked domains.
+- **Audit ISP restrictions**: Document what your mobile carrier actually blocks
+- **VPN planning**: Know which services work without VPN before paying
+- **Network research**: Map filter implementation (which layer, which hop)
+- **Circumvention testing**: Verify if IPv6 or alternate DNS routes around blocks
 
 ## Installation
 
 ```bash
 git clone git@github.com:Neanderthal/whitelist-probe.git
 cd whitelist-probe
+uv sync
 ```
 
-## Usage
+Optional: install `mtr` for filter-location triangulation, download pyasn DB for ASN attribution.
+
+## Quickstart
+
+### One-command end-to-end
 
 ```bash
-# Probe default domain list
-python probe.py
-
-# Probe custom list
-python probe.py --domains custom_domains.txt
-
-# Export results to JSON
-python probe.py --output results.json
+wlp auto
+cat reports/latest/whitelist-report.md
 ```
 
-## Technical Details
+### Fast test run (50 MB, ~15 min)
 
-- Uses `requests` for HTTP/HTTPS probing with configurable timeouts.
-- Supports multiple request methods (GET, HEAD) and follow redirects.
-- DNS resolution tested via multiple resolvers.
-- Results include response codes, latencies, and connection errors.
+```bash
+wlp --quick auto
+```
+
+### Stealth mode (low-visibility, slow but safer)
+
+```bash
+wlp --stealth auto
+```
+
+## Interpreting the Report
+
+The `whitelist-report.md` has four sections:
+
+1. **Insights** — Openness score (0-1), plain-English summary, reachability by tier/category, concrete examples
+2. **Phase 0 evidence** — Filter model, location, confidence, raw probe counts
+3. **Reconstructed whitelist** — CIDRs, SNIs, or DNS map (shape depends on filter model)
+4. **Per-provider breakdown** — Which cloud footprints are covered
+
+## Safety & Legal
+
+- **Do not scan networks you don't own or aren't authorized to use.**
+- **Do not publish reconstructed whitelists that identify third parties.**
+- Mobile carriers flag SIMs for aggressive scanning quickly. Default rates are conservative.
+- Stop immediately if any infrastructure owner asks.
 
 ## Repository
 
@@ -63,4 +150,4 @@ python probe.py --output results.json
 
 ---
 
-*See through the filter.*
+*See through the filter — black-box.*
