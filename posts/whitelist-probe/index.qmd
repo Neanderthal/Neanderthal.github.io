@@ -1,0 +1,66 @@
+---
+title: "Whitelist Probe: Black-box Reconstruction of Internet Whitelist"
+date: 2026-04-14
+description: "Probe and reconstruct an upstream internet whitelist from a filtered mobile uplink. Discover what's allowed behind ISP restrictions."
+image: "whitelist-probe/image.webp"
+tags: ["networking", "security", "reverse-engineering", "isp"]
+---
+
+Whitelist Probe is a black-box tool for reconstructing an upstream internet whitelist by systematically probing from a filtered mobile uplink. It helps discover which domains and services are actually reachable behind ISP-imposed restrictions.
+
+## Problem
+
+Many mobile operators implement transparent HTTP proxies and DNS filtering that block certain content. However, the whitelist is rarely documented — you only know what's blocked, not what's explicitly allowed.
+
+## Solution
+
+Whitelist Probe takes a curated list of known-good domains (news, CDNs, popular services) and tests reachability from the filtered network. If a domain responds, it's part of the allowed whitelist.
+
+### How it works
+
+1. **Domain list**: Input a set of candidate domains to test.
+2. **Probing**: Attempts HTTP/HTTPS connections from the filtered network.
+3. **Classification**: Categorizes domains by reachability (allowed, blocked, timeout).
+4. **Output**: Generates a reconstructed whitelist with success rates.
+
+## Use Cases
+
+- **Audit ISP restrictions**: Understand exactly what your mobile carrier blocks.
+- **VPN planning**: Know which services might still work without VPN.
+- **Network research**: Document filtering policies across different providers.
+- **Bypass testing**: Verify if alternative routing (DNS, HTTP) works for blocked domains.
+
+## Installation
+
+```bash
+git clone git@github.com:Neanderthal/whitelist-probe.git
+cd whitelist-probe
+```
+
+## Usage
+
+```bash
+# Probe default domain list
+python probe.py
+
+# Probe custom list
+python probe.py --domains custom_domains.txt
+
+# Export results to JSON
+python probe.py --output results.json
+```
+
+## Technical Details
+
+- Uses `requests` for HTTP/HTTPS probing with configurable timeouts.
+- Supports multiple request methods (GET, HEAD) and follow redirects.
+- DNS resolution tested via multiple resolvers.
+- Results include response codes, latencies, and connection errors.
+
+## Repository
+
+[Neanderthal/whitelist-probe](https://github.com/Neanderthal/whitelist-probe)
+
+---
+
+*See through the filter.*
