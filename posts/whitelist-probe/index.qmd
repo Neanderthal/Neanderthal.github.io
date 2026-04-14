@@ -1,98 +1,119 @@
 ---
-title: "Whitelist Probe: Reconstructing Internet Whitelists Without Access to Filter Config"
+title: "I Spent a Weekend Reverse-Engineering My Mobile Carrier's Whitelist"
 date: 2026-04-14
-description: "Mobile carrier enabled filtering but didn't publish the list? Figure out what's actually reachable through black-box probing."
+description: "When you realize the internet is broken and nobody will tell you why. A practical guide to black-box filter reconstruction."
 image: "whitelist-probe/image.webp"
-tags: ["networking", "security", "reverse-engineering", "isp"]
+tags: ["networking", "security", "reverse-engineering", "isp", "essay"]
 ---
 
-Imagine this: you're tethering from your phone, and suddenly half the internet stops loading. Your mobile carrier enabled a whitelist, but didn't publish the list. What do you do?
+My phone's hotspot stopped working properly. Not outright dead, but weirdly selective. Google loaded fine. My VPN didn't. Some news sites worked; others timed out. I rebooted, tried different DNS, toggled airplane mode — the usual ritual. Nothing helped.
 
-You could guess. You could complain. Or you could **reconstruct the whitelist from the client side** without any knowledge of the filter configuration. That's what **Whitelist Probe** does.
+Then it hit me: this wasn't random. My carrier had enabled a whitelist. They just hadn't bothered to tell anyone what was on it.
 
-## The Problem
+I spent the next weekend figuring out how to reconstruct that list from the outside. Here's what I learned.
 
-Scanning the IPv4 space is a dead end. 2^32 addresses, and if the filter operates at SNI level, IP reconstruction produces garbage. If it's DNS manipulation, TCP probes tell you nothing.
+## The Obvious Approach Is Wrong
 
-You need to figure out **what kind of filter** you're dealing with first, then start reconstruction.
+The first thing that comes to mind is: just scan the internet. Connect to everything, see what responds. 
 
-## How It Works
+There are problems with this. One is scale — 2^32 IPv4 addresses. Even at 1000 connections per second (which would get you banned instantly), you'd need months. Another is that uniform scanning tells you nothing about structure. You get a flat set of reachable IPs, but no insight into *why* those and not others.
 
-Whitelist Probe does this in two phases.
+The bigger problem, though, is that whitelists aren't always IP-based. If the filter looks at SNI (the hostname in the TLS handshake), then the same IP might work for one domain and fail for another. Scanning IPs would give you garbage. You'd be reconstructing a fantasy of what the filter looks like instead of what it actually is.
 
-### Phase 0 — Characterize the Filter
+So the first thing you need to do is figure out what kind of filter you're dealing with.
 
-Before burning traffic on scanning, Phase 0 spends 5 minutes and ~5 MB on diagnostics:
+## Phase Zero: Diagnostics
 
-- Probe supposedly allowed IPs (1.1.1.1, 8.8.8.8, 9.9.9.9) — should work
-- Probe explicitly blocked domains via public resolvers, then probe those IPs
-- SNI variation test — 5 TLS ClientHello to one IP with different SNI values
-- Compare carrier DNS responses against public resolvers
-- MTR to allowed and blocked targets — find where packets drop
-- Check IPv6 — maybe everything works through it?
+I ended up building a tool that does this in two phases. Phase zero is just diagnostics — ~5 minutes, ~5 MB of traffic, and you get a picture of the filter's shape.
 
-Result: `{filter_model, filter_location, carrier, confidence}`.
+The idea is simple: run a few controlled experiments that isolate different filtering behaviors from each other.
 
-### Phase 1 — Reconstruct by Found Model
+- Connect to IPs that should always be reachable (1.1.1.1, 8.8.8.8, etc.). If these fail, something is fundamentally broken.
+- Resolve domains that you suspect are blocked via a public DNS, then probe those IPs. This isolates DNS from TCP.
+- Send TLS handshakes to the same IP with different SNI values. If some succeed and others fail, you're looking at SNI filtering.
+- Resolve the same set of domains against your carrier's DNS and several public resolvers. Look for discrepancies.
+- Run traceroutes to allowed and blocked targets. Count hops to find where the drop happens.
 
-Phase 0 tells you how to scan next.
+After running through this checklist, you know: is this an IP filter? SNI? DNS manipulation? A mix? Where exactly in the network does the filtering happen? How confident are you in each of these conclusions?
 
-#### L3 Filters (IP-based)
+This seems like overhead. Why not just start scanning? Because the scanning strategy depends entirely on the answer. If it's SNI-based, IP reconstruction is a waste of time. If it's DNS poisoning, TCP probes won't reveal anything. Five minutes of diagnostics saves you hours of scanning the wrong thing.
 
-Bayesian reconstruction magic:
+## Phase One: Reconstruction
 
-- Take Cisco Umbrella top-100k domains → 300k-800k unique IPs
-- Apply ASN-category priors: `P(whitelisted | AWS) = 0.85`, `P(whitelisted | residential) = 0.20`
-- Probe prefixes, update Beta posterior
-- Bisect uncertain prefixes and recurse
-- Bottom-up coalescing produces minimal CIDR set
+Once you know what you're dealing with, you can actually reconstruct the whitelist.
 
-Output: CIDR list with confidence per entry.
+### IP-Based Filters
 
-#### SNI Filters
+If the filter drops packets based on IP, you need to map reachable prefixes. But here's the thing: whitelists almost always align to organizational boundaries. Cloud providers, CDNs, residential blocks. They're not random.
 
-Take top-N hostnames (default 50k) and rotate through known reachable anchor IPs with different SNI in TLS ClientHello. If any anchor accepts SNI — domain is whitelisted.
+So instead of scanning uniformly, you start with a prior distribution based on ASN categories. AWS prefixes are more likely to be whitelisted (people need cloud services). Residential ISP prefixes are less likely. Unknown blocks get a default prior.
 
-Output: allowed SNI list grouped by domain.
+You probe each prefix, update your belief using Bayesian inference (a Beta posterior), and make a decision: accept, reject, or keep investigating. If you're uncertain, you bisect the prefix and recurse. This lets you find boundaries efficiently — instead of scanning every address, you converge on the actual whitelist edges in `O(log size)` time.
 
-#### DNS Filters
+At the end, you coalesce accepted prefixes into a minimal CIDR set. You get a list of blocks with confidence scores attached.
 
-Resolve top-N domains via carrier and public resolvers. Compare:
-- `consistent` — answers match
-- `nxdomain_hijack` — public resolves, carrier says NXDOMAIN
-- `poisoned` — carrier returns completely different IP
+### SNI Filters
 
-Output: manipulation map per domain.
+If the filter looks at hostnames, the strategy changes. You don't care about IPs anymore. You care about which names are allowed.
 
-## Why This Is Cool
+Take a list of popular domains (I used Cisco Umbrella's top 100k). Rotate each through a set of anchor IPs that you know are reachable. Send a TLS handshake with each SNI. If any anchor accepts it, the domain is on the whitelist.
 
-### Diagnostics Before Scanning
+This is slower — full TLS handshakes cost about 4 KB each, and scanning 50k domains can burn a gigabyte of data. But you get a list of names, not addresses, which is what matters for SNI-based filters.
 
-Other tools start scanning immediately and waste budget. Whitelist Probe spends 5 minutes understanding **what exactly** to scan. If the filter is SNI-based, IP reconstruction never runs.
+### DNS Manipulation
 
-### Bayesian Trie Instead of Uniform Scanning
+Some carriers don't block traffic at all. They just lie about DNS resolution. You ask for a domain, and they return a sinkhole IP or NXDOMAIN instead of the real address.
 
-Uniform IPv4 sweep is infeasible and illegal. Here:
+To detect this, resolve the same domains against your carrier's DNS and several public resolvers. Classify each domain: consistent answers? NXDOMAIN hijacking? Poisoned responses?
 
-- ASN-category priors save probes
-- Adaptive bisection finds boundaries in `O(log prefix_size)` instead of linear pass
-- Sequential probability ratio test protects against false negatives
-- AWS and Cloudflare probed once and accepted as whitelist
+This is cheap — DNS queries are tiny compared to TLS handshakes — and it reveals a different kind of filter.
 
-### Safe for Mobile Uplinks by Default
+## The Details Matter
 
-- 30 qps / 50 concurrent — below conntrack saturation
-- Short timeouts (3s TCP, 5s TLS) don't hoard phone NAT table
-- Byte budget (default 1 GB) stops scanning when traffic runs out
-- SIGINT safety: checkpoints every 1000 probes, partial report on cancel
-- Random destination order, jitter, ephemeral ports
+A few things I learned the hard way:
 
-## Use Cases
+### Mobile Networks Have Strange Limits
 
-- **Audit ISP restrictions** — document what your mobile carrier actually blocks
-- **VPN planning** — understand which services work without VPN before paying
-- **Network research** — map filter implementation (which layer, which hop)
-- **Circumvention testing** — verify if IPv6 or alternate DNS routes around blocks
+The bottleneck isn't bandwidth. It's the phone's NAT conntrack table. Android hotspots typically have 4k-16k entries. If you open too many connections too quickly, you saturate the table, and everything — including your own SSH sessions — dies for 30 seconds until it recovers.
+
+Keep the rate conservative. 30 queries per second, 50 concurrent connections max. Short timeouts (3 seconds for TCP). This keeps you well below the saturation point.
+
+### Carriers Notice Scans
+
+Mobile operators flag SIMs for aggressive scanning much faster than fixed-line ISPs. Randomize your destination order. Add jitter between probes. Use ephemeral source ports. Don't do contiguous /24 sweeps — that's too regular.
+
+If you suddenly see a spike in "filtered" responses against previously reachable IPs mid-run, stop. The carrier is probably throttling you. Wait 24 hours before trying again.
+
+### Track Your Budget
+
+Mobile data is billed. Every probe costs something. The tool I wrote tracks bytes transferred and halts at a configurable limit (default: 1 GB). This bounds cost in the unit that actually matters.
+
+## What You Actually Get
+
+After a few hours (or a full day for a thorough scan), you have a report with four sections:
+
+- **Filter model**: What kind of filter, where it sits in the network, how confident you are.
+- **Reconstructed whitelist**: CIDRs, SNIs, or a DNS map (shape depends on filter type).
+- **Provider breakdown**: Which cloud footprints are covered. Useful context.
+- **Concrete examples**: 10 domains that work, 10 that don't. Grounds the abstract analysis.
+
+This isn't perfect. Anycast services complicate IP reconstruction (you're probing the local edge, not the whole advertised range). Some filters combine multiple techniques. But you get a picture that's good enough to make decisions.
+
+## Why Do This?
+
+There are practical reasons. Maybe you're deciding whether to pay for a VPN. Maybe you're planning a project that needs specific services. Maybe you just want to document what your carrier is actually doing.
+
+But there's also something satisfying about reverse-engineering a system that's designed to be opaque. You take a black box, poke it systematically, and gradually form a model of what's inside. It's the same impulse that drives any kind of debugging or security research — wanting to understand the hidden mechanisms.
+
+## The Bigger Picture
+
+Whitelists are becoming more common. Mobile carriers in some markets enforce them by default. Corporate networks use them. Schools. Public Wi-Fi. Sometimes they're documented, often they're not.
+
+The tools to audit them are also getting better. Not just for evasion, but for transparency. If a network operator can decide what you're allowed to access, it matters that you can audit that decision. Even if you don't have direct access to their configuration.
+
+I'm not saying this is a perfect solution. It has limitations. It's not a substitute for proper documentation or transparency policies. But when nobody will tell you what's blocked, this is how you find out.
+
+---
 
 ## Installation
 
@@ -102,44 +123,16 @@ cd whitelist-probe
 uv sync
 ```
 
-Optional: install `mtr` for filter location triangulation, download pyasn DB for ASN attribution.
-
-## Quickstart
-
-### All-in-one command
-
 ```bash
 wlp auto
 cat reports/latest/whitelist-report.md
 ```
 
-### Fast test run (50 MB, ~15 min)
+Or a cheap first pass:
 
 ```bash
 wlp --quick auto
 ```
-
-### Stealth mode (low-visibility, slow but safer)
-
-```bash
-wlp --stealth auto
-```
-
-## What's in the Report
-
-`whitelist-report.md` has four sections:
-
-1. **Insights** — Openness score (0-1), plain-English summary, reachability by tiers/categories, working/broken domain examples
-2. **Phase 0 evidence** — Filter model, location, confidence, raw probe counts
-3. **Reconstructed whitelist** — CIDRs, SNIs, or DNS map (shape depends on filter model)
-4. **Per-provider breakdown** — which cloud footprints are covered
-
-## Safety & Legality
-
-- **Do not scan networks you don't own or aren't authorized to use.**
-- **Do not publish reconstructed whitelists identifying third parties.**
-- Mobile carriers flag SIMs for aggressive scanning quickly. Default rates are conservative.
-- Stop immediately if anyone asks.
 
 ## Repository
 
@@ -147,4 +140,4 @@ wlp --stealth auto
 
 ---
 
-*See through the filter — black-box.*
+*This is what happens when your internet breaks and nobody will tell you why. You figure it out yourself.*
