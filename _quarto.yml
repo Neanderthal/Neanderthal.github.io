@@ -12,7 +12,7 @@ website:
   title: "Sergey Istomin"
   description: "Senior Python Developer & Tech Lead — notes on code, systems, and security."
   site-url: "https://neanderthal.github.io"
-  favicon: profile.jpg
+  favicon: favicon.ico
   open-graph:
     image: profile.jpg
     locale: en_US
