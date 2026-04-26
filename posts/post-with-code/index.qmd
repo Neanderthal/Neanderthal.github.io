@@ -1,6 +1,6 @@
 ---
 title: "How to run jupyter through ssh"
-author: "Sergei Istomin"
+author: "Sergey Istomin"
 date: "2024-04-21"
 categories: [code, jupyter, ssh]
 image: "image.webp"

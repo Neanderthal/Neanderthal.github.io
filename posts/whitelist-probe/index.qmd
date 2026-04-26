@@ -1,9 +1,10 @@
 ---
 title: "I Spent a Weekend Reverse-Engineering My Mobile Carrier's Whitelist"
-date: 2026-04-14
+author: "Sergey Istomin"
+date: "2026-04-14"
 description: "When you realize the internet is broken and nobody will tell you why. A practical guide to black-box filter reconstruction."
-image: "whitelist-probe/image.webp"
-tags: ["networking", "security", "reverse-engineering", "isp", "essay"]
+image: "image.webp"
+categories: [networking, security, reverse-engineering, isp, essay]
 ---
 
 My phone's hotspot stopped working properly. Not outright dead, but weirdly selective. Google loaded fine. My VPN didn't. Some news sites worked; others timed out. I rebooted, tried different DNS, toggled airplane mode — the usual ritual. Nothing helped.

@@ -1,6 +1,6 @@
 ---
 title: "How to Launch Local LLM Models with TGI Docker Containers"
-author: "Sergei Istomin"
+author: "Sergey Istomin"
 date: "2024-04-29"
 categories: [docker, tgi, llm, localy]
 image: "image.webp"

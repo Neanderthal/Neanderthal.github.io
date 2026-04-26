@@ -1,9 +1,25 @@
 project:
   type: website
   output-dir: _site
+  render:
+    - "!drafts/**"
+    - "!work_dairy/**"
+    - "!LLM_Promts/**"
+    - "!connect.md"
+    - "*"
 
 website:
-  title: "Sergei Istomin's place"
+  title: "Sergey Istomin"
+  description: "Senior Python Developer & Tech Lead — notes on code, systems, and security."
+  site-url: "https://neanderthal.github.io"
+  favicon: profile.jpg
+  open-graph:
+    image: profile.jpg
+    locale: en_US
+  twitter-card:
+    image: profile.jpg
+    creator: "@sergey_istomin"
+    card-style: summary_large_image
   navbar:
     right:
       - about.qmd
@@ -15,7 +31,10 @@ website:
         href: mailto:sergey.istomin@gmail.com
 format:
   html:
-    theme: superhero
+    theme:
+      light: cosmo
+      dark: darkly
     css: styles.css
+    toc: true
     include-after-body:
       - text: <script data-goatcounter="https://neanderthal.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

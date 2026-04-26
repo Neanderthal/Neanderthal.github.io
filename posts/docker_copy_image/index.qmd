@@ -1,6 +1,6 @@
 ---
 title: "Transferring Docker Images Between Servers"
-author: "Sergei Istomin"
+author: "Sergey Istomin"
 date: "2024-04-28"
 categories: [code, docker, ssh,]
 image: "image.webp"
