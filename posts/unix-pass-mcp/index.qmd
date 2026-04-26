@@ -1,0 +1,58 @@
+---
+title: "unix-pass-mcp: Letting AI Agents Touch Your Password Store — Carefully"
+date: "2026-04-27"
+categories: [security, mcp, python, gpg, tools]
+author: "Sergey Istomin"
+image: "image.webp"
+description: "A hardened MCP server for the Unix `pass` password manager. Read-only by default, with explicit capability gates, strict input validation, and an append-only audit log."
+---
+
+If you've ever used the Unix [`pass`](https://www.passwordstore.org/) password manager, you know it's beautifully Unix-y: just `gpg(1)`, the filesystem, and a thin bash wrapper. That same simplicity makes it tempting to expose to an AI agent — but the moment you do, you're handing a non-deterministic LLM a shell-shaped foot-gun.
+
+That's why I built **[unix-pass-mcp](https://github.com/Neanderthal/unix-pass-mcp)** — a typed, hardened Model Context Protocol server over the safe subset of `pass`. Read-only by default. Writes, key administration, and network ops behind explicit env opt-ins. No shell, no clipboard, no secrets in logs.
+
+## The Problem
+
+You want your AI assistant to:
+
+- Pull a credential into a browser MCP for a signup flow
+- Generate a password for a new account and store it back
+- Compute a TOTP code on demand
+- Audit which entries exist without decrypting them
+
+What you *don't* want is the model deciding to overwrite half your store because a poisoned tool result told it to.
+
+## How It's Gated
+
+The server exposes 24 tools across four capability tiers, each with its own env flag:
+
+1. **Read-only — always available.** `store_info`, `list`, `find`, `show`, `show_field`, `show_metadata`, `grep`, `otp`, `otp_uri`, `unlock_agent`. The expensive ones (`grep` decrypts the whole store) require explicit confirmation.
+2. **Writes — `PASS_MCP_ALLOW_WRITES=1`.** `insert`, `set_field`, `generate`, `mv`, `cp`, and friends. Passwords go in via stdin only — never argv — so they don't leak into process listings.
+3. **Git — `git_status` and `git_log` always; `git_pull` / `git_push` need `PASS_MCP_ALLOW_NETWORK=1`.** Pulls are `--ff-only`. Pushes are never `--force`.
+4. **Destructive — `PASS_MCP_ALLOW_DESTRUCTIVE=1`.** `init` and `reencrypt`, which re-encrypt the store to a new recipient set. There is no undo.
+
+Scope it further with `PASS_MCP_ALLOWED_PATHS="work/*,personal/notes/*"` and the agent literally cannot reach your banking entries — the allowlist is honoured by `grep` and `unlock_agent` too, so there are no scope escapes.
+
+## Security Posture
+
+- **No shell.** Every `pass` invocation goes through one chokepoint using `subprocess.run` with `shell=False` and an arg list. Audited by a `ruff S404` allowlist on a single file.
+- **Strict input validation.** Pass-names match a tight regex; no `..`, no leading `-`, no control chars.
+- **Stderr sanitization.** Anything between `-----BEGIN`/`-----END` markers is stripped before being raised back to the caller.
+- **Sensitive output flagged.** `show`, `generate`, `otp`, and `grep` carry `meta.sensitive = true` so MCP hosts can refuse to log or cache them.
+- **Append-only audit log.** Records pass-names only — never values, never grep patterns.
+- **Strict startup.** Refuses to start if `PASSWORD_STORE_UMASK` is weaker than `077` or the store directory is world-readable.
+
+The one real wart is **pinentry** — the MCP server can't pop a passphrase prompt itself, since `gpg` would hang on stdin. So you either configure a GUI pinentry in `~/.gnupg/gpg-agent.conf`, pre-warm the agent in a real terminal, or call the `unlock_agent` tool to bounce the prompt through `zenity`/`kdialog`. Either way, the LLM never sees the passphrase.
+
+## Honest Disclaimer
+
+The whole point of this server is to grant an LLM access to your secrets. The capability gates, path allowlist, and audit log reduce the *blast radius* of mistakes and prompt injection — they don't make it safe to point an unsupervised agent at a production credential store. With writes and network on, an agent that's been prompt-injected by a hostile webpage in a sibling browser MCP can absolutely overwrite or exfiltrate credentials within scope.
+
+I run mine read-only against a scoped subfolder, and only flip writes on when I'm actively running an agent through a signup flow.
+
+## Give It a Try
+
+346 unit tests, 45 real-GPG integration tests, Python 3.11 / 3.12 / 3.13 in CI, MIT-licensed:
+**[GitHub – Neanderthal/unix-pass-mcp](https://github.com/Neanderthal/unix-pass-mcp)**
+
+If you're already running an agent loop that combines a browser MCP with shell access, this is the bridge that lets you stop pasting passwords into chat.
