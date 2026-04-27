@@ -4,8 +4,11 @@ image: family.jpg
 about:
   template: marquee
   links:
+    - icon: broadcast
+      text: "Спазм мозга (Telegram channel)"
+      href: https://t.me/mind_cramp
     - icon: telegram
-      text: Telegram
+      text: Telegram (personal)
       href: https://t.me/sergey_istomin
     - icon: linkedin
       text: LinkedIn
@@ -15,7 +18,7 @@ about:
       href: mailto:sergey.istomin@gmail.com
 ---
 
-I'm **Sergey Istomin** from Saint Petersburg, Russia — a Senior Python Developer and Tech Lead with over a decade in software development, system integration, and IT consulting. I lead engineering teams and ship Python in production: FastAPI backends, cloud infrastructure on AWS and Azure, AI/LLM tooling (including MCP servers for AI agents), and security scanners for developer workstations. On the side I tinker with networking and reverse engineering — some of it ends up here as posts.
+I'm **Sergey Istomin** from Saint Petersburg, Russia — a Senior Python Developer and Tech Lead with over a decade in software development, system integration, and IT consulting. I lead engineering teams and ship Python in production: FastAPI backends, cloud infrastructure on AWS and Azure, AI/LLM tooling (including MCP servers for AI agents), and security scanners for developer workstations. On the side I tinker with networking and reverse engineering — some of it ends up here as posts, and the rough-draft version usually lands first in my Telegram channel **[Спазм мозга](https://t.me/mind_cramp)**.
 
 My family — my wife, two sons, and daughter — is my world. We bond over sports, especially swimming and skiing, and I cherish playful moments with my little princess. Together, we value education, tradition, and the pursuit of knowledge.
 

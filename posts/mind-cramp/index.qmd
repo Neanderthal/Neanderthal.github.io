@@ -1,0 +1,36 @@
+---
+title: "Спазм мозга: My Telegram Channel for Tech Brain-Cramps"
+date: "2026-04-27"
+categories: [meta, telegram, ai, security, tools]
+author: "Sergey Istomin"
+image: "image.webp"
+description: "A short note on my Telegram channel — a steady drip of MCP servers, AI agent news, security tools, self-hosting bookmarks, and the occasional book review."
+---
+
+A quick meta-post: I've been running a Telegram channel called **[Спазм мозга](https://t.me/mind_cramp)** ("Brain Cramp", `@mind_cramp`) since 2019. It's where I dump the things that catch my attention before they vanish — tool releases, papers, eclectic bookmarks, and short Russian-language announcements of whatever I've been hacking on.
+
+If you've followed any of my recent project posts (`unix-pass-mcp`, `telegram-search`, `whitelist-probe`, `security-audit`), the channel is the rough-draft companion. Rule of thumb: short notes appear on Telegram first, the long-form writeup lands here days later.
+
+## What's actually in there
+
+A rolling mix:
+
+- **My own tool releases** — short Russian-language announcements for projects I open-source. The polished version usually shows up here on the blog with the architecture and security posture spelled out.
+- **AI / agents news** — Claude Code, Cursor Automations, LangChain Deep Agents, the latest local-model drops (Qwen, Gemini, Llama). Mostly focused on agentic infrastructure rather than chat-assistant hype.
+- **Security tooling** — Bug Bounty kits, OSINT, hardware hacks (RaspyJack et al.), occasional CVE writeups.
+- **Self-hosting & open source** — Rust CLI tools, infra utilities, bookmarks for living a little less inside big-tech defaults.
+- **Off-topic detours** — book reviews, weird internet finds, things that genuinely cramp my brain. The channel name is a literal description.
+
+It's **Russian by default** — most of my readers are Russian-speaking infra and security folks — but tools and links work for everyone. If you read English-only, the GitHub repos linked from each post are usually self-explanatory.
+
+## Who it's for
+
+- People who want a pre-blog feed of what I'm currently building
+- Engineers who treat their Telegram saved-messages folder as a second brain and need raw material for it
+- Anyone who liked the security-audit / telegram-search / unix-pass-mcp posts and wants the next one before I get around to writing it up
+
+## Subscribe
+
+**[t.me/mind_cramp →](https://t.me/mind_cramp)**
+
+Broadcast-only, no comments, no paywalls. Unsubscribe is one tap and I won't take it personally.
