@@ -10,5 +10,6 @@ listing:
   filter-ui: false
   feed: true
 page-layout: full
-title-block-banner: "#2780E3"
+title-block-banner: hero.webp
+title-block-banner-color: "white"
 ---

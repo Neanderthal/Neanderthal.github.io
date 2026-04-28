@@ -4,24 +4,8 @@
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
 freeze: true
 
-# Use each post's `image:` as the banner background, with white text overlay
+# Use each post's `image:` as the banner background, with white text overlay.
+# Banner sizing + dark overlay live in styles.css and apply to all image
+# banners (homepage hero + posts).
 title-block-banner: image.webp
 title-block-banner-color: "white"
-
-# Posts-only banner sizing + dark overlay for text contrast.
-# Scoped here (not in styles.css) so the homepage solid-color banner
-# stays compact and unblended.
-include-in-header:
-  - text: |
-      <style>
-        .quarto-title-block .quarto-title-banner {
-          min-height: 320px;
-          background-color: rgba(0, 0, 0, 0.45) !important;
-          background-blend-mode: darken !important;
-        }
-        @media (min-width: 768px) {
-          .quarto-title-block .quarto-title-banner {
-            min-height: clamp(360px, 32vw, 480px);
-          }
-        }
-      </style>

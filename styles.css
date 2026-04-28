@@ -1,10 +1,22 @@
 /* Override Quarto's default banner positioning (top-left, repeat) so
    the background image is centered both axes and only shown once.
-   Applies to image banners; harmless on solid-color banners. */
+   Both homepage and post banners are image banners now; this also
+   adds the dark overlay needed for white text contrast and a min
+   height so the hero composition is visible without aggressive
+   vertical cropping. */
 .quarto-title-block .quarto-title-banner {
   background-position: center center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+  background-color: rgba(0, 0, 0, 0.45) !important;
+  background-blend-mode: darken !important;
+  min-height: 320px;
+}
+
+@media (min-width: 768px) {
+  .quarto-title-block .quarto-title-banner {
+    min-height: clamp(360px, 32vw, 480px);
+  }
 }
 
 /* Banner inner: vertically center text, give it breathing room. */
