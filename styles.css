@@ -1,35 +1,21 @@
-/* Post title banners with an image: center-crop the image and darken
-   slightly so the white title text stays readable on every post. */
-.quarto-title-banner[style*="background-image"] {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: rgba(0, 0, 0, 0.45);
-  background-blend-mode: darken;
+/* Override Quarto's default banner positioning (top-left, repeat) so
+   the background image is centered both axes and only shown once.
+   Applies to image banners; harmless on solid-color banners. */
+.quarto-title-block .quarto-title-banner {
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
 }
 
-/* All title banners: text vertically centered, modest baseline height. */
+/* Banner inner: vertically center text, give it breathing room. */
 .quarto-title-banner {
   display: flex;
   align-items: center;
   padding: 2rem 0;
 }
 
-/* Image banners: tall enough to show most of a 16:9 hero composition
-   without aggressive vertical cropping. Solid-color banners (homepage)
-   stay compact so they don't waste viewport. */
-.quarto-title-banner[style*="background-image"] {
-  min-height: 320px;
-}
-
-@media (min-width: 768px) {
-  .quarto-title-banner[style*="background-image"] {
-    min-height: clamp(360px, 32vw, 480px);
-  }
-}
-
-/* White text + shadow keeps the title readable on both the cosmo
-   primary-blue homepage banner and the darkened image post banners. */
+/* White text + shadow stays readable on both the blue homepage banner
+   and the darkened image post banners. */
 .quarto-title-banner .quarto-title h1.title,
 .quarto-title-banner .quarto-title .subtitle,
 .quarto-title-banner .quarto-title .description,
