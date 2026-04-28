@@ -8,12 +8,24 @@
   background-blend-mode: darken;
 }
 
-/* All title banners: a bit taller and centered. Applies to homepage
-   (theme-color banner) and post pages (image banner) alike. */
+/* All title banners: text vertically centered, modest baseline height. */
 .quarto-title-banner {
-  min-height: 240px;
   display: flex;
   align-items: center;
+  padding: 2rem 0;
+}
+
+/* Image banners: tall enough to show most of a 16:9 hero composition
+   without aggressive vertical cropping. Solid-color banners (homepage)
+   stay compact so they don't waste viewport. */
+.quarto-title-banner[style*="background-image"] {
+  min-height: 320px;
+}
+
+@media (min-width: 768px) {
+  .quarto-title-banner[style*="background-image"] {
+    min-height: clamp(360px, 32vw, 480px);
+  }
 }
 
 /* White text + shadow keeps the title readable on both the cosmo
