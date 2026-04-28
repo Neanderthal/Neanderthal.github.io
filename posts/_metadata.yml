@@ -9,3 +9,18 @@ freeze: true
 # banners (homepage hero + posts).
 title-block-banner: image.webp
 title-block-banner-color: "white"
+
+# Reactions + comments via Giscus (GitHub Discussions backend).
+# Generated at giscus.app for Neanderthal/Neanderthal.github.io.
+comments:
+  giscus:
+    repo: Neanderthal/Neanderthal.github.io
+    repo-id: R_kgDOLmUlgQ
+    category: General
+    category-id: DIC_kwDOLmUlgc4C76y2
+    mapping: pathname
+    reactions-enabled: true
+    loading: lazy
+    input-position: bottom
+    theme: preferred_color_scheme
+    language: en
