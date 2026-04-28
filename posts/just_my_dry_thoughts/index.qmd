@@ -3,7 +3,7 @@ title: "Software development as a mental illness"
 author: "Sergey Istomin"
 date: "2025-07-15"
 categories: [thoughts,]
-image: "image.png"
+image: "image.webp"
 ---
 
 

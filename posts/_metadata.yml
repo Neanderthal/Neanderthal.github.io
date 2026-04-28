@@ -4,5 +4,6 @@
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
 freeze: true
 
-# Enable banner style title blocks
-title-block-banner: true
+# Use each post's `image:` as the banner background, with white text overlay
+title-block-banner: image.webp
+title-block-banner-color: "white"

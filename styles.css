@@ -1,1 +1,34 @@
-/* css styles */
+/* Post title banners with an image: center-crop the image and darken
+   slightly so the white title text stays readable on every post. */
+.quarto-title-banner[style*="background-image"] {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.45);
+  background-blend-mode: darken;
+}
+
+/* All title banners: a bit taller and centered. Applies to homepage
+   (theme-color banner) and post pages (image banner) alike. */
+.quarto-title-banner {
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+}
+
+/* White text + shadow keeps the title readable on both the cosmo
+   primary-blue homepage banner and the darkened image post banners. */
+.quarto-title-banner .quarto-title h1.title,
+.quarto-title-banner .quarto-title .subtitle,
+.quarto-title-banner .quarto-title .description,
+.quarto-title-banner .quarto-title-meta,
+.quarto-title-banner .quarto-title-meta a,
+.quarto-title-banner .quarto-categories .quarto-category {
+  color: #fff !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+}
+
+.quarto-title-banner .quarto-categories .quarto-category {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.35);
+}
