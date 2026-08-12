@@ -61,7 +61,7 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
     - Created backend services powering chatbot functionality and performance.  
         - *Technologies:* FastAPI, PostgreSQL, Redis  
     - Developed a module for registering and managing network equipment: device inventory and onboarding, storage of device attributes and configurations, automated interaction with devices over the network, and centralized management exposed through a REST API.
-        - *Technologies:* Python, Django, Django REST Framework, PostgreSQL, SNMP, SSH (netmiko), NETCONF
+        - *Technologies:* Python, Django, Django REST Framework, PostgreSQL, SNMP, SSH
 
 #### Positive Technologies Inc.  
 - **Web site:** [www.ptsecurity.ru](http://www.ptsecurity.ru)
