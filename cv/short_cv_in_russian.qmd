@@ -51,9 +51,9 @@ about:
 
 ### Профессиональный опыт
 
-#### Tochka
+#### Raiffeisen
 
-- **Веб-сайт:** [tochka.com](https://tochka.com)
+- **Веб-сайт:** [raiffeisen.com](https://www.raiffeisen.com)
 - **Отрасль:**
   - Разработка программного обеспечения
   - Банковская сфера

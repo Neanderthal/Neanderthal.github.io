@@ -44,8 +44,8 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
 ## Work Experience
 ### Professional Experience
 
-#### Tochka  
-- **Website:** [tochka.com](https://tochka.com)  
+#### Raiffeisen
+- **Website:** [raiffeisen.com](https://www.raiffeisen.com)
 - **Industry:** Software Development, Banking  
 - **Position:** Senior Python Developer / ML Engineer  
 - **Duration:** March 2024 – Present (2 years 5 months)  
