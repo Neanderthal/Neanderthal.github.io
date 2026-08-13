@@ -6,6 +6,7 @@ project:
     - "!work_dairy/**"
     - "!LLM_Promts/**"
     - "!connect.md"
+    - "!cv/short_cv_in_russian.qmd"
     - "*"
 
 website:

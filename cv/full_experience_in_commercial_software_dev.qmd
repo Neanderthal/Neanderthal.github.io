@@ -15,22 +15,26 @@ about:
 ---
 ### My experience in commercial software development from scratch to the present days
 
-#### Tochka  
-- **Duration:** March 2024 – Present (1 year 3 months)  
-- **Website:** [www.tochka.com](www.tochka.com)  
-- **Sector** Software Development, Banking  
+#### Tochka
+- **Duration:** March 2024 – Present (2 years 5 months)
+- **Website:** [tochka.com](https://tochka.com)
+- **Sector** Software Development, Banking
 - **Senior Python Developer / ML Engineer  **
-	- Took a part in development of an internal portal. Django, PostgreSQL, Celery, Kubernetes
-	- Developed a chatbot based on an LLM model using a Retrieval-Augmented Generation (RAG) architecture.  
-		- *Technologies:* Python, LangChain, LlamaIndex, Transformers, PgVector  
-	 - Built a CI/CD pipeline to automate deployment and integration processes for the chatbot.  
-		- *Technologies:* GitLab CI/CD, Docker, Kubernetes  
-	- Created backend services to support chatbot functionality and performance.  
-	  - *Technologies:* FastAPI, PostgreSQL, Redis  
+	- Developed an internal corporate portal from the ground up. Django, PostgreSQL, Celery, Kubernetes
+	- Developed a chatbot based on an LLM model using a Retrieval-Augmented Generation (RAG) architecture.
+		- *Technologies:* Python, LangChain, LlamaIndex, Transformers, PgVector
+	 - Built a CI/CD pipeline to automate deployment and integration processes for the chatbot.
+		- *Technologies:* GitLab CI/CD, Docker, Kubernetes
+	- Created backend services to support chatbot functionality and performance.
+	  - *Technologies:* FastAPI, PostgreSQL, Redis
+	- Developed a module for registering and managing network equipment: device inventory and onboarding, storage of device attributes and configurations, automated interaction with devices over the network, and centralized management exposed through a REST API.
+		- *Technologies:* Python, Django, Django REST Framework, PostgreSQL, SNMP, SSH
+	- Developed a framework for benchmarking LLM inference speed.
+		- *Technologies:* PyTorch, Transformers, custom benchmarking tools
 
 #### Positive Technologies Inc.
 - **Duration:** February 2023 – April 2024
-- **Location:** St. Petersburg, [www.ptsecurity.ru](http://www.ptsecurity.ru)
+- **Location:** [www.ptsecurity.ru](http://www.ptsecurity.ru)
 - **Sector:** IT, System Integration, Internet
   - Software development
   - System integration, automation of technological and business processes, IT-consulting
@@ -80,7 +84,7 @@ about:
   - System integration, automation of technological and business processes, IT consulting
 - **Senior Python developer/team leader**.
   - Worked on cloud accounting and HR accounting projects for budget organizations, involving implementation in different regions of the country.
-  - Hired and managed a distributed team in St. Petersburg, Novosibirsk and Khabarovsk, ensuring compliance with Agile practices and controlling the development process.
+  - Hired and managed a distributed team across multiple regions, ensuring compliance with Agile practices and controlling the development process.
   - Conducted interviews, hired developers, organized developer training, provided support and implementation of the product in different regions.
   - Used Python, M3 framework, Django, DRF, Postgres, Celery RabbitMQ technologies
 
@@ -111,7 +115,6 @@ about:
 ### Teaching Experience
 
 #### Saint Petersburg State University of Industrial Technologies and Design
-- **Location:** Saint Petersburg
 - **Duration:** 2006, 2007, 2008
 - **Position:** Lecturer
 - As a lecturer at Saint Petersburg State University of Industrial Technologies and Design, I developed and delivered a comprehensive course on CSS/HTML/JavaScript layout for 5th-year students. My responsibilities included:

@@ -18,15 +18,13 @@ about:
 # Sergey Istomin
 Senior Python Developer/Tech Lead  
 
-**Contact:**  
-- Phone: +7 (911) 9125372  
+**Contact:**
 - Email: sergey.istomin@gmail.com *(Preferred)*
 - Telegram: [istomin_sergey](https://t.me/sergey_istomin)
 
-**Availability:**  
-- Not ready to relocate  
-- Ready for rare business trips  
-- Desired Position: Senior Python Developer/Tech Lead  
+**Availability:**
+- Open to remote work
+- Desired Position: Senior Python Developer/Tech Lead
 
 ## Summary
 Experienced Senior Python Developer and Tech Lead with over 10 years of expertise in software development, system integration, and IT consulting. Proficient in Python, Django, and various cloud technologies including AWS and Azure. Proven track record in managing teams, implementing Agile practices, and delivering high-quality solutions.
@@ -37,7 +35,7 @@ Experienced Senior Python Developer and Tech Lead with over 10 years of expertis
 - Languages: English (Upper Intermediate), Russian (Native)
    
 ## Education
-- St. Petersburg State University of Aerospace Instrumentation, St. Petersburg, Russia
+- St. Petersburg State University of Aerospace Instrumentation
 Degree: Master's degree in Computer Science and Management in Technical Systems, 2016
 
 - Peter the Great St. Petersburg Polytechnic University (Spbspu)
@@ -62,6 +60,8 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
         - *Technologies:* FastAPI, PostgreSQL, Redis  
     - Developed a module for registering and managing network equipment: device inventory and onboarding, storage of device attributes and configurations, automated interaction with devices over the network, and centralized management exposed through a REST API.
         - *Technologies:* Python, Django, Django REST Framework, PostgreSQL, SNMP, SSH
+    - Developed a framework for benchmarking LLM inference speed.
+        - *Technologies:* PyTorch, Transformers, custom benchmarking tools
 
 #### Positive Technologies Inc.  
 - **Web site:** [www.ptsecurity.ru](http://www.ptsecurity.ru)
@@ -108,7 +108,7 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
 - **Duration:** January 2016 – March 2019 (3 years 3 months)
 - **Key Responsibilities:**
   - Led projects focusing on cloud accounting and personnel accounting for budgetary organizations, ensuring seamless implementation across multiple regions.
-  - Managed a distributed team spanning St. Petersburg, Novosibirsk, and Khabarovsk, fostering adherence to Agile practices and overseeing the development process.
+  - Managed a distributed team across multiple regions, fostering adherence to Agile practices and overseeing the development process.
 
 ## Additional Information
 
