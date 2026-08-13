@@ -26,7 +26,7 @@ website:
       - about.qmd
       - icon: broadcast
         href: https://t.me/mind_cramp
-        aria-label: "Спазм мозга — Telegram channel"
+        aria-label: "Mind Cramp — Telegram channel"
       - icon: telegram
         href: https://t.me/sergey_istomin
         aria-label: "Telegram (personal)"
