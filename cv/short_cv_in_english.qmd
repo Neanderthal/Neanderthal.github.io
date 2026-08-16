@@ -50,7 +50,7 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
 - **Position:** Senior Python Developer / ML Engineer  
 - **Duration:** March 2024 – June 2026 (2 years 4 months)  
 - **Key Achievements:**  
-    - Developed an internal corporate portal from the ground up.  
+    - Took a part in the development of an internal corporate portal.  
         - *Technologies:* Django, PostgreSQL, Celery, Kubernetes  
     - Built an LLM-based chatbot using a Retrieval-Augmented Generation (RAG) architecture.  
         - *Technologies:* Python, LangChain, LlamaIndex, Transformers, PgVector  
