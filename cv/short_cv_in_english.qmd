@@ -48,7 +48,7 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
 - **Website:** [raiffeisen.com](https://www.raiffeisen.com)
 - **Industry:** Software Development, Banking  
 - **Position:** Senior Python Developer / ML Engineer  
-- **Duration:** March 2024 – Present (2 years 5 months)  
+- **Duration:** March 2024 – June 2026 (2 years 4 months)  
 - **Key Achievements:**  
     - Developed an internal corporate portal from the ground up.  
         - *Technologies:* Django, PostgreSQL, Celery, Kubernetes  

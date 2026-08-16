@@ -16,7 +16,7 @@ about:
 ### My experience in commercial software development from scratch to the present days
 
 #### Raiffeisen
-- **Duration:** March 2024 – Present (2 years 5 months)
+- **Duration:** March 2024 – June 2026 (2 years 4 months)
 - **Website:** [raiffeisen.com](https://www.raiffeisen.com)
 - **Sector** Software Development, Banking
 - **Senior Python Developer / ML Engineer  **
