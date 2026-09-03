@@ -7,6 +7,7 @@ project:
     - "!LLM_Promts/**"
     - "!connect.md"
     - "!cv/short_cv_in_russian.qmd"
+    - "!cv/short_cv_source.typ"
     - "*"
 
 website:
