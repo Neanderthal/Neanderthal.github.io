@@ -20,7 +20,7 @@ Senior Python Developer/Tech Lead
 
 **Contact:**
 - Email: sergey.istomin@gmail.com *(Preferred)*
-- Telegram: [istomin_sergey](https://t.me/sergey_istomin)
+- Telegram: [sergey_istomin](https://t.me/sergey_istomin)
 
 **Availability:**
 - Open to remote work
@@ -69,7 +69,7 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
   - Software Development
   - System Integration, Technological and Business Processes Automation, IT Consulting
 - **Position:** Senior Python Developer
-- **Duration:** February 2023 – April 2024 
+- **Duration:** February 2023 – March 2024 
 - **Key Achievements:**
   - Participated in the development of the Network Attack Discovery (NAD) service, leveraging technologies such as Django, Celery, Postgres, and ElasticSearch.
   - Implemented efficient logging and metrics transfer mechanisms using Carbon/Graphite/Grafana.
@@ -82,7 +82,7 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
 - **Web site:** [www.quantumsoft.pro](https://www.quantumsoft.pro)
 - **Industry:** IT, System Integration, Internet
 - **Position:** Senior Python Developer
-- **Duration:** July 2021 – September 2022 (1 year 3 months)
+- **Duration:** July 2021 – August 2022 (1 year 2 months)
 - **Key Responsibilities and Achievements:**
   - Contributed significantly to a project for Korn Ferry, focusing on developing an ML-based recommendation system.
   - Developed services to access ML on the MS Azure platform, utilizing technologies such as Azure VM, Azure Functions, Service Bus, Eventgrid, Terraform, Python-asyncio, fastapi, and pydantic.
@@ -92,7 +92,7 @@ Degree: Bachelor's degree in Computer Science and Management in Technical System
 - **Industry:** IT, System Integration, Internet
   - System Integration, Technological and Business Processes Automation, IT Consulting
 - **Position:** Senior Python Developer
-- **Duration:** April 2019 – July 2021 (2 years 4 months)
+- **Duration:** March 2019 – June 2021 (2 years 4 months)
 - **Key Contributions:**
   - Participated in multiple projects focusing on leveraging cutting-edge technologies:
     - Participated an AWS-based project for Audigent Inc., involving ML models and scrapy for page topic calculation.

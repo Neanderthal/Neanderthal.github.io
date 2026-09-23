@@ -73,18 +73,18 @@ Senior Python Developer and Tech Lead, 10+ years in backend, microservices and h
   - Built a framework for benchmarking LLM inference speed. #tech[PyTorch, Transformers]
 ]
 
-#job("Positive Technologies", "Senior Python Developer", "Feb 2023 – Apr 2024")[
+#job("Positive Technologies", "Senior Python Developer", "Feb 2023 – Mar 2024")[
   - Participated in the Network Attack Discovery (NAD) service. #tech[Django, Celery, PostgreSQL, ElasticSearch]
   - Refactored legacy synchronous modules to asyncio, significantly improving throughput; implemented sync/async interop via message queues and integrated process-based scanning tools into the pipeline. #tech[Python, asyncio, multiprocessing]
   - Set up logging and metrics delivery (Carbon/Graphite/Grafana); reworked the OAuth-based auth system.
 ]
 
-#job("Quantum Soft", "Senior Python Developer", "Jul 2021 – Sep 2022")[
+#job("Quantum Soft", "Senior Python Developer", "Jul 2021 – Aug 2022")[
   - Project for Korn Ferry — an ML-based recommendation system for candidate evaluation.
   - Built services exposing ML models via API on Microsoft Azure; owned cloud integrations and infrastructure-as-code. #tech[Azure, Service Bus, Event Grid, Terraform, FastAPI, asyncio, pydantic]
 ]
 
-#job("EPAM Systems", "Senior Python Developer", "Apr 2019 – Jul 2021")[
+#job("EPAM Systems", "Senior Python Developer", "Mar 2019 – Jun 2021")[
   - Audigent (adtech): ML models and web scraping for web-page topic classification. #tech[Python, AWS, Scrapy]
   - Merck (pharma): data collection and preparation for ML pipelines on AWS Lambda. #tech[Python, Go, Docker]
   - Scenario-based load-testing infrastructure for a European content provider. #tech[Python, asyncio, Docker, Nomad, RabbitMQ]

@@ -33,7 +33,7 @@ about:
 		- *Technologies:* PyTorch, Transformers, custom benchmarking tools
 
 #### Positive Technologies Inc.
-- **Duration:** February 2023 – April 2024
+- **Duration:** February 2023 – March 2024
 - **Location:** [www.ptsecurity.ru](http://www.ptsecurity.ru)
 - **Sector:** IT, System Integration, Internet
   - Software development
@@ -46,7 +46,7 @@ about:
     - *Technologies:* Python, asyncio, multiprocessing, message queues
     
 #### Quantum Soft Ltd. 
-- **Duration:** July 2021 - September 2022 (1 year 3 months)
+- **Duration:** July 2021 - August 2022 (1 year 2 months)
 - **Sector:** IT, Systems Integration, Internet
 - **Senior Python Developer**
   - Participated in a recruiting project for Korn Ferry, focusing on developing an ML-based recommendation system for evaluating candidates.
@@ -54,7 +54,7 @@ about:
   - Technologies used included Azure VM, Azure Functions, Service Bus, Eventgrid, Terraform, Python-asyncio, fastapi, and pydantic.
 
 #### EPAM Systems Inc. 
-- **Duration:** April 2019 - July 2021 (2 years 4 months)
+- **Duration:** March 2019 - June 2021 (2 years 4 months)
 - **Location:** [www.epam-group.ru](http://www.epam-group.ru)
 - **Sector:** IT, Systems Integration, Internet
   - System integration, automation of technological and business processes, IT consulting
