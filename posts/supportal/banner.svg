@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#04070e"/>
+      <stop offset="0.55" stop-color="#070d1a"/>
+      <stop offset="1" stop-color="#0a1424"/>
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#13294a" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#0a1424" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bubble" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f2135"/>
+      <stop offset="1" stop-color="#0b1626"/>
+    </linearGradient>
+    <linearGradient id="outBubble" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#36d0ff"/>
+      <stop offset="1" stop-color="#1f74e0"/>
+    </linearGradient>
+    <linearGradient id="bridge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#36d0ff"/>
+      <stop offset="0.5" stop-color="#2a9bff"/>
+      <stop offset="1" stop-color="#1f74e0"/>
+    </linearGradient>
+    <radialGradient id="tg" cx="0.4" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="#3ab6ff"/>
+      <stop offset="1" stop-color="#1668c8"/>
+    </radialGradient>
+    <filter id="glowS" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowL" x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="16" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect width="1280" height="720" fill="url(#centerGlow)"/>
+
+  <!-- circuit traces -->
+  <g stroke="#2d6ea6" stroke-width="1.5" fill="none" opacity="0.22" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="0,120 150,120 190,160 330,160"/>
+    <polyline points="0,300 90,300 130,260 250,260"/>
+    <polyline points="0,560 180,560 220,600 360,600"/>
+    <polyline points="1280,150 1120,150 1080,110 940,110"/>
+    <polyline points="1280,330 1160,330 1120,370 1000,370"/>
+    <polyline points="1280,580 1100,580 1060,540 930,540"/>
+    <polyline points="640,40 640,110 600,150 600,210"/>
+    <polyline points="650,690 650,620 690,580 690,520"/>
+  </g>
+  <g fill="#38b6ff" opacity="0.5">
+    <circle cx="330" cy="160" r="4"/><circle cx="250" cy="260" r="4"/><circle cx="360" cy="600" r="4"/>
+    <circle cx="940" cy="110" r="4"/><circle cx="1000" cy="370" r="4"/><circle cx="930" cy="540" r="4"/>
+    <circle cx="600" cy="210" r="4"/><circle cx="690" cy="520" r="4"/>
+  </g>
+
+  <!-- hexagons -->
+  <g stroke="#2a89c9" stroke-width="1.5" fill="none" opacity="0.16">
+    <polygon points="140,420 160,431 160,453 140,464 120,453 120,431"/>
+    <polygon points="1130,240 1150,251 1150,273 1130,284 1110,273 1110,251"/>
+    <polygon points="1050,470 1066,479 1066,497 1050,506 1034,497 1034,479"/>
+    <polygon points="220,170 236,179 236,197 220,206 204,197 204,179"/>
+  </g>
+
+  <!-- faint binary -->
+  <g font-family="monospace" font-size="15" fill="#3a7fb5" opacity="0.13">
+    <text x="60" y="210">01001101</text>
+    <text x="90" y="470">1100101</text>
+    <text x="300" y="90">010110</text>
+    <text x="1040" y="180">10110101</text>
+    <text x="1080" y="470">0110</text>
+    <text x="1000" y="620">10011</text>
+  </g>
+
+  <!-- ===== left: chat widget ===== -->
+  <g filter="url(#glowS)" transform="translate(150,215)">
+    <rect x="0" y="0" width="330" height="250" rx="22" fill="url(#bubble)" stroke="#35d0ff" stroke-width="2.5"/>
+    <!-- header -->
+    <path d="M0,22 a22,22 0 0 1 22,-22 h286 a22,22 0 0 1 22,22 v34 h-330 z" fill="#15314f"/>
+    <circle cx="28" cy="28" r="8" fill="#36d0ff"/>
+    <rect x="48" y="22" width="120" height="12" rx="6" fill="#6aa8cf" opacity="0.6"/>
+    <!-- incoming bubble -->
+    <rect x="24" y="86" width="180" height="40" rx="14" fill="#13293f"/>
+    <rect x="42" y="99" width="120" height="8" rx="4" fill="#6aa8cf" opacity="0.55"/>
+    <!-- outgoing bubble -->
+    <rect x="126" y="140" width="180" height="40" rx="14" fill="url(#outBubble)"/>
+    <rect x="146" y="153" width="120" height="8" rx="4" fill="#eaf7ff" opacity="0.85"/>
+    <!-- input row -->
+    <rect x="24" y="200" width="230" height="30" rx="15" fill="#0c1a2b" stroke="#2a4a68" stroke-width="1.5"/>
+    <circle cx="288" cy="215" r="17" fill="url(#outBubble)"/>
+    <path d="M281,215 l14,-6 -5,6 5,6 z" fill="#eaf7ff"/>
+  </g>
+
+  <!-- ===== bridge ===== -->
+  <g>
+    <line x1="500" y1="355" x2="880" y2="355" stroke="url(#bridge)" stroke-width="12" opacity="0.35" filter="url(#glowL)" stroke-linecap="round"/>
+    <line x1="500" y1="355" x2="880" y2="355" stroke="#9ce6ff" stroke-width="2.5" opacity="0.9" stroke-linecap="round"/>
+    <!-- flowing message bubbles with gold accents -->
+    <g filter="url(#glowS)">
+      <g transform="translate(560,355)">
+        <rect x="-18" y="-15" width="36" height="26" rx="9" fill="#0c1a2b" stroke="#ffb347" stroke-width="2"/>
+        <path d="M-6,11 l0,9 10,-9 z" fill="#0c1a2b" stroke="#ffb347" stroke-width="2"/>
+        <circle cx="-7" cy="-2" r="2.3" fill="#ffc155"/><circle cx="1" cy="-2" r="2.3" fill="#ffc155"/><circle cx="9" cy="-2" r="2.3" fill="#ffc155"/>
+      </g>
+      <g transform="translate(690,355)">
+        <rect x="-20" y="-16" width="40" height="29" rx="10" fill="#0c1a2b" stroke="#ffc155" stroke-width="2.2"/>
+        <path d="M-7,13 l0,10 11,-10 z" fill="#0c1a2b" stroke="#ffc155" stroke-width="2.2"/>
+        <circle cx="-8" cy="-2" r="2.6" fill="#ffd27a"/><circle cx="0" cy="-2" r="2.6" fill="#ffd27a"/><circle cx="8" cy="-2" r="2.6" fill="#ffd27a"/>
+      </g>
+      <g transform="translate(820,355)">
+        <rect x="-18" y="-15" width="36" height="26" rx="9" fill="#0c1a2b" stroke="#ffb347" stroke-width="2"/>
+        <path d="M-6,11 l0,9 10,-9 z" fill="#0c1a2b" stroke="#ffb347" stroke-width="2"/>
+        <circle cx="-7" cy="-2" r="2.3" fill="#ffc155"/><circle cx="1" cy="-2" r="2.3" fill="#ffc155"/><circle cx="9" cy="-2" r="2.3" fill="#ffc155"/>
+      </g>
+    </g>
+    <!-- small travelling dots -->
+    <g fill="#8fe3ff">
+      <circle cx="530" cy="355" r="3"/><circle cx="625" cy="355" r="3"/><circle cx="755" cy="355" r="3"/><circle cx="860" cy="355" r="3"/>
+    </g>
+  </g>
+
+  <!-- ===== right: telegram plane ===== -->
+  <g filter="url(#glowL)" transform="translate(1010,360)">
+    <circle cx="0" cy="0" r="108" fill="url(#tg)"/>
+    <circle cx="0" cy="0" r="108" fill="none" stroke="#7fd6ff" stroke-width="2" opacity="0.6"/>
+    <!-- paper plane (Telegram), scaled from 24px viewBox, centered -->
+    <g transform="translate(-66,-66) scale(5.5)" fill="#f2fbff">
+      <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+    </g>
+  </g>
+</svg>

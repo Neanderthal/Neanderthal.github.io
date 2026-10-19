@@ -1,0 +1,70 @@
+---
+title: "Supportal: Your Users Chat on the Web, Your Team Answers in Telegram"
+date: "2026-10-18"
+categories: [python, telegram, fastapi, self-hosted, tools]
+author: "Sergey Istomin"
+image: "image.webp"
+description: "A self-hosted relay that puts a chat widget on your web app and sends the conversation to a Telegram group your team already watches. FastAPI + aiogram, MIT-licensed."
+---
+
+The common Telegram support setup is the mirror image of how a lot of small teams actually work. The customer messages your bot in Telegram, and your operators answer from a vendor web console — Chatwoot, Jivo, Crisp. But if your team already keeps a Telegram group open all day, that web console is one more dashboard to watch for no reason.
+
+I built **[Supportal](https://github.com/Neanderthal/Supportal)** to do the opposite: your users chat from a widget inside your web app, and your team answers from a Telegram group. No vendor console, no SaaS, no customer data leaving your infrastructure — just one small FastAPI service you run yourself.
+
+## The Problem
+
+Say you're a small team that already runs on Telegram, and you want live chat on your web app without paying a SaaS per seat, without routing customer conversations through a third party, and without asking operators to babysit yet another inbox.
+
+Telegram is built for the inverse case, so getting "user in the browser, operator in Telegram" to work takes a bit of plumbing: bridge a browser widget to a Telegram forum group, keep both sides in sync, and do it without exposing a public webhook or welding the bridge to your product. That plumbing is what Supportal is.
+
+## How It Works
+
+Supportal is a relay between a browser widget and a Telegram forum supergroup. Each user gets their own forum topic — one topic is one ticket. Operators reply in the topic; `/close` closes the ticket, `/clear` wipes both sides, `/help` lists the commands.
+
+```
+ browser user                                  support operator
+┌─────────────┐   POST /v1/widget/send      ┌──────────────────┐
+│  💬 widget   │ ──────────────────────────▶ │ Telegram forum   │
+│             │   GET /v1/widget/messages   │ 1 topic = 1 user │
+└──────┬──────┘      (poll ~4s / SSE)        └────────┬─────────┘
+       │                                              │ reply / edit / /del
+       ▼              ┌───────────┐                   │ (long-polling)
+  your web app ──────▶│ supportal │◀─── getUpdates ───┘
+  (reverse proxy)     │ FastAPI   │
+                      │ + SQLite  │  messages feed = source of truth
+                      └───────────┘
+```
+
+Two paths share the one relay:
+
+- **Contour A (primary).** The browser talks to the relay directly through your reverse proxy, authorized by a short-lived HMAC token your product mints. The `user_ref` is resolved server-side, so the browser can't spoof another user. Replies come back by polling every few seconds, or over SSE if you turn it on.
+- **Contour B (optional).** Your product posts messages to the relay and gets replies through a signed HTTP callback, with an outbox and backoff retry for users who've gone offline. It stays dormant unless you set `SUPPORT_PRODUCT_CALLBACK_URL`.
+
+The message feed in the relay's database is the source of truth. Operator edits and recalls propagate back to the widget, and the feed survives a page reload, so a user who refreshes doesn't lose the thread. And Supportal talks to Telegram over long-polling, egress-only — there's no public inbound webhook to stand up or defend.
+
+## What You Actually Integrate
+
+The relay knows nothing about your product. It sees an opaque `user_ref` and an HTTP contract, so wiring it in is a thin adapter: mint a token for the logged-in user, and vendor the widget bundle behind your reverse proxy. The widget itself is vanilla JS and CSS — one `<script>`, one `<link>`, no React and no build step.
+
+Everything past the core is off by default and gated behind a flag: file attachments, CSAT ratings, read receipts, business-hours auto-replies, an LLM auto-answer from a small markdown KB, Prometheus `/metrics`, GDPR export/delete, and English/Russian locale packs. You enable only what you need, from the environment or a `settings.yaml` the service re-reads by mtime — so you can toggle a feature without a restart.
+
+## One Caveat Up Front
+
+Run exactly one process. The Telegram long-poller, the outbox retry loop, and the in-memory rate limiter are per-process singletons — two of them polling Telegram at once earns you a `409 Conflict`, and the outbox would deliver every reply twice. So you scale this service up, not out. If you need fault tolerance on storage, point `SUPPORT_DB_URL` at Postgres; the relay still runs as a single process, and Postgres shares the store only.
+
+That thinness is deliberate. The whole operator experience lives in Telegram by design, so your team doesn't learn a new tool — they just answer in a topic.
+
+## Give It a Try
+
+The offline demo needs no bot and no secrets. It runs the widget and a mock Telegram topic side by side, so you can watch a message cross the relay before you ever touch BotFather:
+
+```bash
+uv run python examples/demo/demo_server.py
+# http://localhost:8600          user page with the widget
+# http://localhost:8600/operator mock "Telegram topic" to reply from
+```
+
+FastAPI + aiogram, SQLite by default (Postgres optional), offline tests, ruff-clean, CI on Python 3.12 and 3.13, MIT-licensed:
+**[GitHub – Neanderthal/Supportal](https://github.com/Neanderthal/Supportal)**
+
+If your team already runs on Telegram, this is the half that was missing — the customer-facing side of the conversation, with no second dashboard to keep open.
