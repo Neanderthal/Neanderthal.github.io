@@ -34,6 +34,15 @@ Experienced Senior Python Developer and Tech Lead with over 10 years of expertis
 - Python; PostgreSQL; Git; Linux; Docker; Redis; RabbitMQ; Django; HTML; Flask; Unit Testing; GitLab; Jira; MongoDB; REST; Kafka; Elasticsearch, AWS Services, Azure services.
 - Languages: English (Upper Intermediate), Russian (Native)
    
+## Selected Projects & R&D
+Recent independent work: self-hosted LLM tooling for Russian-language and regulated technical domains, where data must stay inside the customer's network.
+
+- **Dali** — on-prem RCA diagnostics for industrial equipment. Structured root-cause reports (causes with evidence, Ishikawa / 5-Why, actions) over a RAG pipeline; data stays inside the partner's network, with a pilot on an assembly line.
+    - *Technologies:* FastAPI, LiteLLM, Ollama + bge-m3, PostgreSQL + pgvector, Docker
+- **Rubezh** — self-hostable LLM guardrail for the Russian / technical domain. Screens input for prompt injection, jailbreaks and secret exfiltration without flagging legitimate safety-manual vocabulary; swappable rules / LLM-judge / classifier backends behind an OpenAI-compatible API.
+    - *Technologies:* Python, FastAPI, LiteLLM, Docker
+- **Open source:** [Supportal](https://github.com/Neanderthal/Supportal) (web-chat to Telegram relay), [mcp-qemu-vm](https://github.com/Neanderthal/mcp-qemu-vm) and [unix-pass-mcp](https://github.com/Neanderthal/unix-pass-mcp) (MCP servers), [security-audit](https://github.com/Neanderthal/security-audit) (workstation CVE scanner).
+
 ## Education
 - St. Petersburg State University of Aerospace Instrumentation
 Degree: Master's degree in Computer Science and Management in Technical Systems, 2016

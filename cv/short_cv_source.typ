@@ -5,17 +5,17 @@
 #let muted = rgb("#666666")
 
 #set document(title: "Sergey Istomin — CV", author: "Sergey Istomin")
-#set page(paper: "a4", margin: (x: 1.45cm, top: 1.0cm, bottom: 0.8cm), numbering: none)
-#set text(font: "Roboto", size: 9.0pt, fill: rgb("#232323"))
-#set par(justify: false, leading: 0.5em)
+#set page(paper: "a4", margin: (x: 1.45cm, top: 0.85cm, bottom: 0.7cm), numbering: none)
+#set text(font: "Roboto", size: 8.7pt, fill: rgb("#232323"))
+#set par(justify: false, leading: 0.48em)
 #show link: set text(fill: accent)
 
 #let section(title) = {
-  v(4pt)
+  v(2.5pt)
   text(size: 10.5pt, weight: "bold", fill: accent)[#upper(title)]
   v(1.5pt)
   line(length: 100%, stroke: 0.6pt + accent.lighten(35%))
-  v(2.5pt)
+  v(2pt)
 }
 
 #let tech(t) = text(size: 8pt, style: "italic", fill: muted)[  #t]
@@ -27,10 +27,10 @@
   )
   v(1pt)
   body
-  v(2.5pt)
+  v(1.5pt)
 }
 
-#set list(marker: text(fill: accent)[•], indent: 3pt, spacing: 3pt, body-indent: 4pt)
+#set list(marker: text(fill: accent)[•], indent: 3pt, spacing: 2pt, body-indent: 4pt)
 
 // ---------------- Header ----------------
 #text(size: 23pt, weight: "bold", fill: accent)[Sergey Istomin]
@@ -47,17 +47,16 @@
 
 // ---------------- Summary ----------------
 #section[Summary]
-Senior Python Developer and Tech Lead, 10+ years in backend, microservices and high-load systems. Strong in Python / Django / FastAPI, cloud (AWS, Azure), and LLM/RAG & ML infrastructure; experienced leading distributed teams and shipping production-ready solutions.
+Senior Python Developer and Tech Lead, 10+ years in backend, microservices and high-load systems. Strong in Python / Django / FastAPI, cloud (AWS, Azure) and LLM / RAG / ML infrastructure; led distributed teams and shipped production solutions.
 
 // ---------------- Skills ----------------
 #section[Skills]
-#grid(columns: (auto, 1fr), row-gutter: 3.5pt, column-gutter: 10pt,
-  text(weight: "bold")[Core], [Python, asyncio, REST],
+#grid(columns: (auto, 1fr), row-gutter: 2.5pt, column-gutter: 10pt,
+  text(weight: "bold")[Core], [Python, asyncio, REST, Pytest, unit & integration testing],
   text(weight: "bold")[Web / API], [Django, FastAPI, Flask, Django REST Framework],
   text(weight: "bold")[Data & messaging], [PostgreSQL, Redis, MongoDB, Elasticsearch, ClickHouse, Kafka, RabbitMQ, Celery],
   text(weight: "bold")[DevOps & Cloud], [Docker, Kubernetes, GitLab CI/CD, Linux, Git, AWS, Azure, Terraform],
   text(weight: "bold")[ML / LLM], [LLM, RAG, LangChain, LlamaIndex, PyTorch, Transformers],
-  text(weight: "bold")[Testing], [Pytest, unit & integration testing],
   text(weight: "bold")[Languages], [English (Upper-Intermediate), Russian (Native)],
 )
 
@@ -95,9 +94,16 @@ Senior Python Developer and Tech Lead, 10+ years in backend, microservices and h
   - Managed a distributed team; established Agile practices, planning and code review. #tech[Python, Django, DRF, PostgreSQL]
 ]
 
+// ---------------- Projects ----------------
+#section[Selected Projects]
+
+- *Dali* #text(fill: muted)[— on-prem RCA diagnostics for industry]: structured root-cause reports over RAG, data stays in the customer's network; assembly-line pilot. #tech[FastAPI, LiteLLM, PostgreSQL/pgvector]
+- *Rubezh* #text(fill: muted)[— self-hostable LLM guardrail (RU/technical)]: blocks prompt injection and jailbreaks without flagging legitimate safety-manual terms. #tech[Python, FastAPI, LiteLLM]
+- *Open source* #text(fill: muted)[—] Supportal (web-chat to Telegram relay), MCP servers (QEMU, unix-pass), a workstation CVE scanner.
+
 // ---------------- Education ----------------
 #section[Education]
-#grid(columns: (1fr, auto), row-gutter: 3.5pt, align: (left, right),
+#grid(columns: (1fr, auto), row-gutter: 2.5pt, align: (left, right),
   [*Master's degree* — Computer Science and Management in Technical Systems \ #text(fill: muted, size: 9pt)[St. Petersburg State University of Aerospace Instrumentation]], [#text(fill: muted, size: 9pt)[2016]],
   [*Bachelor's degree* (not finished) — Computer Science and Management in Technical Systems \ #text(fill: muted, size: 9pt)[Peter the Great St. Petersburg Polytechnic University]], [#text(fill: muted, size: 9pt)[2002]],
 )
