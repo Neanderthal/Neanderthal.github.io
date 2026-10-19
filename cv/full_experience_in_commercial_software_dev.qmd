@@ -1,5 +1,5 @@
 ---
-title: "My full experience in comercial software development"
+title: "My full experience in commercial software development"
 about:
   template: marquee
   links:
