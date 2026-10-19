@@ -40,6 +40,16 @@ about:
 - Python; PostgreSQL; Git; Linux; Docker; Redis; RabbitMQ; Django; HTML; Flask; Unit Testing; GitLab; Jira; MongoDB; REST; Kafka; Elasticsearch; AWS Services; Azure services.  
 - Языки: Английский (Upper Intermediate), Русский (родной)  
 
+## Собственные проекты
+
+В последнее время самостоятельно разрабатываю self-hosted LLM-инструменты для русскоязычных и регулируемых технических областей — там, где данные нельзя выносить за пределы сети заказчика.
+
+- **Dali (ДаЛи)** — on-prem RCA-диагностика отказов промышленного оборудования. По описанию симптома собирает структурированный RCA-отчёт (первопричины с доказательствами, Исикава / 5 почему, действия) на базе RAG; данные остаются в контуре партнёра, пилот — на сборочной линии.
+  *Технологии*: FastAPI, LiteLLM, Ollama + bge-m3, PostgreSQL + pgvector, Docker
+- **Rubezh (Рубеж)** — self-hostable LLM-гард для русского и технического домена. Проверяет ввод на инъекции, jailbreak, эксфильтрацию секретов и вредоносные запросы, но, в отличие от универсальных гардов, не блокирует легитимную диагностику с «опасными» словами из инструкций по технике безопасности; сменные бэкенды (rules / LLM-судья / классификатор) за OpenAI-совместимым API.
+  *Технологии*: Python, FastAPI, LiteLLM, Docker
+- **Open source:** [Supportal](https://github.com/Neanderthal/Supportal) (веб-чат пользователя ↔ оператор в Telegram), [mcp-qemu-vm](https://github.com/Neanderthal/mcp-qemu-vm) и [unix-pass-mcp](https://github.com/Neanderthal/unix-pass-mcp) (MCP-серверы), [security-audit](https://github.com/Neanderthal/security-audit) (сканер уязвимостей рабочей станции).
+
 ## Образование
 
 - Санкт-Петербургский государственный университет аэрокосмического приборостроения, Санкт-Петербург, Россия  
