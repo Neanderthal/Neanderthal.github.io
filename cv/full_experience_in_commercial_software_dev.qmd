@@ -13,7 +13,31 @@ about:
       text: Email
       href: mailto:sergey.istomin@gmail.com
 ---
-### My experience in commercial software development from scratch to the present days
+### Independent Projects & R&D
+
+Recent independent work centers on self-hosted LLM tooling for Russian-language and regulated technical domains, where the data has to stay inside the customer's network. Two of these are client and product work; the rest are open source.
+
+#### Dali (ДаЛи) — on-prem RCA diagnostics for industrial equipment
+- **Status:** MVP in progress; the service stack is deployed and running.
+- Root-cause analysis of equipment failures from a symptom description. Produces a structured RCA report: root causes with evidence citations, an Ishikawa / 5-Why breakdown, and recommended actions, built on a RAG pipeline. Russian language; all data stays inside the partner's network. First pilot runs on an assembly line.
+- Built the system as composable services: an OpenAI-compatible RCA engine, a Chainlit UI for engineers, an admin UI for content, prompts and evaluation, an input guard, and a native retrieval store.
+  - *Technologies:* Python, FastAPI, Chainlit, LiteLLM (routing across DeepSeek / YandexGPT / GigaChat), Ollama with bge-m3 embeddings, PostgreSQL + pgvector, Docling, Docker Compose.
+- Split out **dali-drawing**, a standalone service that turns engineering drawings (PDF) into structured records. A vector branch (PyMuPDF) handles born-digital CAD files; an OCR branch (RapidOCR on ONNX Runtime) handles scans; an LLM fills in the GOST title-block fields. Isolated to keep the heavy computer-vision dependencies separate and give it its own release cycle, shipped through GHCR CI/CD.
+
+#### Rubezh (Рубеж) — self-hostable LLM guardrail for the Russian / technical domain
+- Screens LLM-application input (and, next, output) for prompt injection, jailbreaks, secret exfiltration, and malicious requests. Unlike generic guards such as LlamaGuard, it does not flag legitimate diagnostics that use "dangerous" vocabulary from safety manuals (explosion, burn, high pressure).
+- Swappable backends behind one verdict: a regex rules pre-filter, an LLM-as-judge with a domain rubric, a self-hosted small classifier for on-prem use, and a recommended hybrid that escalates only the ambiguous cases.
+- HTTP service with an OpenAI-compatible `/v1/chat/completions` shape for drop-in use, a red-team evaluation harness gated on zero false positives for legitimate diagnostics, and a dependency-free Python client.
+  - *Technologies:* Python, FastAPI, LiteLLM, Docker, pytest, ruff.
+
+#### Open source
+- **[Supportal](https://github.com/Neanderthal/Supportal)** — embeddable relay that connects a website chat widget to a support team working inside a Telegram group, one topic per ticket. FastAPI + aiogram, SQLite or PostgreSQL.
+- **[map-vectorize](https://github.com/Neanderthal/map-vectorize)** — automatic vectorization of raster geological maps (GGK-1000/3) into GeoJSON: georeferencing plus color segmentation of legend units.
+- **[mcp-qemu-vm](https://github.com/Neanderthal/mcp-qemu-vm)** — MCP server that controls QEMU virtual machines, giving an AI agent full computer access inside a disposable sandbox.
+- **[unix-pass-mcp](https://github.com/Neanderthal/unix-pass-mcp)** — MCP server exposing the Unix `pass` password manager to MCP clients: read-only by default, gated writes, headless gpg-agent unlock.
+- **[security-audit](https://github.com/Neanderthal/security-audit)** — workstation security scanner that checks installed packages for known CVEs via OSV.dev, pip-audit, and cargo-audit.
+
+### My experience in commercial software development, from the start to the present day
 
 #### Raiffeisen
 - **Duration:** March 2024 – June 2026 (2 years 4 months)
@@ -21,7 +45,7 @@ about:
 - **Sector** Software Development, Banking
 - **Senior Python Developer / ML Engineer  **
 	- Took a part in the development of an internal corporate portal. Django, PostgreSQL, Celery, Kubernetes
-	- Developed a chatbot based on an LLM model using a Retrieval-Augmented Generation (RAG) architecture.
+	- Developed an LLM chatbot using a Retrieval-Augmented Generation (RAG) architecture.
 		- *Technologies:* Python, LangChain, LlamaIndex, Transformers, PgVector
 	 - Built a CI/CD pipeline to automate deployment and integration processes for the chatbot.
 		- *Technologies:* GitLab CI/CD, Docker, Kubernetes
@@ -91,19 +115,16 @@ about:
 #### GdeProfi.ru
 - **Duration:** August 2011 - February 2012 (7 months)
 - **Senior Web Developer**
-  - As a Senior Web Developer at GdeProfi.ru, I led the team in developing our online platform using the Microsoft .NET framework. Using C# and ASP.NET MVC,
-    we also used Entity Framework for efficient data management. We implemented robust backend functionality and dynamic frontend features using AngularJS.
-  - Using agile methodologies, we iteratively refined our product to provide an optimal user experience.
-  - We also used MSSQL Server for database management and relied on Visual Studio for development and debugging.
+  - Led the team building the company's online platform on the Microsoft .NET stack. Backend in C# and ASP.NET MVC with Entity Framework for data access; frontend in AngularJS.
+  - Worked in an agile process and iterated on the product with the team.
+  - Used MSSQL Server for the database and Visual Studio for development and debugging.
   
 #### One Development
 - **Duration:** October 2010 - September 2011 (1 year)
 - **Asp.Net C# Developer**
-  - At One Development, my role as an Asp.Net C# Developer was to build the backend of a supply chain management application using Microsoft technologies.
-    Using ASP.NET MVC, I developed modular and maintainable c code using Design Patterns, providing flexibility for future enhancements.
-  - Utilized the capabilities of the C# language, Entity Framework, and
-    MSSQL Server for database management. We also used Jira for project management and Git for code version control.
-  - Developed unittests using the NUnit framework
+  - Built the backend of a supply-chain management application on Microsoft technologies. Wrote the code in C# with ASP.NET MVC, applying design patterns for maintainability.
+  - Used C#, Entity Framework, and MSSQL Server for the database, Jira for project management, and Git for version control.
+  - Wrote unit tests with the NUnit framework.
 
 #### Speech Technology Center
 - **Duration:** 2004 - 2005 (1 year)
@@ -117,9 +138,9 @@ about:
 #### Saint Petersburg State University of Industrial Technologies and Design
 - **Duration:** 2006, 2007, 2008
 - **Position:** Lecturer
-- As a lecturer at Saint Petersburg State University of Industrial Technologies and Design, I developed and delivered a comprehensive course on CSS/HTML/JavaScript layout for 5th-year students. My responsibilities included:
-  - Designing the curriculum and course materials to ensure comprehensive coverage of the subject matter.
-  - Conducting lectures and practical sessions to impart theoretical knowledge and practical skills.
-  - Supervising students' assignments and providing constructive feedback.
-  - Assessing laboratory work to evaluate students' understanding and proficiency in the subject matter.
+- As a lecturer at Saint Petersburg State University of Industrial Technologies and Design, I developed and taught a course on CSS/HTML/JavaScript layout for fifth-year students. My responsibilities included:
+  - Designing the curriculum and course materials.
+  - Teaching lectures and running practical sessions.
+  - Supervising assignments and giving feedback.
+  - Assessing laboratory work.
 
