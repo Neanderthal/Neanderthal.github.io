@@ -15,20 +15,38 @@ about:
 ---
 ### Independent Projects & R&D
 
-Recent independent work centers on self-hosted LLM tooling for Russian-language and regulated technical domains, where the data has to stay inside the customer's network. Two of these are client and product work; the rest are open source.
+Recent independent work spans industrial LLM systems, application security, and geospatial machine learning, alongside open-source developer tools. Projects include private products and self-hosted tooling for Russian-language and regulated technical domains.
 
 #### Dali (ДаЛи) — on-prem RCA diagnostics for industrial equipment
 - **Status:** MVP in progress; the service stack is deployed and running.
 - Root-cause analysis of equipment failures from a symptom description. Produces a structured RCA report: root causes with evidence citations, an Ishikawa / 5-Why breakdown, and recommended actions, built on a RAG pipeline. Russian language; all data stays inside the partner's network. First pilot runs on an assembly line.
 - Built the system as composable services: an OpenAI-compatible RCA engine, a Chainlit UI for engineers, an admin UI for content, prompts and evaluation, an input guard, and a native retrieval store.
-  - *Technologies:* Python, FastAPI, Chainlit, LiteLLM (routing across DeepSeek / YandexGPT / GigaChat), Ollama with bge-m3 embeddings, PostgreSQL + pgvector, Docling, Docker Compose.
 - Split out **dali-drawing**, a standalone service that turns engineering drawings (PDF) into structured records. A vector branch (PyMuPDF) handles born-digital CAD files; an OCR branch (RapidOCR on ONNX Runtime) handles scans; an LLM fills in the GOST title-block fields. Isolated to keep the heavy computer-vision dependencies separate and give it its own release cycle, shipped through GHCR CI/CD.
+- *Technologies and methods:*
+  - **Backend & UI:** Python, FastAPI, Pydantic, Chainlit, Jinja2, HTMX; OpenAI-compatible APIs and SSE streaming.
+  - **LLM pipelines:** Haystack ingestion and retrieval/reasoning pipelines, LiteLLM for provider routing, DeepSeek, Ollama with local bge-m3 embeddings; vision-language models for drawing and symptom-photo interpretation.
+  - **Retrieval:** PostgreSQL + pgvector, ParadeDB `pg_search` (BM25), Russian/English full-text search, Reciprocal Rank Fusion (RRF), equipment-scoped metadata filtering, and hypothetical-question enrichment (HyQ).
+  - **Document processing:** Docling for table-rich PDFs, openpyxl for Excel, PyMuPDF for engineering drawings, RapidOCR + ONNX Runtime for scanned drawings; content-based ingestion routing and structured chunk metadata.
+  - **Persistence & access:** psycopg, asyncpg, SQLAlchemy; durable PostgreSQL job queues (`FOR UPDATE SKIP LOCKED`, retries, dead-letter queue and replay), MinIO/S3 with presigned URLs, role-based access and bcrypt password hashing.
+  - **Delivery & quality:** Docker Compose, Caddy/TLS, GHCR CI/CD, YAML-managed prompts and runtime settings, unit/E2E tests and RCA evaluation with A/B regression gates.
 
 #### Rubezh (Рубеж) — self-hostable LLM guardrail for the Russian / technical domain
-- Screens LLM-application input (and, next, output) for prompt injection, jailbreaks, secret exfiltration, and malicious requests. Unlike generic guards such as LlamaGuard, it does not flag legitimate diagnostics that use "dangerous" vocabulary from safety manuals (explosion, burn, high pressure).
-- Swappable backends behind one verdict: a regex rules pre-filter, an LLM-as-judge with a domain rubric, a self-hosted small classifier for on-prem use, and a recommended hybrid that escalates only the ambiguous cases.
-- HTTP service with an OpenAI-compatible `/v1/chat/completions` shape for drop-in use, a red-team evaluation harness gated on zero false positives for legitimate diagnostics, and a dependency-free Python client.
-  - *Technologies:* Python, FastAPI, LiteLLM, Docker, pytest, ruff.
+- Built a standalone input guard for prompt injection, jailbreaks, secret exfiltration, and harmful requests, with a Russian technical-domain rubric designed to reduce false positives on legitimate safety-manual vocabulary (explosion, burn, high pressure).
+- Implemented interchangeable rules, LLM-as-judge, distilled-classifier, and hybrid backends behind a shared verdict contract and an OpenAI-compatible `/v1/chat/completions` API. The hybrid rejects explicit attacks with rules and escalates remaining input to a model; a dependency-free Python client lets applications choose how to handle unavailable backends.
+- Distilled a Qwen2.5-72B teacher into Qwen3-0.6B using LoRA and 4-bit QLoRA on a local RTX A2000 with 4 GB VRAM. Built a synthetic-data pipeline with separate generation and teacher-labeling stages, obfuscation augmentation, deduplication, and held-out benchmark exclusion.
+- Added script-aware normalization of leetspeak and homoglyphs before classification, preserving technical numbers and reducing false positives on obfuscated benign text. Evaluated feature and data changes against curated and synthetic red-team sets, including a benchmark labeled by agreement between Qwen2.5-72B and Llama-3.3-70B.
+- Measured approximately 87.5–87.9% accuracy on the cleaned synthetic benchmark; human-labeled evaluation remains pending. The distilled model is trained and evaluated locally; production student serving, Dali integration, and output screening remain planned.
+- *Technologies and methods:*
+  - **Service:** Python, FastAPI, Pydantic, Uvicorn, Docker, OpenAI-compatible HTTP API.
+  - **Model training:** PyTorch, Hugging Face Transformers, PEFT, TRL, Datasets, Accelerate, bitsandbytes; teacher–student distillation, LoRA/QLoRA, NF4 quantization and gradient checkpointing.
+  - **Quality:** pytest, HTTPX, ruff, red-team evaluation, a zero-false-positive CI gate on curated diagnostic cases, and deterministic text normalization.
+
+#### Mushrooms — satellite-based mushroom habitat mapping (private project)
+- Built a geospatial ML pipeline for a mushroom-foraging web map of the Leningrad region, combining seasonal Sentinel-2 imagery, Copernicus elevation data, ESA WorldCover forest masks, and weak OpenStreetMap forest-type labels.
+- Trained Random Forest classifiers to distinguish coniferous from deciduous forest. Used spatially blocked validation to reduce leakage between nearby training and test samples; achieved approximately 88% agreement with held-out OpenStreetMap labels. Field validation remains pending.
+- Used feature ablation and permutation importance to select eight optical and terrain features; removed radar inputs after measuring their limited additional benefit. Produced a region-wide conifer-probability layer at 20-metre resolution, with Google Earth Engine batch processing and local model evaluation.
+- Delivered the layer to the web map as PMTiles through Cloudflare R2 and a Worker using HTTP range requests; reduced the tile archive from 466 MiB to 221 MiB through transparency quantization and image compression.
+  - *Technologies:* Python, Google Earth Engine, scikit-learn, rasterio, Shapely, mercantile, PMTiles, Pillow, OpenStreetMap/Overpass, osmtogeojson, mapshaper, Cloudflare Workers and R2.
 
 #### Open source
 - **[Supportal](https://github.com/Neanderthal/Supportal)** — embeddable relay that connects a website chat widget to a support team working inside a Telegram group, one topic per ticket. FastAPI + aiogram, SQLite or PostgreSQL.
