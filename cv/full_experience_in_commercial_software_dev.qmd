@@ -20,14 +20,14 @@ Recent independent work spans industrial LLM systems, application security, and 
 #### Dali (ДаЛи) — on-prem RCA diagnostics for industrial equipment
 - **Status:** MVP in progress; the service stack is deployed and running.
 - Root-cause analysis of equipment failures from a symptom description. Produces a structured RCA report: root causes with evidence citations, an Ishikawa / 5-Why breakdown, and recommended actions, built on a RAG pipeline. Russian language; all data stays inside the partner's network. First pilot runs on an assembly line.
-- Built the system as composable services: an OpenAI-compatible RCA engine, a Chainlit UI for engineers, an admin UI for content, prompts and evaluation, an input guard, and a native retrieval store.
+- Built the system as composable services: an OpenAI-compatible RCA engine, a Chainlit UI for engineers, an admin UI for content, prompts, users and evaluation, the Rubezh guardrail as an input guard, and a native retrieval store, with LiteLLM routing across providers.
 - Split out **dali-drawing**, a standalone service that turns engineering drawings (PDF) into structured records. A vector branch (PyMuPDF) handles born-digital CAD files; an OCR branch (RapidOCR on ONNX Runtime) handles scans; an LLM fills in the GOST title-block fields. Isolated to keep the heavy computer-vision dependencies separate and give it its own release cycle, shipped through GHCR CI/CD.
 - *Technologies and methods:*
   - **Backend & UI:** Python, FastAPI, Pydantic, Chainlit, Jinja2, HTMX; OpenAI-compatible APIs and SSE streaming.
-  - **LLM pipelines:** Haystack ingestion and retrieval/reasoning pipelines, LiteLLM for provider routing, DeepSeek, Ollama with local bge-m3 embeddings; vision-language models for drawing and symptom-photo interpretation.
-  - **Retrieval:** PostgreSQL + pgvector, ParadeDB `pg_search` (BM25), Russian/English full-text search, Reciprocal Rank Fusion (RRF), equipment-scoped metadata filtering, and hypothetical-question enrichment (HyQ).
-  - **Document processing:** Docling for table-rich PDFs, openpyxl for Excel, PyMuPDF for engineering drawings, RapidOCR + ONNX Runtime for scanned drawings; content-based ingestion routing and structured chunk metadata.
-  - **Persistence & access:** psycopg, asyncpg, SQLAlchemy; durable PostgreSQL job queues (`FOR UPDATE SKIP LOCKED`, retries, dead-letter queue and replay), MinIO/S3 with presigned URLs, role-based access and bcrypt password hashing.
+  - **LLM pipelines:** Haystack orchestration of ingestion and retrieval/reasoning, LiteLLM for provider routing (DeepSeek, YandexGPT, GigaChat), Ollama with local bge-m3 embeddings; vision-language models for drawing and symptom-photo interpretation.
+  - **Retrieval:** native PostgreSQL + pgvector hybrid — vector search plus dual Russian/English full-text search fused by Reciprocal Rank Fusion (RRF), optional BM25 via ParadeDB `pg_search`, contextual chunk headers, equipment-scoped metadata filtering, cross-language retrieval, and hypothetical-question enrichment (HyQ).
+  - **Document processing:** pypdf for born-digital PDFs, Docling or a hosted vision model for table-rich PDFs, openpyxl for Excel, PyMuPDF for engineering drawings, RapidOCR + ONNX Runtime for scanned drawings; content-based ingestion routing, sha256 dedup, and structured chunk metadata.
+  - **Persistence & access:** psycopg, asyncpg, SQLAlchemy; PostgreSQL-backed job queues with retries and recovery, MinIO/S3 with presigned URLs, role-based access and bcrypt password hashing.
   - **Delivery & quality:** Docker Compose, Caddy/TLS, GHCR CI/CD, YAML-managed prompts and runtime settings, unit/E2E tests and RCA evaluation with A/B regression gates.
 
 #### Rubezh (Рубеж) — self-hostable LLM guardrail for the Russian / technical domain
@@ -35,7 +35,7 @@ Recent independent work spans industrial LLM systems, application security, and 
 - Implemented interchangeable rules, LLM-as-judge, distilled-classifier, and hybrid backends behind a shared verdict contract and an OpenAI-compatible `/v1/chat/completions` API. The hybrid rejects explicit attacks with rules and escalates remaining input to a model; a dependency-free Python client lets applications choose how to handle unavailable backends.
 - Distilled a Qwen2.5-72B teacher into Qwen3-0.6B using LoRA and 4-bit QLoRA on a local RTX A2000 with 4 GB VRAM. Built a synthetic-data pipeline with separate generation and teacher-labeling stages, obfuscation augmentation, deduplication, and held-out benchmark exclusion.
 - Added script-aware normalization of leetspeak and homoglyphs before classification, preserving technical numbers and reducing false positives on obfuscated benign text. Evaluated feature and data changes against curated and synthetic red-team sets, including a benchmark labeled by agreement between Qwen2.5-72B and Llama-3.3-70B.
-- Measured approximately 87.5–87.9% accuracy on the cleaned synthetic benchmark; human-labeled evaluation remains pending. The distilled model is trained and evaluated locally; production student serving, Dali integration, and output screening remain planned.
+- Measured approximately 87.5–87.9% accuracy on the cleaned synthetic benchmark; human-labeled evaluation remains pending. Rubezh now runs as the input guardrail on Dali — the distilled Qwen3-0.6B classifier plus hybrid `rules` + `llm-judge` backends; production student serving and output screening remain planned.
 - *Technologies and methods:*
   - **Service:** Python, FastAPI, Pydantic, Uvicorn, Docker, OpenAI-compatible HTTP API.
   - **Model training:** PyTorch, Hugging Face Transformers, PEFT, TRL, Datasets, Accelerate, bitsandbytes; teacher–student distillation, LoRA/QLoRA, NF4 quantization and gradient checkpointing.
@@ -54,6 +54,12 @@ Recent independent work spans industrial LLM systems, application security, and 
 - **[mcp-qemu-vm](https://github.com/Neanderthal/mcp-qemu-vm)** — MCP server that controls QEMU virtual machines, giving an AI agent full computer access inside a disposable sandbox.
 - **[unix-pass-mcp](https://github.com/Neanderthal/unix-pass-mcp)** — MCP server exposing the Unix `pass` password manager to MCP clients: read-only by default, gated writes, headless gpg-agent unlock.
 - **[security-audit](https://github.com/Neanderthal/security-audit)** — workstation security scanner that checks installed packages for known CVEs via OSV.dev, pip-audit, and cargo-audit.
+- **[omr-notes](https://github.com/Neanderthal/omr-notes)** — optical music recognition as installable Claude Code skills: sheet-music photos and scans become editable MusicXML and offline piano audio, with page-splitting before recognition. Python, Audiveris and oemer engines, ONNX Runtime, OpenCV, FluidSynth.
+- **[telegram-search](https://github.com/Neanderthal/telegram-search)** — read-only MCP server exposing Telegram chat history to MCP clients: keyword and global search with context-window expansion, no send capability. Python, FastMCP, Telethon.
+- **[whitelist-probe](https://github.com/Neanderthal/whitelist-probe)** — black-box reconstruction of an upstream internet whitelist from a filtered mobile uplink: filter diagnostics, Bayesian prefix probing, and SNI detection. Python, TLS/SNI probing, CIDR coalescing.
+- **[clipboard-relay](https://github.com/Neanderthal/clipboard-relay)** — end-to-end-encrypted clipboard sync across machines via git and GPG: multi-key, auto-expiring clips, any git host.
+- **[users_geoposition](https://github.com/Neanderthal/users_geoposition)** — QR-code GPS capture for print-media analytics; a FastAPI backend appends reader coordinates to an XLSX before redirecting. FastAPI, openpyxl, Ansible, Docker, Nginx, Let's Encrypt.
+- **[mcp-server-trello](https://github.com/Neanderthal/mcp-server-trello)** — MCP server for interacting with Trello boards from inside an AI agent. TypeScript.
 
 ### My experience in commercial software development, from the start to the present day
 
